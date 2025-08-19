@@ -13,7 +13,12 @@ import { MicroInteraction } from "@/components/MicroInteraction";
 import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import { InteractiveTimeline } from "@/components/InteractiveTimeline";
 import { LiveMetrics } from "@/components/LiveMetrics";
+import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { PerformanceMonitor } from "@/components/PerformanceMonitor";
+import { AccessibilityManager } from "@/components/AccessibilityManager";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SmartForm } from "@/components/SmartForm";
+import { SEOHead } from "@/components/SEOHead";
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [socialProofCount, setSocialProofCount] = useState(0);
@@ -118,10 +123,21 @@ const IntegraLipecare = () => {
     icon: Award
   }];
   return <>
-      {/* Meta tags e Schema.org serão adicionados via Helmet */}
-      <div className="min-h-screen">
-        {/* Scroll Progress Bar */}
-        <ScrollProgress />
+      {/* SEO Head Component */}
+      <SEOHead section="hero" />
+      
+      {/* Analytics & Performance Monitoring */}
+      <AnalyticsTracker />
+      <PerformanceMonitor />
+      
+      {/* Accessibility Features */}
+      <AccessibilityManager />
+      
+      {/* Error Boundary Wrap */}
+      <ErrorBoundary>
+        <div className="min-h-screen" id="main-content">
+          {/* Scroll Progress Bar */}
+          <ScrollProgress />
         
         {/* Header com Logo */}
         <header className={`bg-background/95 backdrop-blur-sm sticky top-0 z-50 transition-all duration-500 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
@@ -913,9 +929,12 @@ const IntegraLipecare = () => {
           </div>
         </footer>
 
-        {/* WhatsApp Fixo */}
-        <WhatsAppFixed />
-      </div>
+        </div>
+      </ErrorBoundary>
+      
+      {/* WhatsApp Fixed Button */}
+      <WhatsAppFixed />
     </>;
 };
+
 export default IntegraLipecare;

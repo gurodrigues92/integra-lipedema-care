@@ -1187,24 +1187,218 @@ All colors MUST be HSL.
   .animation-delay-300 {
     animation-delay: 0.3s;
   }
-}
+/* Enhanced Accessibility Styles */
+@layer base {
+  /* High Contrast Mode */
+  .high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+    --primary: 60 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+    --border: 0 0% 30%;
+  }
 
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  /* Font Size Variants */
+  .font-small {
+    font-size: 0.875rem;
+  }
+  
+  .font-small h1 { font-size: 1.5rem; }
+  .font-small h2 { font-size: 1.25rem; }
+  .font-small h3 { font-size: 1.125rem; }
+  .font-small .text-lg { font-size: 1rem; }
+  .font-small .text-xl { font-size: 1.125rem; }
+
+  .font-large {
+    font-size: 1.25rem;
+  }
+  
+  .font-large h1 { font-size: 3rem; }
+  .font-large h2 { font-size: 2.5rem; }
+  .font-large h3 { font-size: 2rem; }
+  .font-large .text-lg { font-size: 1.5rem; }
+  .font-large .text-xl { font-size: 1.75rem; }
+
+  /* Reduced Motion */
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* Screen Reader Optimizations */
+  .screen-reader-optimized {
+    --transition-duration: 0ms;
+  }
   
-  .animate-parallax-float,
-  .animate-float,
-  .animate-pulse,
-  .animate-scale-bounce,
-  .animate-pulse-glow {
-    animation: none !important;
+  .screen-reader-optimized *:focus {
+    outline: 3px solid hsl(var(--ring)) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Enhanced Focus Indicators */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Skip Links */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .sr-only.focus:not(.sr-only) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Enhanced Button States */
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Loading States */
+  [aria-busy="true"] {
+    cursor: wait;
+  }
+
+  /* Form Enhancements */
+  input:invalid,
+  textarea:invalid,
+  select:invalid {
+    border-color: hsl(var(--destructive));
+  }
+
+  input:valid,
+  textarea:valid,
+  select:valid {
+    border-color: hsl(var(--success));
+  }
+
+  /* Error States */
+  [aria-invalid="true"] {
+    border-color: hsl(var(--destructive)) !important;
+    box-shadow: 0 0 0 2px hsl(var(--destructive) / 0.2);
+  }
+
+  /* Success States */
+  [aria-invalid="false"] {
+    border-color: hsl(var(--success)) !important;
+    box-shadow: 0 0 0 2px hsl(var(--success) / 0.2);
+  }
+}
+
+/* Performance Optimization Classes */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .will-change-auto {
+    will-change: auto;
+  }
+
+  .content-visibility-auto {
+    content-visibility: auto;
+  }
+
+  .contain-layout {
+    contain: layout;
+  }
+
+  .contain-paint {
+    contain: paint;
+  }
+
+  .contain-size {
+    contain: size;
+  }
+
+  /* Intersection Observer Loading States */
+  .lazy-load-placeholder {
+    background: linear-gradient(90deg, 
+      hsl(var(--muted)) 25%, 
+      hsl(var(--muted) / 0.5) 50%, 
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Critical rendering path optimization */
+  .above-fold {
+    contain: layout style paint;
+  }
+
+  .below-fold {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
+
+  /* Touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    * {
+      background: transparent !important;
+      color: black !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+    
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+    
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+    
+    .print-break {
+      page-break-before: always;
+    }
   }
 }
