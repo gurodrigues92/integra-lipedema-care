@@ -18,7 +18,7 @@ import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SmartForm } from "@/components/SmartForm";
 import { SEOHead } from "@/components/SEOHead";
-import PWAManager from "@/components/PWAManager";
+// import PWAManager from "@/components/PWAManager";
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 const IntegraLipecare = () => {
@@ -109,7 +109,7 @@ const IntegraLipecare = () => {
       
       
       {/* PWA & Network Features - Both enabled */}
-      <PWAManager />
+      {/* PWAManager temporarily removed due to cache issues */}
       <NetworkStatus />
       
       <ErrorBoundary>
