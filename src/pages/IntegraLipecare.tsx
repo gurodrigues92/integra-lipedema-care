@@ -7,14 +7,12 @@ import FAQAccordion from "@/components/FAQAccordion";
 import { AwardBadge } from "@/components/ui/award-badge";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [socialProofCount, setSocialProofCount] = useState(0);
   const [onlineUsers, setOnlineUsers] = useState(12);
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
-
   useEffect(() => {
     // Animate social proof counter
     const targetCount = 523;
@@ -42,26 +40,24 @@ const IntegraLipecare = () => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
       const threshold = 150;
-      
       if (scrolled > threshold) {
         setHeaderVisible(false);
       } else {
         setHeaderVisible(true);
       }
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, {
+      passive: true
+    });
 
     // Track page view
     console.log('[LandingIntegra] Page loaded');
-    
     if (typeof gtag !== 'undefined') {
       gtag('event', 'page_view', {
         page_title: 'Integra Lipecare Landing',
         page_location: window.location.href
       });
     }
-
     if (typeof fbq !== 'undefined') {
       fbq('track', 'PageView');
       fbq('track', 'ViewContent', {
@@ -69,69 +65,59 @@ const IntegraLipecare = () => {
         content_category: 'Saúde'
       });
     }
-
     return () => {
       clearInterval(timer);
       clearInterval(onlineTimer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  const symptoms = [
-    "Suas pernas doem e incham, especialmente no final do dia",
-    "Você tem facilidade para fazer hematomas nas pernas", 
-    "A gordura das suas pernas tem textura diferente (nodular/irregular)",
-    "Dietas e exercícios não reduzem o volume das pernas",
-    "Há desproporção entre a parte superior e inferior do corpo",
-    "Você sente suas pernas pesadas e cansadas constantemente",
-    "Médicos dizem que é 'só gordura' ou 'falta de exercício'"
-  ];
-
-  const benefits = [
-    { icon: Heart, text: "Alívio significativo das dores em até 30 dias" },
-    { icon: Users, text: "Redução do inchaço e sensação de peso" },
-    { icon: Shield, text: "Melhora na mobilidade e qualidade de vida" },
-    { icon: Star, text: "Autoestima recuperada" },
-    { icon: Clock, text: "Controle da progressão da doença" },
-    { icon: Award, text: "Suporte emocional especializado" },
-    { icon: Users, text: "Rede de apoio com outras pacientes" },
-    { icon: Heart, text: "Plano alimentar anti-inflamatório personalizado" }
-  ];
-
-  const differentials = [
-    {
-      title: "Equipe Multidisciplinar Completa",
-      description: "Médicos especializados em lipedema, fisioterapeutas com formação em DLM, nutricionistas especializadas e psicólogas com experiência em dor crônica.",
-      icon: Users
-    },
-    {
-      title: "Protocolo Integrado Exclusivo", 
-      description: "Diagnóstico preciso com ultrassom, plano de tratamento personalizado, acompanhamento contínuo e grupos de apoio.",
-      icon: Shield
-    },
-    {
-      title: "Tecnologias Avançadas",
-      description: "Drenagem linfática manual especializada, terapia de compressão adequada, tratamentos complementares e monitoramento de evolução.",
-      icon: Award
-    }
-  ];
-
-  return (
-    <>
+  const symptoms = ["Suas pernas doem e incham, especialmente no final do dia", "Você tem facilidade para fazer hematomas nas pernas", "A gordura das suas pernas tem textura diferente (nodular/irregular)", "Dietas e exercícios não reduzem o volume das pernas", "Há desproporção entre a parte superior e inferior do corpo", "Você sente suas pernas pesadas e cansadas constantemente", "Médicos dizem que é 'só gordura' ou 'falta de exercício'"];
+  const benefits = [{
+    icon: Heart,
+    text: "Alívio significativo das dores em até 30 dias"
+  }, {
+    icon: Users,
+    text: "Redução do inchaço e sensação de peso"
+  }, {
+    icon: Shield,
+    text: "Melhora na mobilidade e qualidade de vida"
+  }, {
+    icon: Star,
+    text: "Autoestima recuperada"
+  }, {
+    icon: Clock,
+    text: "Controle da progressão da doença"
+  }, {
+    icon: Award,
+    text: "Suporte emocional especializado"
+  }, {
+    icon: Users,
+    text: "Rede de apoio com outras pacientes"
+  }, {
+    icon: Heart,
+    text: "Plano alimentar anti-inflamatório personalizado"
+  }];
+  const differentials = [{
+    title: "Equipe Multidisciplinar Completa",
+    description: "Médicos especializados em lipedema, fisioterapeutas com formação em DLM, nutricionistas especializadas e psicólogas com experiência em dor crônica.",
+    icon: Users
+  }, {
+    title: "Protocolo Integrado Exclusivo",
+    description: "Diagnóstico preciso com ultrassom, plano de tratamento personalizado, acompanhamento contínuo e grupos de apoio.",
+    icon: Shield
+  }, {
+    title: "Tecnologias Avançadas",
+    description: "Drenagem linfática manual especializada, terapia de compressão adequada, tratamentos complementares e monitoramento de evolução.",
+    icon: Award
+  }];
+  return <>
       {/* Meta tags e Schema.org serão adicionados via Helmet */}
       <div className="min-h-screen">
         {/* Header com Logo */}
-        <header className={`bg-background/95 backdrop-blur-sm sticky top-0 z-50 transition-all duration-500 ${
-          headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
-        }`}>
+        <header className={`bg-background/95 backdrop-blur-sm sticky top-0 z-50 transition-all duration-500 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
           <div className="container-custom py-4">
             <div className="flex justify-center">
-              <img 
-                src={integraLipecareLogotipo}
-                alt="Integra Lipecare - Clínica Especializada em Lipedema"
-                className="h-12 md:h-16 w-auto"
-                loading="eager"
-              />
+              <img src={integraLipecareLogotipo} alt="Integra Lipecare - Clínica Especializada em Lipedema" className="h-12 md:h-16 w-auto" loading="eager" />
             </div>
           </div>
         </header>
@@ -187,9 +173,7 @@ const IntegraLipecare = () => {
               </div>
               <div className="flex items-center gap-1">
                 <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />)}
                 </div>
                 <span className="ml-2 text-muted-foreground">4.9 ⭐ no Google</span>
               </div>
@@ -208,15 +192,10 @@ const IntegraLipecare = () => {
             
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-4 mb-8">
-                {symptoms.map((symptom, index) => (
-                  <div 
-                    key={index}
-                    className={`flex items-start gap-3 p-4 rounded-xl bg-background animate-fade-in-up animation-delay-${(index + 1) * 100}`}
-                  >
+                {symptoms.map((symptom, index) => <div key={index} className={`flex items-start gap-3 p-4 rounded-xl bg-background animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
                     <Check className="w-6 h-6 text-success mt-1 flex-shrink-0" />
                     <span className="text-foreground">{symptom}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               
               <div className="text-center">
@@ -285,18 +264,13 @@ const IntegraLipecare = () => {
             </div>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {differentials.map((item, index) => (
-                <div 
-                  key={index}
-                  className={`benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}
-                >
+              {differentials.map((item, index) => <div key={index} className={`benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
                     <item.icon className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                </div>
-              ))}
+                </div>)}
             </div>
             
             <div className="text-center">
@@ -331,12 +305,7 @@ const IntegraLipecare = () => {
                       <DialogTrigger asChild>
                         <div className="relative cursor-pointer group">
                           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
-                            <img 
-                              src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp"
-                              alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo"
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                              loading="lazy"
-                            />
+                            <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp" alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
                           </div>
                           <div className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                             <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -347,11 +316,7 @@ const IntegraLipecare = () => {
                       <DialogContent className="max-w-2xl">
                         <div className="flex flex-col items-center space-y-4 p-6">
                           <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl">
-                            <img 
-                              src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp"
-                              alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo"
-                              className="w-full h-full object-cover"
-                            />
+                            <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp" alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo" className="w-full h-full object-cover" />
                           </div>
                           <div className="text-center space-y-2">
                             <h3 className="text-3xl font-bold text-primary">Dra. Daniela Persinotti</h3>
@@ -372,16 +337,8 @@ const IntegraLipecare = () => {
                   
                   {/* Badges Principais */}
                   <div className="space-y-3 w-full">
-                    <AwardBadge 
-                      type="especialista-lipedema"
-                      title="Ginecologista e Obstetra"
-                      subtitle="Residência em Ginecologia e Obstetrícia"
-                    />
-                    <AwardBadge 
-                      type="pos-graduacao"
-                      title="Especialista em Metabolismo"
-                      subtitle="Longevidade e Saúde Hormonal"
-                    />
+                    <AwardBadge type="especialista-lipedema" title="Ginecologista e Obstetra" subtitle="Residência em Ginecologia e Obstetrícia" />
+                    <AwardBadge type="pos-graduacao" title="Especialista em Metabolismo" subtitle="Longevidade e Saúde Hormonal" />
                   </div>
                   
                   {/* Quote */}
@@ -403,12 +360,7 @@ const IntegraLipecare = () => {
                       <DialogTrigger asChild>
                         <div className="relative cursor-pointer group">
                           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
-                            <img 
-                              src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp"
-                              alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP"
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                              loading="lazy"
-                            />
+                            <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp" alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
                           </div>
                           <div className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                             <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -419,11 +371,7 @@ const IntegraLipecare = () => {
                       <DialogContent className="max-w-2xl">
                         <div className="flex flex-col items-center space-y-4 p-6">
                           <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl">
-                            <img 
-                              src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp"
-                              alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP"
-                              className="w-full h-full object-cover"
-                            />
+                            <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp" alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP" className="w-full h-full object-cover" />
                           </div>
                           <div className="text-center space-y-2">
                             <h3 className="text-3xl font-bold text-primary">Dra. Fernanda T. Sales Antila</h3>
@@ -444,16 +392,8 @@ const IntegraLipecare = () => {
                   
                   {/* Badges Principais */}
                   <div className="space-y-3 w-full">
-                    <AwardBadge 
-                      type="especialista-lipedema"
-                      title="Cirurgiã Vascular UNICAMP"
-                      subtitle="Cirurgia Geral e Cirurgia Vascular"
-                    />
-                    <AwardBadge 
-                      type="membro-sociedade"
-                      title="Membro SBACV"
-                      subtitle="Sociedade Brasileira de Cirurgia Vascular"
-                    />
+                    <AwardBadge type="especialista-lipedema" title="Cirurgiã Vascular UNICAMP" subtitle="Cirurgia Geral e Cirurgia Vascular" />
+                    <AwardBadge type="membro-sociedade" title="Membro SBACV" subtitle="Sociedade Brasileira de Cirurgia Vascular" />
                   </div>
                   
                   {/* Quote */}
@@ -506,17 +446,12 @@ const IntegraLipecare = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {benefits.map((benefit, index) => (
-                <div 
-                  key={index}
-                  className={`benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}
-                >
+              {benefits.map((benefit, index) => <div key={index} className={`benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-success/10 rounded-full mb-4">
                     <benefit.icon className="w-6 h-6 text-success" />
                   </div>
                   <p className="font-medium">{benefit.text}</p>
-                </div>
-              ))}
+                </div>)}
             </div>
             
             <div className="text-center">
@@ -656,14 +591,7 @@ const IntegraLipecare = () => {
               
               {/* Mapa */}
               <div className="map-container">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9023121073!2d-47.46444579999999!3d-23.536015699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58a65fcb4e499%3A0x97dd13700a6c9e23!2sIguatemi%20Business%20Esplanada!5e0!3m2!1spt-BR!2sbr!4v1755618105980!5m2!1spt-BR!2sbr" 
-                  className="w-full h-96 border-0 rounded-2xl shadow-lg"
-                  allowFullScreen
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Localização da Integra Lipecare"
-                />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9023121073!2d-47.46444579999999!3d-23.536015699999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58a65fcb4e499%3A0x97dd13700a6c9e23!2sIguatemi%20Business%20Esplanada!5e0!3m2!1spt-BR!2sbr!4v1755618105980!5m2!1spt-BR!2sbr" className="w-full h-96 border-0 rounded-2xl shadow-lg" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Localização da Integra Lipecare" />
               </div>
             </div>
           </div>
@@ -680,10 +608,7 @@ const IntegraLipecare = () => {
             </p>
             
             <div className="mb-6">
-              <WhatsAppButton 
-                location="cta-final"
-                className="bg-card text-card-foreground hover:bg-card/90"
-              >
+              <WhatsAppButton location="cta-final" className="bg-card text-card-foreground hover:bg-card/90">
                 Agendar minha consulta agora
               </WhatsAppButton>
             </div>
@@ -700,12 +625,7 @@ const IntegraLipecare = () => {
             <div className="flex flex-col items-center text-center space-y-8">
               {/* Logo */}
               <div className="flex justify-center">
-                <img 
-                  src={integraLipecareLogotipo}
-                  alt="Integra Lipecare - Clínica Especializada em Lipedema"
-                  className="h-16 md:h-20 w-auto opacity-90"
-                  loading="lazy"
-                />
+                <img src={integraLipecareLogotipo} alt="Integra Lipecare - Clínica Especializada em Lipedema" className="h-16 md:h-20 w-auto opacity-90" loading="lazy" />
               </div>
               
               {/* Informações da Clínica */}
@@ -744,13 +664,8 @@ const IntegraLipecare = () => {
                     <h3 className="font-semibold">Siga-nos</h3>
                   </div>
                   <div className="flex justify-center">
-                    <a 
-                      href="https://instagram.com/integralipecare" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Instagram className="w-4 h-4" />
+                    <a href="https://instagram.com/integralipecare" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                      
                       @integralipecare
                     </a>
                   </div>
@@ -776,8 +691,6 @@ const IntegraLipecare = () => {
         {/* WhatsApp Fixo */}
         <WhatsAppFixed />
       </div>
-    </>
-  );
+    </>;
 };
-
 export default IntegraLipecare;
