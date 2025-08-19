@@ -715,7 +715,7 @@ const IntegraLipecare = () => {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Fácil acesso em Votorantim
+                Fácil acesso em Sorocaba
               </h2>
             </div>
             
