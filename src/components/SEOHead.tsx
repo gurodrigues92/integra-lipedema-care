@@ -13,7 +13,7 @@ interface SEOHeadProps {
 
 export const SEOHead = ({
   title = "Tratamento de Lipedema em Sorocaba | Integra Lipecare - Clínica Especializada",
-  description = "Clínica especializada em lipedema em Sorocaba. Equipe multidisciplinar, diagnóstico preciso, tratamento humanizado. Criada por pacientes, para pacientes. Agende sua avaliação gratuita.",
+  description = "Clínica especializada em lipedema em Sorocaba. Equipe multidisciplinar, diagnóstico preciso, tratamento humanizado. Criada por pacientes, para pacientes. Agende sua primeira consulta especializada.",
   keywords = "lipedema, tratamento lipedema, lipedema sorocaba, clinica lipedema, drenagem linfática, lipedema tratamento, dor nas pernas, inchaço pernas, lipedema diagnostico",
   image = "https://integralipecare.com.br/og-image.jpg",
   url = "https://integralipecare.com.br",
@@ -30,7 +30,7 @@ export const SEOHead = ({
     'equipe': "Médicas Especialistas em Lipedema | Integra Lipecare",
     'depoimentos': "Depoimentos Reais | Resultados do Tratamento de Lipedema",
     'faq': "Perguntas Frequentes sobre Lipedema | Tire suas Dúvidas",
-    'contato': "Agende sua Consulta | Avaliação Gratuita de Lipedema"
+    'contato': "Agende sua Consulta | Primeira Consulta Especializada"
   };
 
   const sectionDescriptions: Record<string, string> = {
@@ -40,7 +40,7 @@ export const SEOHead = ({
     'equipe': "Conheça Dra. Daniela Persinotti e Dra. Fernanda Sales - especialistas renomadas no tratamento de lipedema com mais de 500 pacientes atendidas.",
     'depoimentos': "Veja depoimentos reais de pacientes que transformaram suas vidas com nosso tratamento especializado em lipedema. Resultados comprovados.",
     'faq': "Tire suas dúvidas sobre lipedema: causas, sintomas, tratamentos disponíveis, duração do tratamento e muito mais. Respostas de especialistas.",
-    'contato': "Agende sua avaliação gratuita de lipedema. Atendimento humanizado com equipe multidisciplinar especializada. Primeira consulta sem compromisso."
+    'contato': "Agende sua primeira consulta especializada em lipedema. Atendimento humanizado com equipe multidisciplinar especializada. Consulta detalhada e personalizada."
   };
 
   const finalTitle = section && sectionTitles[section] ? sectionTitles[section] : title;

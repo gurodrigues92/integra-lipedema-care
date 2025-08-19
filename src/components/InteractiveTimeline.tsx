@@ -212,8 +212,8 @@ export const InteractiveTimeline = () => {
               <div className="text-sm text-muted-foreground">Taxa de sucesso</div>
             </div>
             <div className="space-y-2">
-              <div className="text-2xl font-bold text-accent">500+</div>
-              <div className="text-sm text-muted-foreground">Pacientes tratadas</div>
+              <div className="text-2xl font-bold text-accent">Dezenas de</div>
+              <div className="text-sm text-muted-foreground">Pacientes atendidas</div>
             </div>
           </div>
         </div>

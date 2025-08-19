@@ -142,19 +142,43 @@ export const SmartForm = ({ onSubmit }: { onSubmit?: (data: FormData) => void })
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
+  const formatFormDataToWhatsApp = (data: FormData): string => {
+    const urgencyText = urgencyOptions.find(opt => opt.value === data.urgency)?.label || data.urgency;
+    const timeText = {
+      'manha': 'Manhã (8h às 12h)',
+      'tarde': 'Tarde (12h às 18h)', 
+      'noite': 'Noite (18h às 20h)',
+      'qualquer': 'Qualquer horário'
+    }[data.preferredTime] || data.preferredTime;
+
+    return `*SOLICITAÇÃO DE CONSULTA - INTEGRA LIPECARE*
+
+*Dados Pessoais:*
+• Nome: ${data.name}
+• Idade: ${data.age} anos
+• Email: ${data.email}
+• Telefone: ${data.phone}
+
+*Sintomas Relatados:*
+${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
+
+*Informações do Agendamento:*
+• Urgência: ${urgencyText}
+• Horário Preferido: ${timeText}
+
+*Observação:* Mensagem enviada através do formulário do site. Favor entrar em contato para agendar a primeira consulta especializada.`;
+  };
+
   const handleSubmit = async () => {
     if (!validateStep(currentStep)) return;
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Format WhatsApp message
+    const whatsappMessage = formatFormDataToWhatsApp(formData);
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappUrl = `https://wa.me/5515991159866?text=${encodedMessage}`;
     
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    onSubmit?.(formData);
-
     // Track conversion
     if (typeof gtag !== 'undefined') {
       gtag('event', 'conversion', {
@@ -162,7 +186,29 @@ export const SmartForm = ({ onSubmit }: { onSubmit?: (data: FormData) => void })
         value: 1,
         currency: 'BRL'
       });
+      
+      gtag('event', 'form_submit', {
+        event_category: 'Formulário',
+        event_label: 'Smart_Form_Complete',
+        value: 1
+      });
     }
+
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'CompleteRegistration', {
+        content_name: 'Formulário_Consulta',
+        content_category: 'Lead'
+      });
+    }
+
+    // Small delay for visual feedback
+    setTimeout(() => {
+      setIsSubmitting(false);
+      // Redirect to WhatsApp
+      window.open(whatsappUrl, '_blank');
+      setIsSubmitted(true);
+      onSubmit?.(formData);
+    }, 1000);
   };
 
   const formatPhone = (value: string) => {
@@ -212,7 +258,7 @@ export const SmartForm = ({ onSubmit }: { onSubmit?: (data: FormData) => void })
       {/* Header */}
       <div className="text-center mb-8">
         <h3 className="text-2xl font-bold mb-2 text-gradient-primary">
-          Avaliação Gratuita
+          Primeira Consulta Especializada
         </h3>
         <p className="text-muted-foreground">
           {currentStepData.description}
