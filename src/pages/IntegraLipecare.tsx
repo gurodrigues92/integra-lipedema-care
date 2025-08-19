@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, Instagram, ZoomIn } from "lucide-react";
+import integraLipecareLogotipo from "@/assets/integra-lipecare-logo.png";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppFixed from "@/components/WhatsAppFixed";
 import FAQAccordion from "@/components/FAQAccordion";
@@ -103,10 +104,19 @@ const IntegraLipecare = () => {
     <>
       {/* Meta tags e Schema.org serão adicionados via Helmet */}
       <div className="min-h-screen">
-        {/* Barra de Urgência */}
-        <div className="urgency-bar">
-          🔥 <strong>Oferta Especial:</strong> Primeira consulta com 30% de desconto - Válido até sexta-feira
-        </div>
+        {/* Header com Logo */}
+        <header className="bg-background/95 backdrop-blur-sm border-b border-border/40 sticky top-0 z-50 shadow-sm">
+          <div className="container-custom py-4">
+            <div className="flex justify-center">
+              <img 
+                src={integraLipecareLogotipo}
+                alt="Integra Lipecare - Clínica Especializada em Lipedema"
+                className="h-12 md:h-16 w-auto"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </header>
 
         {/* Hero Section with Animated Background */}
         <BeamsBackground className="min-h-screen flex items-center" intensity="subtle">
@@ -665,6 +675,85 @@ const IntegraLipecare = () => {
             </p>
           </div>
         </section>
+
+        {/* Footer */}
+        <footer className="bg-background border-t border-border/40">
+          <div className="container-custom py-12">
+            <div className="flex flex-col items-center text-center space-y-8">
+              {/* Logo */}
+              <div className="flex justify-center">
+                <img 
+                  src={integraLipecareLogotipo}
+                  alt="Integra Lipecare - Clínica Especializada em Lipedema"
+                  className="h-16 md:h-20 w-auto opacity-90"
+                  loading="lazy"
+                />
+              </div>
+              
+              {/* Informações da Clínica */}
+              <div className="grid md:grid-cols-3 gap-8 max-w-4xl w-full">
+                {/* Endereço */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center gap-3">
+                    <MapPin className="w-5 h-5 text-primary" />
+                    <h3 className="font-semibold">Localização</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Avenida Gisele Constantino, 1850<br />
+                    Sala 1313 - Votorantim, SP<br />
+                    CEP: 18110-150
+                  </p>
+                </div>
+                
+                {/* Contato */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center gap-3">
+                    <Phone className="w-5 h-5 text-primary" />
+                    <h3 className="font-semibold">Contato</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    (15) 99115-9866<br />
+                    contato@integralipecare.com.br<br />
+                    Segunda a Sexta: 8h às 18h<br />
+                    Sábado: 8h às 13h
+                  </p>
+                </div>
+                
+                {/* Redes Sociais */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center gap-3">
+                    <Instagram className="w-5 h-5 text-primary" />
+                    <h3 className="font-semibold">Siga-nos</h3>
+                  </div>
+                  <div className="flex justify-center">
+                    <a 
+                      href="https://instagram.com/integralipecare" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Instagram className="w-4 h-4" />
+                      @integralipecare
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Linha separadora */}
+              <div className="w-full border-t border-border/40"></div>
+              
+              {/* Copyright e informações legais */}
+              <div className="space-y-2 text-center">
+                <p className="text-sm text-muted-foreground">
+                  © 2024 Integra Lipecare. Todos os direitos reservados.
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Clínica especializada em lipedema • CRM 99148 - Dra. Daniela Persinotti • CRM 157622 - Dra. Fernanda Heloisa
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
 
         {/* WhatsApp Fixo */}
         <WhatsAppFixed />
