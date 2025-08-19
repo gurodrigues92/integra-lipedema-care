@@ -123,4 +123,4 @@ const PWAManager = () => {
   );
 };
 
-export { PWAManager };
+export default PWAManager;
