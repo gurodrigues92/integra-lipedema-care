@@ -127,77 +127,101 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-optical-sizing: auto;
+  }
+  
+  /* Hierarquia tipográfica moderna */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-light tracking-tight;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-light tracking-tight;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-light tracking-tight;
+    line-height: 1.3;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl font-normal tracking-tight;
+    line-height: 1.4;
+  }
+  
+  p {
+    @apply text-base md:text-lg font-light leading-relaxed;
+  }
+  
+  .text-large {
+    @apply text-lg md:text-xl font-light leading-relaxed;
   }
 }
 
-/* Componentes Customizados da Integra Lipecare */
+/* Componentes Modernos e Minimalistas - Integra Lipecare */
 @layer components {
-  /* Botão WhatsApp Principal */
+  /* Botão WhatsApp Principal - Design Premium */
   .btn-whatsapp {
-    @apply inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg;
-    background: var(--gradient-cta);
+    @apply inline-flex items-center gap-4 px-8 py-5 rounded-2xl font-medium text-lg;
+    background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
-    box-shadow: var(--shadow-cta);
-    transition: var(--transition-smooth);
+    box-shadow: 0 1px 3px hsl(var(--primary) / 0.15), 0 4px 12px hsl(var(--primary) / 0.12);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
+    backdrop-filter: blur(8px);
+    letter-spacing: -0.025em;
   }
   
   .btn-whatsapp:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px hsl(38 23% 28% / 0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.25), 0 8px 24px hsl(var(--primary) / 0.15);
+    background: hsl(var(--primary) / 0.95);
   }
   
   .btn-whatsapp:active {
     transform: translateY(0);
+    transition: all 0.1s ease;
   }
   
-  /* Pulso de animação no botão */
-  .btn-whatsapp::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border: 2px solid hsl(var(--accent));
-    border-radius: 50px;
-    animation: pulse-ring 2s infinite;
-    opacity: 0;
-  }
-  
-  /* WhatsApp fixo flutuante */
+  /* WhatsApp fixo flutuante - Minimalista */
   .whatsapp-fixed {
-    @apply fixed bottom-6 right-6 z-50;
+    @apply fixed bottom-8 right-8 z-50;
   }
   
   .whatsapp-bubble {
-    @apply w-16 h-16 rounded-full flex items-center justify-center text-white;
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-lg;
     background: #25D366;
-    box-shadow: var(--shadow-lg);
-    transition: var(--transition-bounce);
-    animation: float 3s ease-in-out infinite;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
   }
   
   .whatsapp-bubble:hover {
-    transform: scale(1.1);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
   }
   
-  /* Cards de benefícios */
+  /* Cards modernos com glassmorphism sutil */
   .benefit-card {
-    @apply p-6 rounded-2xl border;
-    background: var(--gradient-card);
-    border-color: hsl(var(--border));
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-smooth);
+    @apply p-8 rounded-3xl border border-border/50;
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card) / 0.95) 100%);
+    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.05), 0 4px 12px hsl(var(--foreground) / 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
   }
   
   .benefit-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsl(var(--foreground) / 0.08), 0 12px 24px hsl(var(--foreground) / 0.06);
+    border-color: hsl(var(--accent) / 0.3);
   }
   
-  /* Seção hero com gradiente */
+  /* Seção hero minimalista */
   .hero-section {
-    background: var(--gradient-hero);
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.3) 100%);
     position: relative;
     overflow: hidden;
   }
@@ -206,51 +230,91 @@ All colors MUST be HSL.
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 70% 30%, hsl(var(--accent) / 0.1) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 70% 30%, hsl(var(--accent) / 0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
   
-  /* Barra de urgência */
+  /* Barra de urgência moderna */
   .urgency-bar {
-    @apply bg-warning text-black py-3 px-4 text-center font-semibold;
-    animation: pulse-bg 2s ease-in-out infinite alternate;
+    @apply bg-warning/10 text-foreground py-4 px-6 text-center font-medium border-b border-warning/20;
+    backdrop-filter: blur(8px);
   }
   
-  /* FAQ Accordion customizado */
+  /* FAQ Accordion minimalista */
   .faq-item {
-    @apply border-b border-border last:border-b-0;
+    @apply border-b border-border/50 last:border-b-0;
   }
   
   .faq-trigger {
-    @apply w-full text-left py-6 px-0 font-semibold text-lg;
-    transition: var(--transition-smooth);
+    @apply w-full text-left py-8 px-0 font-medium text-xl;
+    transition: all 0.2s ease;
+    letter-spacing: -0.025em;
   }
   
   .faq-trigger:hover {
-    color: hsl(var(--accent-foreground));
+    color: hsl(var(--primary));
   }
   
-  /* Social proof elements */
+  .faq-content {
+    @apply text-muted-foreground text-lg font-light leading-relaxed;
+  }
+  
+  /* Social proof elements refinados */
   .social-proof-counter {
-    @apply inline-flex items-center gap-2 text-sm font-medium;
+    @apply inline-flex items-center gap-3 text-sm font-medium bg-card/50 px-4 py-2 rounded-full border border-border/50;
+    backdrop-filter: blur(8px);
   }
   
   .live-indicator {
-    @apply inline-flex items-center gap-2 text-sm;
+    @apply inline-flex items-center gap-2 text-sm font-light text-muted-foreground;
   }
   
   .pulse-dot {
     @apply w-2 h-2 bg-success rounded-full;
-    animation: pulse-dot 1.5s infinite;
+    animation: pulse-dot 2s infinite;
   }
   
-  /* Seções com espaçamento consistente */
+  /* Seções com espaçamento premium */
   .section-padding {
-    @apply py-16 lg:py-24;
+    @apply py-20 lg:py-32;
   }
   
-  /* Container responsivo */
+  .section-padding-sm {
+    @apply py-16 lg:py-20;
+  }
+  
+  /* Container responsivo refinado */
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+  
+  /* Text styles modernos */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Testimonial card premium */
+  .testimonial-card {
+    @apply p-8 rounded-3xl border border-border/30;
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.1) 100%);
+    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04), 0 8px 24px hsl(var(--foreground) / 0.04);
+    backdrop-filter: blur(12px);
+  }
+  
+  /* Botões secundários minimalistas */
+  .btn-secondary {
+    @apply inline-flex items-center gap-3 px-6 py-3 rounded-xl font-medium text-base;
+    @apply border border-border/50 bg-card/50 text-foreground;
+    @apply hover:bg-card hover:border-border;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
   }
 }
 
