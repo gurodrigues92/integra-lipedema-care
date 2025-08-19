@@ -468,6 +468,28 @@ const IntegraLipecare = () => {
           </section>
         </AnimatedSection>
 
+        {/* Seção Timeline do Tratamento */}
+        <AnimatedSection animation="fade-up" delay={200}>
+          <section className="section-padding bg-background">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6">
+                  <Clock className="w-4 h-4" />
+                  Processo de Tratamento
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                  Como funciona o seu tratamento
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Conheça cada etapa do processo que vai transformar sua vida
+                </p>
+              </div>
+              
+              <InteractiveTimeline />
+            </div>
+          </section>
+        </AnimatedSection>
+
         {/* Seção Nossa Equipe */}
         <section className="section-padding section-gradient-warm">
           <div className="container-custom">
@@ -623,6 +645,15 @@ const IntegraLipecare = () => {
           </div>
         </section>
 
+        {/* Seção Métricas em Tempo Real */}
+        <AnimatedSection animation="scale-in" delay={150}>
+          <section className="section-padding bg-gradient-to-br from-card/50 via-background to-card/50">
+            <div className="container-custom">
+              <LiveMetrics />
+            </div>
+          </section>
+        </AnimatedSection>
+
         {/* Seção Benefícios */}
         <section className="section-padding bg-card">
           <div className="container-custom">
@@ -647,73 +678,76 @@ const IntegraLipecare = () => {
           </div>
         </section>
 
-        {/* Seção Prova Social */}
-        <section className="section-padding">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Histórias de transformação
-              </h2>
-            </div>
-            
-            <div className="max-w-4xl mx-auto">
-              {/* Depoimento Principal */}
-              <div className="bg-card p-8 rounded-2xl shadow-lg mb-8 relative">
-                <div className="text-4xl text-accent mb-4">"</div>
-                <blockquote className="text-lg leading-relaxed mb-6 italic">
-                  Depois de 15 anos sofrendo sem saber o que tinha, finalmente encontrei respostas na Integra. 
-                  Em 3 meses de tratamento, minha vida mudou. As dores diminuíram 80%, consigo usar roupas que 
-                  não usava há anos e, principalmente, me sinto compreendida e acolhida.
-                </blockquote>
-                <cite className="text-muted-foreground font-semibold">
-                  — Maria Silva, 47 anos, paciente há 8 meses
-                </cite>
+        {/* Seção Depoimentos */}
+        <AnimatedSection animation="slide-left" delay={300}>
+          <section className="section-padding bg-gradient-to-br from-card via-background to-card">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-6 py-3 rounded-full text-sm font-medium mb-6">
+                  <Heart className="w-4 h-4" />
+                  Histórias Reais de Transformação
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                  Veja os resultados de quem já transformou sua vida
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Depoimentos reais de pacientes que encontraram na Integra Lipecare a solução para seus problemas
+                </p>
               </div>
               
-              {/* Métricas de Sucesso */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div className="benefit-card">
-                  <div className="text-3xl font-bold text-success mb-2">500+</div>
-                  <div className="text-sm text-muted-foreground">Pacientes atendidas</div>
-                </div>
-                <div className="benefit-card">
-                  <div className="text-3xl font-bold text-success mb-2">92%</div>
-                  <div className="text-sm text-muted-foreground">De satisfação</div>
-                </div>
-                <div className="benefit-card">
-                  <div className="text-3xl font-bold text-success mb-2">87%</div>
-                  <div className="text-sm text-muted-foreground">Redução nas dores</div>
-                </div>
-                <div className="benefit-card">
-                  <div className="text-3xl font-bold text-success mb-2">4.9⭐</div>
-                  <div className="text-sm text-muted-foreground">No Google</div>
-                </div>
-              </div>
+              {/* Testimonials Carousel */}
+              <TestimonialsCarousel />
             </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
+
+        {/* Seção Formulário Inteligente */}
+        <AnimatedSection animation="slide-right" delay={200}>
+          <section className="section-padding bg-gradient-to-br from-primary/5 via-background to-accent/5">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-success/10 text-success px-6 py-3 rounded-full text-sm font-medium mb-6">
+                  <Check className="w-4 h-4" />
+                  Avaliação Gratuita
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                  Descubra se você tem lipedema
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Responda algumas perguntas e receba uma avaliação personalizada da nossa equipe
+                </p>
+              </div>
+              
+              <SmartForm onSubmit={(data) => console.log('Form submitted:', data)} />
+            </div>
+          </section>
+        </AnimatedSection>
 
         {/* Seção FAQ */}
-        <section className="section-padding bg-card">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Perguntas Frequentes
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Tire suas dúvidas sobre lipedema e nosso tratamento
-              </p>
+        <AnimatedSection animation="fade-up" delay={100}>
+          <section className="section-padding bg-card">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Perguntas Frequentes
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Esclarecemos as principais dúvidas sobre lipedema e nossos tratamentos
+                </p>
+              </div>
+              
+              <div className="max-w-4xl mx-auto">
+                <FAQAccordion />
+              </div>
+              
+              <div className="text-center mt-12">
+                <WhatsAppButton location="faq">
+                  Tenho outras dúvidas
+                </WhatsAppButton>
+              </div>
             </div>
-            
-            <FAQAccordion />
-            
-            <div className="text-center mt-12">
-              <WhatsAppButton location="faq">
-                Tenho outras dúvidas
-              </WhatsAppButton>
-            </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
 
         {/* Seção Localização */}
         <section className="section-padding">

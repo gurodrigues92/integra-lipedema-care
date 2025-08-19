@@ -200,7 +200,7 @@ export const LiveMetrics = () => {
               </div>
             </MicroInteraction>
           ))}
-        }
+        </div>
 
         {/* Live Updates Footer */}
         <div className="text-center">
