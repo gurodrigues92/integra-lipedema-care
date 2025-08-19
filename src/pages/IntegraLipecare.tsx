@@ -257,14 +257,18 @@ const IntegraLipecare = () => {
               
               <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-6 mb-12 stagger-children" style={{"--stagger-delay": "150ms"} as React.CSSProperties}>
-                  {symptoms.map((symptom, index) => <div key={index} className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:scale-[1.02] hover:border-primary/30 animate-fade-in-up`} style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}>
-                      <div className="flex items-start gap-4">
-                        <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
-                          <Check className="w-5 h-5 text-success" />
+                  {symptoms.map((symptom, index) => (
+                    <div key={index} className="hover-container">
+                      <div className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:border-primary/30 animate-fade-in-up`} style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}>
+                        <div className="flex items-start gap-4">
+                          <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
+                            <Check className="w-5 h-5 text-success" />
+                          </div>
+                          <span className="text-foreground font-medium leading-relaxed">{symptom}</span>
                         </div>
-                        <span className="text-foreground font-medium leading-relaxed">{symptom}</span>
                       </div>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
                 
                 <div className="text-center">

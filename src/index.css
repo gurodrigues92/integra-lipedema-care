@@ -271,7 +271,7 @@ All colors MUST be HSL.
 @layer components {
   /* Botões gradientes animados com paleta da marca */
   .gradient-button {
-    @apply relative appearance-none cursor-pointer;
+    @apply relative appearance-none cursor-pointer overflow-hidden;
     background: radial-gradient(
       var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
       var(--color-1) var(--stop-1),
@@ -300,6 +300,7 @@ All colors MUST be HSL.
       --stop-5 0.4s ease-out,
       transform 0.2s ease-out,
       box-shadow 0.2s ease-out;
+    will-change: transform, box-shadow;
   }
 
   .gradient-button::before {
@@ -463,6 +464,24 @@ All colors MUST be HSL.
     box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
   }
   
+  /* Classes utilitárias para containers com hover effects */
+  .hover-container {
+    @apply relative;
+    padding: 8px;
+    margin: -8px;
+    overflow: visible;
+  }
+  
+  .hover-safe-scale {
+    @apply transition-transform duration-300 ease-out;
+    transform-origin: center center;
+    will-change: transform;
+  }
+  
+  .no-overflow-clip {
+    overflow: visible !important;
+  }
+  
   /* Cards com gradientes multicamadas */
   .benefit-card {
     @apply p-8 rounded-3xl border border-border/30;
@@ -490,7 +509,7 @@ All colors MUST be HSL.
   }
   
   .benefit-card:hover {
-    transform: translateY(-4px) scale(1.02);
+    transform: translateY(-4px);
     box-shadow: 
       0 8px 24px hsla(38, 23%, 28%, 0.12), 
       0 16px 32px hsla(38, 23%, 28%, 0.08),
@@ -957,6 +976,19 @@ All colors MUST be HSL.
     box-shadow: 
       0 12px 24px rgba(0, 0, 0, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Container seguro para elementos que fazem scale/hover */
+  .group-hover-container {
+    @apply relative;
+    padding: 4px;
+    margin: -4px;
+    overflow: visible;
+  }
+  
+  .scale-hover-safe {
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   /* Timeline specific cards - optimized shadows */
