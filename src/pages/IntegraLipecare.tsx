@@ -347,12 +347,12 @@ const IntegraLipecare = () => {
                 
                 {/* Bottom CTA */}
                 <div className="mt-12 text-center">
-                  <div className="glass-card rounded-2xl p-6 bg-primary/10 border-primary/20">
+                  <div className="glass-card rounded-2xl p-6 bg-gradient-to-br from-primary via-primary/95 to-primary/80">
                     <p className="text-lg font-semibold text-primary-foreground mb-4 flex items-center justify-center gap-3">
-                      <Heart className="w-5 h-5 text-primary" />
+                      <Heart className="w-5 h-5 text-primary-foreground" />
                       Mas existe esperança e tratamento eficaz disponível
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-primary-foreground/80">
                       Nossa equipe especializada está pronta para ajudar você a recuperar sua qualidade de vida
                     </p>
                   </div>
