@@ -202,27 +202,61 @@ const IntegraLipecare = () => {
           </section>
         </BeamsBackground>
 
-        {/* Social Proof Bar */}
-        <div className="bg-card py-6 border-y">
+        {/* Social Proof Bar - Modernized */}
+        <section className="py-12 bg-gradient-to-r from-card via-card/95 to-card border-y border-border/30">
           <div className="container-custom">
-            <div className="flex flex-wrap justify-center items-center gap-8 text-center">
-              <div className="social-proof-counter">
-                <span className="text-3xl font-bold text-primary">{socialProofCount}</span>
-                <span className="ml-2 text-muted-foreground">Pacientes atendidas</span>
-              </div>
-              <div className="live-indicator">
-                <div className="pulse-dot"></div>
-                <span className="text-muted-foreground">{onlineUsers} pessoas online agora</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />)}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              {/* Pacientes Atendidas */}
+              <div className="text-center space-y-2 animate-scale-bounce animation-delay-100">
+                <div className="social-proof-counter">
+                  <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-1">
+                    {socialProofCount}
+                  </div>
+                  <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                    Pacientes Transformadas
+                  </div>
                 </div>
-                <span className="ml-2 text-muted-foreground">4.9 ⭐ no Google</span>
+                <div className="progress-line w-24 mx-auto"></div>
+              </div>
+
+              {/* Pessoas Online */}
+              <div className="text-center space-y-2 animate-scale-bounce animation-delay-200">
+                <div className="live-indicator flex items-center justify-center gap-3">
+                  <div className="pulse-dot"></div>
+                  <div className="space-y-1">
+                    <div className="text-2xl font-display font-bold text-foreground">
+                      {onlineUsers}
+                    </div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">
+                      Online Agora
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Avaliações */}
+              <div className="text-center space-y-2 animate-scale-bounce animation-delay-300">
+                <div className="flex justify-center items-center gap-2 mb-2">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className="w-5 h-5 fill-yellow-400 text-yellow-400 animate-rotate-in" 
+                        style={{ animationDelay: `${i * 100}ms` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-2xl font-display font-bold text-foreground">4.9</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider">
+                    Avaliação Google
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Seção Problema */}
         <section className="section-padding bg-card">
@@ -254,76 +288,162 @@ const IntegraLipecare = () => {
           </div>
         </section>
 
-        {/* Seção Amplificação */}
-        <section className="section-padding bg-destructive/5">
+        {/* Seção Amplificação - Warning Modernizada */}
+        <section className="section-padding bg-gradient-to-br from-destructive/5 via-background to-destructive/5">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-destructive">
-                O lipedema não tratado pode piorar progressivamente
-              </h2>
+            <div className="max-w-5xl mx-auto">
+              {/* Header with Animation */}
+              <div className="text-center mb-12 animate-slide-in-left">
+                <div className="inline-flex items-center gap-3 bg-destructive/10 text-destructive px-6 py-3 rounded-full text-sm font-medium mb-6">
+                  <div className="w-2 h-2 bg-destructive rounded-full animate-pulse"></div>
+                  Alerta Importante
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                  O lipedema não tratado pode piorar progressivamente
+                </h2>
+              </div>
               
-              <div className="bg-card p-8 rounded-2xl shadow-lg">
-                <p className="text-lg leading-relaxed mb-6 text-left">
-                  Sem o diagnóstico e tratamento adequados, o lipedema pode evoluir através de seus 4 estágios, causando:
-                </p>
+              {/* Modern Warning Card */}
+              <div className="warning-modern glass-card rounded-3xl p-8 md:p-12 animate-slide-in-right">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  {/* Left: Content */}
+                  <div className="space-y-6">
+                    <p className="text-lg font-medium text-foreground leading-relaxed">
+                      Sem o diagnóstico e tratamento adequados, o lipedema pode evoluir através de seus 4 estágios, causando:
+                    </p>
+                    
+                    <div className="space-y-4">
+                      {[
+                        "Aumento progressivo do volume e da dor",
+                        "Limitação severa de mobilidade", 
+                        "Impacto emocional e isolamento social",
+                        "Desenvolvimento de linfedema secundário",
+                        "Necessidade de procedimentos mais invasivos"
+                      ].map((item, index) => (
+                        <div 
+                          key={index} 
+                          className={`flex items-start gap-4 animate-stagger-fade-in`}
+                          style={{ animationDelay: `${index * 150}ms` }}
+                        >
+                          <div className="w-8 h-8 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0 mt-1">
+                            <div className="w-3 h-3 bg-destructive rounded-full"></div>
+                          </div>
+                          <span className="text-foreground font-medium leading-relaxed">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Right: Visual Element */}
+                  <div className="relative">
+                    <div className="glass-card rounded-2xl p-8 text-center space-y-4">
+                      <div className="w-20 h-20 mx-auto bg-destructive/10 rounded-full flex items-center justify-center mb-4">
+                        <Clock className="w-10 h-10 text-destructive animate-pulse" />
+                      </div>
+                      <h3 className="font-display text-xl font-bold text-destructive">
+                        Tempo é Essencial
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Cada dia sem tratamento é um dia a mais de sofrimento desnecessário.
+                      </p>
+                    </div>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-destructive/5 rounded-full blur-xl animate-pulse"></div>
+                    <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+                  </div>
+                </div>
                 
-                <ul className="text-left space-y-3 mb-8">
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Aumento progressivo do volume e da dor</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Limitação severa de mobilidade</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Impacto emocional e isolamento social</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Desenvolvimento de linfedema secundário</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Necessidade de procedimentos mais invasivos no futuro</span>
-                  </li>
-                </ul>
-                
-                <p className="text-lg font-semibold mb-6">
-                  Cada dia sem tratamento é um dia a mais de sofrimento desnecessário. Mas existe esperança...
-                </p>
+                {/* Bottom CTA */}
+                <div className="mt-12 text-center">
+                  <div className="glass-card rounded-2xl p-6 bg-success/5 border-success/20">
+                    <p className="text-lg font-semibold text-success mb-4">
+                      ✨ Mas existe esperança e tratamento eficaz disponível
+                    </p>
+                    <p className="text-muted-foreground">
+                      Nossa equipe especializada está pronta para ajudar você a recuperar sua qualidade de vida
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Seção Solução */}
-        <section className="section-padding">
+        {/* Seção Solução - Tratamento Modernizado */}
+        <section className="section-padding bg-gradient-to-br from-background via-card/30 to-background">
           <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Tratamento integrado e humanizado na Integra Lipecare
+            {/* Header */}
+            <div className="text-center mb-16 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6">
+                <Shield className="w-4 h-4" />
+                Nossa Solução
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                Tratamento integrado e humanizado
               </h2>
-              <p className="text-xl text-muted-foreground">
-                A primeira clínica de Sorocaba criada <strong>POR pacientes PARA pacientes</strong>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                A primeira clínica de Sorocaba criada <strong className="text-primary">POR pacientes PARA pacientes</strong>
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {differentials.map((item, index) => <div key={index} className={`benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                    <item.icon className="w-8 h-8 text-primary" />
+            {/* Cards com Layout Assimétrico */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {differentials.map((item, index) => (
+                <div 
+                  key={index} 
+                  className={`group glass-card glass-card-hover rounded-3xl p-8 text-center animate-stagger-fade-in hover:scale-105 transition-transform duration-300`}
+                  style={{ animationDelay: `${index * 200}ms` }}
+                >
+                  {/* Icon with Modern Styling */}
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <item.icon className="w-10 h-10 text-primary" />
+                    </div>
+                    {/* Decorative Ring */}
+                    <div className="absolute inset-0 w-20 h-20 mx-auto rounded-2xl border-2 border-primary/0 group-hover:border-primary/20 transition-colors duration-300"></div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                </div>)}
+                  
+                  <h3 className="font-display text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    {item.description}
+                  </p>
+                  
+                  {/* Progress indicator */}
+                  <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              ))}
             </div>
             
+            {/* Enhanced CTA Section */}
             <div className="text-center">
-              <WhatsAppButton location="solucao">
-                Agendar avaliação gratuita
-              </WhatsAppButton>
+              <div className="glass-card rounded-3xl p-8 max-w-2xl mx-auto mb-8 animate-scale-bounce">
+                <h3 className="font-display text-2xl font-bold mb-4 text-gradient-primary">
+                  Pronta para transformar sua vida?
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Nossa avaliação gratuita inclui diagnóstico completo e plano de tratamento personalizado
+                </p>
+                <WhatsAppButton location="solucao" />
+              </div>
+              
+              {/* Trust Elements */}
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-success" />
+                  <span>Sem compromisso</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-success" />
+                  <span>Atendimento humanizado</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-success" />
+                  <span>Especialistas dedicadas</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
