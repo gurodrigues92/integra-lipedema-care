@@ -136,7 +136,7 @@ const IntegraLipecare = () => {
       {/* Accessibility Features */}
       <AccessibilityManager />
       
-      {/* PWA & Network Features */}
+      {/* PWA & Network Features - Both enabled */}
       <PWAManager />
       <NetworkStatus />
       
