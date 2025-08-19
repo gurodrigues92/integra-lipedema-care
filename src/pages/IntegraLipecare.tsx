@@ -14,7 +14,7 @@ import { EthicalTestimonials } from "@/components/EthicalTestimonials";
 import { InteractiveTimeline } from "@/components/InteractiveTimeline";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
-import { AccessibilityManager } from "@/components/AccessibilityManager";
+
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SmartForm } from "@/components/SmartForm";
 import { SEOHead } from "@/components/SEOHead";
@@ -107,8 +107,6 @@ const IntegraLipecare = () => {
       <AnalyticsTracker />
       <PerformanceMonitor />
       
-      {/* Accessibility Features */}
-      <AccessibilityManager />
       
       {/* PWA & Network Features - Both enabled */}
       <PWAManager />
