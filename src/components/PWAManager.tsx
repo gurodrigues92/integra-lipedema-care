@@ -83,8 +83,8 @@ const PWAManager = () => {
       <div className="bg-card border border-border rounded-lg p-4 shadow-lg animate-slide-up">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-brand-primary to-brand-accent rounded-lg flex items-center justify-center">
-              <Download className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+              <Download className="w-4 h-4 text-primary-foreground" />
             </div>
             <div>
               <h3 className="font-semibold text-sm text-foreground">Instalar App</h3>
@@ -105,7 +105,7 @@ const PWAManager = () => {
           <Button
             onClick={handleInstallClick}
             size="sm"
-            className="flex-1 bg-gradient-to-r from-brand-primary to-brand-accent hover:from-brand-primary/90 hover:to-brand-accent/90"
+            className="flex-1 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
           >
             Instalar
           </Button>
