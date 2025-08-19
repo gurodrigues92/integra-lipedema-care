@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, Instagram, ZoomIn } from "lucide-react";
+import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, Instagram } from "lucide-react";
 import integraLipecareLogotipo from "@/assets/integra-lipecare-logo.png";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppFixed from "@/components/WhatsAppFixed";
@@ -168,29 +168,15 @@ const IntegraLipecare = () => {
 
                 {/* Featured Image - Right Side */}
                 <div className="lg:col-span-5 relative animate-fade-in-up animation-delay-300 flex justify-center">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="relative cursor-pointer group max-w-md lg:max-w-lg">
-                        <img 
-                          src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg"
-                          alt="Integra Lipecare - Equipe Especializada em Lipedema"
-                          className="w-full aspect-square object-cover rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-[1.02]"
-                          loading="eager"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-2xl flex items-center justify-center">
-                          <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-4xl">
-                      <img 
-                        src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg" 
-                        alt="Integra Lipecare - Equipe Especializada em Lipedema" 
-                        className="w-full aspect-square object-cover rounded-lg"
-                      />
-                    </DialogContent>
-                  </Dialog>
+                  <div className="relative max-w-md lg:max-w-lg">
+                    <img 
+                      src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg"
+                      alt="Integra Lipecare - Equipe Especializada em Lipedema"
+                      className="w-full aspect-square object-cover object-left-center rounded-2xl shadow-lg"
+                      loading="eager"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
+                  </div>
 
                   {/* Decorative Elements */}
                   <div className="absolute top-2 right-2 w-24 h-24 bg-primary/5 rounded-full blur-2xl animate-parallax-float"></div>
@@ -507,9 +493,7 @@ const IntegraLipecare = () => {
                           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
                             <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp" alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
                           </div>
-                          <div className="absolute inset-4 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                            <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          </div>
+                          <div className="absolute inset-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-300"></div>
                           <div className="absolute inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
                         </div>
                       </DialogTrigger>
@@ -562,9 +546,7 @@ const IntegraLipecare = () => {
                           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
                             <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp" alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
                           </div>
-                          <div className="absolute inset-4 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                            <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          </div>
+                          <div className="absolute inset-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-300"></div>
                           <div className="absolute inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
                         </div>
                       </DialogTrigger>
