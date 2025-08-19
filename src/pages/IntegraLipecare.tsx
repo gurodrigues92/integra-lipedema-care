@@ -5,9 +5,9 @@ import WhatsAppFixed from "@/components/WhatsAppFixed";
 import FAQAccordion from "@/components/FAQAccordion";
 import { AwardBadge } from "@/components/ui/award-badge";
 import { BeamsBackground } from "@/components/ui/beams-background";
-import teamPhoto from "@/assets/team-doctors.jpg";
 
 const IntegraLipecare = () => {
+  console.log("IntegraLipecare component is rendering");
   const [socialProofCount, setSocialProofCount] = useState(0);
   const [onlineUsers, setOnlineUsers] = useState(12);
 
@@ -295,7 +295,7 @@ const IntegraLipecare = () => {
               <div className="relative">
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                    <img 
-                     src={teamPhoto}
+                     src="/team-doctors.jpg"
                      alt="Dra. Daniela Persinotti e Dra. Fernanda T. Sales Antila - Especialistas da Integra Lipecare"
                      className="w-full h-full object-cover"
                      loading="lazy"
