@@ -10,9 +10,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { MicroInteraction } from "@/components/MicroInteraction";
-import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
+import { EthicalTestimonials } from "@/components/EthicalTestimonials";
 import { InteractiveTimeline } from "@/components/InteractiveTimeline";
-import { LiveMetrics } from "@/components/LiveMetrics";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { AccessibilityManager } from "@/components/AccessibilityManager";
@@ -24,32 +23,9 @@ import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
-  const [socialProofCount, setSocialProofCount] = useState(0);
-  const [onlineUsers, setOnlineUsers] = useState(12);
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
   useEffect(() => {
-    // Animate social proof counter
-    const targetCount = 523;
-    const increment = targetCount / 100;
-    const timer = setInterval(() => {
-      setSocialProofCount(prev => {
-        if (prev >= targetCount) {
-          clearInterval(timer);
-          return targetCount;
-        }
-        return Math.floor(prev + increment);
-      });
-    }, 30);
-
-    // Simulate online users variation
-    const onlineTimer = setInterval(() => {
-      setOnlineUsers(prev => {
-        const variation = Math.random() > 0.5 ? 1 : -1;
-        const newCount = prev + variation;
-        return Math.max(8, Math.min(18, newCount));
-      });
-    }, 5000);
 
     // Header scroll effect
     const handleScroll = () => {
@@ -81,8 +57,6 @@ const IntegraLipecare = () => {
       });
     }
     return () => {
-      clearInterval(timer);
-      clearInterval(onlineTimer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -184,10 +158,10 @@ const IntegraLipecare = () => {
                       <WhatsAppButton location="hero" />
                     </MicroInteraction>
                     <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                      <div className="flex items-center gap-2">
+                        <Shield className="w-4 h-4 text-primary" />
+                        <span>Clínica especializada em Lipedema</span>
                       </div>
-                      <span>4.9 ⭐ (500+ pacientes)</span>
                     </div>
                   </div>
                 </div>
@@ -196,16 +170,16 @@ const IntegraLipecare = () => {
                 <div className="lg:col-span-5 relative animate-fade-in-up animation-delay-300">
                   {/* Trust Elements */}
                   <div className="space-y-6">
-                    {/* Social Proof Card */}
+                    {/* Information Card */}
                     <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50 shadow-lg gpu-accelerated">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="live-indicator">
-                          <div className="pulse-dot"></div>
-                          <span className="text-sm font-medium">{onlineUsers} pessoas online</span>
+                        <div className="flex items-center gap-2">
+                          <Heart className="w-5 h-5 text-primary" />
+                          <span className="text-sm font-medium">Especialistas em Lipedema</span>
                         </div>
                       </div>
-                      <div className="text-2xl font-bold text-primary mb-1">{socialProofCount}</div>
-                      <div className="text-sm text-muted-foreground">Pacientes já atendidas</div>
+                      <div className="text-lg font-bold text-primary mb-1">Clínica Especializada</div>
+                      <div className="text-sm text-muted-foreground">Atendimento multidisciplinar</div>
                     </div>
 
                     {/* Trust Badges - Vertical Stack */}
@@ -239,55 +213,45 @@ const IntegraLipecare = () => {
           </section>
         </BeamsBackground>
 
-        {/* Social Proof Bar - Modernized */}
+        {/* Information Bar */}
         <section className="py-12 bg-gradient-to-r from-card via-card/95 to-card border-y border-border/30">
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-              {/* Pacientes Atendidas */}
+              {/* Especialização */}
               <div className="text-center space-y-2 animate-scale-bounce animation-delay-100">
-                <div className="social-proof-counter">
-                  <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-1">
-                    {socialProofCount}
+                <div className="space-y-2">
+                  <Users className="w-12 h-12 text-primary mx-auto" />
+                  <div className="text-lg font-bold text-foreground">
+                    Equipe Multidisciplinar
                   </div>
-                  <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                    Pacientes Transformadas
+                  <div className="text-sm text-muted-foreground">
+                    Médicos, fisioterapeutas, nutricionistas e psicólogas
                   </div>
                 </div>
-                <div className="progress-line w-24 mx-auto"></div>
               </div>
 
-              {/* Pessoas Online */}
+              {/* Especialização em Lipedema */}
               <div className="text-center space-y-2 animate-scale-bounce animation-delay-200">
-                <div className="live-indicator flex items-center justify-center gap-3">
-                  <div className="pulse-dot"></div>
-                  <div className="space-y-1">
-                    <div className="text-2xl font-display font-bold text-foreground">
-                      {onlineUsers}
-                    </div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                      Online Agora
-                    </div>
+                <div className="space-y-2">
+                  <Heart className="w-12 h-12 text-primary mx-auto" />
+                  <div className="text-lg font-bold text-foreground">
+                    Especialista em Lipedema
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Protocolo exclusivo e personalizado
                   </div>
                 </div>
               </div>
 
-              {/* Avaliações */}
+              {/* Atendimento Humanizado */}
               <div className="text-center space-y-2 animate-scale-bounce animation-delay-300">
-                <div className="flex justify-center items-center gap-2 mb-2">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400 animate-rotate-in" 
-                        style={{ animationDelay: `${i * 100}ms` }}
-                      />
-                    ))}
+                <div className="space-y-2">
+                  <Shield className="w-12 h-12 text-primary mx-auto" />
+                  <div className="text-lg font-bold text-foreground">
+                    Atendimento Humanizado
                   </div>
-                </div>
-                <div>
-                  <div className="text-2xl font-display font-bold text-foreground">4.9</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                    Avaliação Google
+                  <div className="text-sm text-muted-foreground">
+                    Cuidado integral e acolhimento
                   </div>
                 </div>
               </div>
@@ -642,27 +606,21 @@ const IntegraLipecare = () => {
               </div>
             </div>
 
-            {/* Métricas de Confiança */}
+            {/* Informações Éticas */}
             <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border max-w-2xl mx-auto mb-8">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-primary mb-1">500+</div>
-                  <div className="text-xs text-muted-foreground">Pacientes Atendidas</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary mb-1">25+</div>
-                  <div className="text-xs text-muted-foreground">Anos de Experiência</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary mb-1">92%</div>
-                  <div className="text-xs text-muted-foreground">Taxa de Satisfação</div>
-                </div>
+              <div className="text-center space-y-4">
+                <h3 className="text-xl font-bold text-primary">Compromisso com a Transparência</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Somos uma clínica nova em Votorantim, dedicada ao atendimento especializado 
+                  em lipedema. Nossa equipe tem experiência comprovada e está comprometida 
+                  em fornecer o melhor tratamento baseado em evidências científicas.
+                </p>
               </div>
             </div>
             
             <div className="text-center">
               <p className="text-lg font-semibold mb-6">
-                Junte-se às centenas de mulheres que recuperaram sua qualidade de vida
+                Receba atendimento especializado de uma equipe dedicada ao lipedema
               </p>
               <WhatsAppButton location="equipe">
                 Quero ser atendida por estas especialistas
@@ -671,14 +629,6 @@ const IntegraLipecare = () => {
           </div>
         </section>
 
-        {/* Seção Métricas em Tempo Real */}
-        <AnimatedSection animation="scale-in" delay={150}>
-          <section className="section-padding bg-gradient-to-br from-card/50 via-background to-card/50">
-            <div className="container-custom">
-              <LiveMetrics />
-            </div>
-          </section>
-        </AnimatedSection>
 
         {/* Seção Benefícios */}
         <section className="section-padding bg-card">
@@ -722,7 +672,7 @@ const IntegraLipecare = () => {
               </div>
               
               {/* Testimonials Carousel */}
-              <TestimonialsCarousel />
+              <EthicalTestimonials />
             </div>
           </section>
         </AnimatedSection>
