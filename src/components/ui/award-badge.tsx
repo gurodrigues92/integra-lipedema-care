@@ -203,7 +203,7 @@ export const AwardBadge = ({ type, title, subtitle, link }: AwardBadgeProps) => 
     <Component
       {...linkProps}
       ref={ref as any}
-      className="block w-[180px] sm:w-[260px] h-auto cursor-pointer select-none"
+      className="block w-[220px] sm:w-[320px] h-auto cursor-pointer select-none"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
@@ -218,27 +218,27 @@ export const AwardBadge = ({ type, title, subtitle, link }: AwardBadgeProps) => 
           transition: "transform 200ms ease-out"
         }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 54" className="w-[180px] sm:w-[260px] h-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 54" className="w-[220px] sm:w-[320px] h-auto">
           <defs>
             <filter id={`blur1-${type}`}>
               <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
             </filter>
-            <mask id={`badgeMask-${type}`}>
-              <rect width="260" height="54" fill="white" rx="10" />
+               <mask id={`badgeMask-${type}`}>
+                 <rect width="320" height="54" fill="white" rx="10" />
             </mask>
           </defs>
-          <rect width="260" height="54" rx="10" fill={backgroundColor[type]} />
-          <rect x="4" y="4" width="252" height="46" rx="8" fill="transparent" stroke="hsl(38, 23%, 60%)" strokeWidth="1" />
-          <text fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="hsl(38, 23%, 45%)" x="20" y="20">
-            INTEGRA LIPECARE
-          </text>
-          <text fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="hsl(38, 23%, 28%)" x="20" y="36">
-            {title}
-          </text>
-          <text fontFamily="Inter, sans-serif" fontSize="10" fontWeight="500" fill="hsl(38, 23%, 40%)" x="20" y="48">
-            {subtitle}
-          </text>
-          <g transform="translate(220, 16)">
+           <rect width="320" height="54" rx="10" fill={backgroundColor[type]} />
+           <rect x="4" y="4" width="312" height="46" rx="8" fill="transparent" stroke="hsl(38, 23%, 60%)" strokeWidth="1" />
+           <text fontFamily="Inter, sans-serif" fontSize="11" fontWeight="600" fill="hsl(38, 23%, 45%)" x="20" y="20">
+             INTEGRA LIPECARE
+           </text>
+           <text fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="hsl(38, 23%, 28%)" x="20" y="36">
+             {title}
+           </text>
+           <text fontFamily="Inter, sans-serif" fontSize="12" fontWeight="500" fill="hsl(38, 23%, 40%)" x="20" y="48">
+             {subtitle}
+           </text>
+           <g transform="translate(280, 16)">
             <circle r="11" fill="hsl(39, 45%, 55%)" opacity="0.3" />
             <foreignObject x="-8" y="-8" width="16" height="16">
               {React.createElement(iconMap[type], {
@@ -257,12 +257,12 @@ export const AwardBadge = ({ type, title, subtitle, link }: AwardBadgeProps) => 
                 animation: disableOverlayAnimation ? "none" : `overlayAnimation${i + 1} 5s infinite`,
                 willChange: "transform"
               }}>
-                <polygon 
-                  points="0,0 260,54 260,0 0,54" 
-                  fill={`hsl(${30 + i * 60}, 70%, ${50 + i * 5}%)`} 
-                  filter={`url(#blur1-${type})`} 
-                  opacity="0.3" 
-                />
+                 <polygon 
+                   points="0,0 320,54 320,0 0,54" 
+                   fill={`hsl(${30 + i * 60}, 70%, ${50 + i * 5}%)`} 
+                   filter={`url(#blur1-${type})`} 
+                   opacity="0.3" 
+                 />
               </g>
             ))}
           </g>

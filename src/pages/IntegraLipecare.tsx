@@ -532,8 +532,8 @@ const IntegraLipecare = () => {
                     <p className="text-base text-muted-foreground">Especialista em Saúde Feminina e Metabolismo</p>
                   </div>
                   
-                  {/* Badges Principais */}
-                  <div className="space-y-3 w-full">
+                   {/* Badges Principais */}
+                   <div className="flex flex-col items-center space-y-3 w-full">
                     <AwardBadge type="especialista-lipedema" title="Ginecologista e Obstetra" subtitle="Residência em Ginecologia e Obstetrícia" />
                     <AwardBadge type="pos-graduacao" title="Especialista em Metabolismo" subtitle="Longevidade e Saúde Hormonal" />
                   </div>
@@ -587,8 +587,8 @@ const IntegraLipecare = () => {
                     <p className="text-base text-muted-foreground">Cirurgiã Vascular pela UNICAMP</p>
                   </div>
                   
-                  {/* Badges Principais */}
-                  <div className="space-y-3 w-full">
+                   {/* Badges Principais */}
+                   <div className="flex flex-col items-center space-y-3 w-full">
                     <AwardBadge type="especialista-lipedema" title="Cirurgiã Vascular UNICAMP" subtitle="Cirurgia Geral e Cirurgia Vascular" />
                     <AwardBadge type="membro-sociedade" title="Membro SBACV" subtitle="Sociedade Brasileira de Cirurgia Vascular" />
                   </div>
