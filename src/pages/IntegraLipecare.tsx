@@ -14,11 +14,9 @@ import { EthicalTestimonials } from "@/components/EthicalTestimonials";
 import { InteractiveTimeline } from "@/components/InteractiveTimeline";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
-
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SmartForm } from "@/components/SmartForm";
 import { SEOHead } from "@/components/SEOHead";
-// PWAManager completely removed - no longer needed
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 
