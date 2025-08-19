@@ -660,16 +660,16 @@ const IntegraLipecare = () => {
           <section className="section-padding bg-gradient-to-br from-card via-background to-card">
             <div className="container-custom">
               <div className="text-center mb-16">
-                <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-6 py-3 rounded-full text-sm font-medium mb-6">
-                  <Heart className="w-4 h-4" />
-                  Histórias Reais de Transformação
-                </div>
-                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
-                  Veja os resultados de quem já transformou sua vida
-                </h2>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Depoimentos reais de pacientes que encontraram na Integra Lipecare a solução para seus problemas
-                </p>
+                 <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-6 py-3 rounded-full text-sm font-medium mb-6">
+                   <Heart className="w-4 h-4" />
+                   Informações Importantes
+                 </div>
+                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                   Conhecimento que Transforma Vidas
+                 </h2>
+                 <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                   Informações educativas essenciais para entender e tratar adequadamente o lipedema
+                 </p>
               </div>
               
               {/* Testimonials Carousel */}

@@ -71,9 +71,9 @@ export const EthicalTestimonials = () => {
             
             <div className="inline-flex items-center gap-1 bg-primary/10 px-4 py-2 rounded-full">
               <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                currentContent.category === 'symptom' ? 'bg-blue-100 text-blue-700' :
-                currentContent.category === 'treatment' ? 'bg-green-100 text-green-700' :
-                'bg-purple-100 text-purple-700'
+                currentContent.category === 'symptom' ? 'bg-primary/20 text-primary' :
+                currentContent.category === 'treatment' ? 'bg-primary/15 text-primary/90' :
+                'bg-accent/20 text-accent'
               }`}>
                 {currentContent.category === 'symptom' ? 'Sintomas' :
                  currentContent.category === 'treatment' ? 'Tratamento' : 'Conscientização'}
