@@ -133,7 +133,7 @@ const IntegraLipecare = () => {
         </header>
 
         {/* Hero Section with Modern Asymmetric Layout */}
-        <BeamsBackground className="min-h-screen flex items-center relative overflow-hidden" intensity="subtle">
+        <BeamsBackground className="min-h-screen flex items-center relative" intensity="subtle">
           <section className="section-padding relative z-10 w-full">
             <div className="container-custom">
               {/* Asymmetric Grid Layout */}
@@ -205,8 +205,8 @@ const IntegraLipecare = () => {
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl animate-parallax-float"></div>
-                  <div className="absolute -bottom-8 -left-4 w-32 h-32 bg-accent/5 rounded-full blur-3xl animate-parallax-float" style={{animationDelay: '2s'}}></div>
+                  <div className="absolute top-2 right-2 w-24 h-24 bg-primary/5 rounded-full blur-2xl animate-parallax-float"></div>
+                  <div className="absolute bottom-2 left-2 w-32 h-32 bg-accent/5 rounded-full blur-3xl animate-parallax-float" style={{animationDelay: '2s'}}></div>
                 </div>
               </div>
             </div>
@@ -354,8 +354,8 @@ const IntegraLipecare = () => {
                     </div>
                     
                     {/* Decorative Elements */}
-                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-destructive/5 rounded-full blur-xl animate-pulse"></div>
-                    <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+                    <div className="absolute top-2 right-2 w-16 h-16 bg-destructive/5 rounded-full blur-xl animate-pulse"></div>
+                    <div className="absolute bottom-2 left-2 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
                   </div>
                 </div>
                 
@@ -502,14 +502,14 @@ const IntegraLipecare = () => {
                   <div className="relative">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <div className="relative cursor-pointer group">
+                        <div className="relative cursor-pointer group p-4">
                           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
                             <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp" alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
                           </div>
-                          <div className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <div className="absolute inset-4 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                             <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           </div>
-                          <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
+                          <div className="absolute inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
                         </div>
                       </DialogTrigger>
                       <DialogContent className="max-w-2xl">
@@ -557,14 +557,14 @@ const IntegraLipecare = () => {
                   <div className="relative">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <div className="relative cursor-pointer group">
+                        <div className="relative cursor-pointer group p-4">
                           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
                             <img src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp" alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
                           </div>
-                          <div className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <div className="absolute inset-4 rounded-full bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                             <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           </div>
-                          <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
+                          <div className="absolute inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
                         </div>
                       </DialogTrigger>
                       <DialogContent className="max-w-2xl">
