@@ -990,6 +990,23 @@ All colors MUST be HSL.
     transform-origin: center;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* Classes para padronização de animações de ícones */
+  .icon-hover-effect {
+    @apply group-hover:scale-110 transition-transform duration-300;
+  }
+
+  .icon-decorative-ring {
+    @apply absolute inset-0 rounded-2xl border-2 border-primary/0 group-hover:border-primary/20 transition-colors duration-300;
+  }
+
+  .icon-container {
+    @apply relative mb-6;
+  }
+
+  .icon-container .icon-bg {
+    @apply w-20 h-20 mx-auto bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-4;
+  }
   
   /* Timeline specific cards - optimized shadows */
   .timeline-card {

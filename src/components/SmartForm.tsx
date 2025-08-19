@@ -334,8 +334,10 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   className={cn(
-                    "w-full px-4 py-3 rounded-xl border transition-all",
-                    errors.name ? "border-destructive" : "border-border focus:border-primary"
+                    "w-full px-4 py-3 rounded-xl border backdrop-blur-lg bg-background/50 transition-all duration-300",
+                    errors.name 
+                      ? "border-destructive focus:border-destructive" 
+                      : "border-border/50 focus:border-primary/60 hover:border-primary/40"
                   )}
                   placeholder="Seu nome completo"
                 />
@@ -354,8 +356,10 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
                   value={formData.age}
                   onChange={(e) => setFormData(prev => ({ ...prev, age: e.target.value }))}
                   className={cn(
-                    "w-full px-4 py-3 rounded-xl border transition-all",
-                    errors.age ? "border-destructive" : "border-border focus:border-primary"
+                    "w-full px-4 py-3 rounded-xl border backdrop-blur-lg bg-background/50 transition-all duration-300",
+                    errors.age 
+                      ? "border-destructive focus:border-destructive" 
+                      : "border-border/50 focus:border-primary/60 hover:border-primary/40"
                   )}
                   placeholder="Ex: 35"
                   min="18"
@@ -380,8 +384,10 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
                 value={formData.email}
                 onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                 className={cn(
-                  "w-full px-4 py-3 rounded-xl border transition-all",
-                  errors.email ? "border-destructive" : "border-border focus:border-primary"
+                  "w-full px-4 py-3 rounded-xl border backdrop-blur-lg bg-background/50 transition-all duration-300",
+                  errors.email 
+                    ? "border-destructive focus:border-destructive" 
+                    : "border-border/50 focus:border-primary/60 hover:border-primary/40"
                 )}
                 placeholder="seu.email@exemplo.com"
               />
@@ -403,8 +409,10 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 className={cn(
-                  "w-full px-4 py-3 rounded-xl border transition-all",
-                  errors.phone ? "border-destructive" : "border-border focus:border-primary"
+                  "w-full px-4 py-3 rounded-xl border backdrop-blur-lg bg-background/50 transition-all duration-300",
+                  errors.phone 
+                    ? "border-destructive focus:border-destructive" 
+                    : "border-border/50 focus:border-primary/60 hover:border-primary/40"
                 )}
                 placeholder="(11) 99999-9999"
                 maxLength={15}
@@ -428,34 +436,33 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
               </label>
               <div className="grid gap-3">
                 {symptomOptions.map((symptom, index) => (
-                  <MicroInteraction key={index} effect="elastic">
-                    <label 
-                      className={cn(
-                        "flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all",
-                        formData.symptoms.includes(symptom)
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
+                  <label 
+                    key={index}
+                    className={cn(
+                      "flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all duration-300 hover:scale-[1.01]",
+                      formData.symptoms.includes(symptom)
+                        ? "border-primary bg-primary/5 shadow-sm"
+                        : "border-border/50 hover:border-primary/50 hover:bg-primary/2"
+                    )}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={formData.symptoms.includes(symptom)}
+                      onChange={() => toggleSymptom(symptom)}
+                      className="sr-only"
+                    />
+                    <div className={cn(
+                      "w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-300",
+                      formData.symptoms.includes(symptom)
+                        ? "border-primary bg-primary scale-110"
+                        : "border-border hover:border-primary/70"
+                    )}>
+                      {formData.symptoms.includes(symptom) && (
+                        <Check className="w-3 h-3 text-primary-foreground" />
                       )}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={formData.symptoms.includes(symptom)}
-                        onChange={() => toggleSymptom(symptom)}
-                        className="sr-only"
-                      />
-                      <div className={cn(
-                        "w-5 h-5 rounded border-2 flex items-center justify-center transition-all",
-                        formData.symptoms.includes(symptom)
-                          ? "border-primary bg-primary"
-                          : "border-border"
-                      )}>
-                        {formData.symptoms.includes(symptom) && (
-                          <Check className="w-3 h-3 text-primary-foreground" />
-                        )}
-                      </div>
-                      <span className="text-sm flex-1">{symptom}</span>
-                    </label>
-                  </MicroInteraction>
+                    </div>
+                    <span className="text-sm flex-1">{symptom}</span>
+                  </label>
                 ))}
               </div>
               {errors.symptoms && (
@@ -477,15 +484,15 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
               </label>
               <div className="space-y-3">
                 {urgencyOptions.map((option) => (
-                  <MicroInteraction key={option.value} effect="elastic">
-                    <label 
-                      className={cn(
-                        "flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all",
-                        formData.urgency === option.value
-                          ? `border-${option.color} bg-${option.color}/5`
-                          : "border-border hover:border-primary/50"
-                      )}
-                    >
+                  <label 
+                    key={option.value}
+                    className={cn(
+                      "flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all duration-300 hover:scale-[1.01]",
+                      formData.urgency === option.value
+                        ? `border-${option.color} bg-${option.color}/5 shadow-sm`
+                        : "border-border/50 hover:border-primary/50 hover:bg-primary/2"
+                    )}
+                  >
                       <input
                         type="radio"
                         value={option.value}
@@ -505,7 +512,6 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
                       </div>
                       <span className="text-sm flex-1">{option.label}</span>
                     </label>
-                  </MicroInteraction>
                 ))}
               </div>
               {errors.urgency && (
@@ -521,14 +527,16 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
                 <Calendar className="w-4 h-4 inline mr-2" />
                 Qual o melhor horário para nossa ligação? *
               </label>
-              <select
-                value={formData.preferredTime}
-                onChange={(e) => setFormData(prev => ({ ...prev, preferredTime: e.target.value }))}
-                className={cn(
-                  "w-full px-4 py-3 rounded-xl border transition-all",
-                  errors.preferredTime ? "border-destructive" : "border-border focus:border-primary"
-                )}
-              >
+                <select
+                  value={formData.preferredTime}
+                  onChange={(e) => setFormData(prev => ({ ...prev, preferredTime: e.target.value }))}
+                  className={cn(
+                    "w-full px-4 py-3 rounded-xl border backdrop-blur-lg bg-background/50 transition-all duration-300",
+                    errors.preferredTime 
+                      ? "border-destructive focus:border-destructive" 
+                      : "border-border/50 focus:border-primary/60 hover:border-primary/40"
+                  )}
+                >
                 <option value="">Selecione um horário</option>
                 <option value="manha">Manhã (8h às 12h)</option>
                 <option value="tarde">Tarde (12h às 18h)</option>

@@ -261,8 +261,11 @@ const IntegraLipecare = () => {
                     <div key={index} className="hover-container">
                       <div className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:border-primary/30 animate-fade-in-up`} style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}>
                         <div className="flex items-start gap-4">
-                          <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
-                            <Check className="w-5 h-5 text-success" />
+                          <div className="icon-container">
+                            <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors icon-hover-effect">
+                              <Check className="w-5 h-5 text-success" />
+                            </div>
+                            <div className="icon-decorative-ring w-8 h-8 rounded-full"></div>
                           </div>
                           <span className="text-foreground font-medium leading-relaxed">{symptom}</span>
                         </div>
@@ -629,9 +632,12 @@ const IntegraLipecare = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {benefits.map((benefit, index) => <div key={index} className={`benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-success/10 rounded-full mb-4">
-                    <benefit.icon className="w-6 h-6 text-success" />
+              {benefits.map((benefit, index) => <div key={index} className={`group benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
+                  <div className="icon-container">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-success/10 rounded-full mb-4 icon-hover-effect">
+                      <benefit.icon className="w-6 h-6 text-success" />
+                    </div>
+                    <div className="icon-decorative-ring w-12 h-12 rounded-full"></div>
                   </div>
                   <p className="font-medium">{benefit.text}</p>
                 </div>)}
