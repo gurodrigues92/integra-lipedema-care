@@ -3,6 +3,7 @@ import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, I
 import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppFixed from "@/components/WhatsAppFixed";
 import FAQAccordion from "@/components/FAQAccordion";
+import { AwardBadge } from "@/components/ui/award-badge";
 
 const IntegraLipecare = () => {
   const [socialProofCount, setSocialProofCount] = useState(0);
@@ -267,6 +268,98 @@ const IntegraLipecare = () => {
             <div className="text-center">
               <WhatsAppButton location="solucao">
                 Agendar avaliação gratuita
+              </WhatsAppButton>
+            </div>
+          </div>
+        </section>
+
+        {/* Seção Nossa Equipe */}
+        <section className="section-padding section-gradient-warm">
+          <div className="container-custom">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Nossa Equipe Especializada
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Profissionais qualificadas e experientes, dedicadas ao cuidado humanizado 
+                e ao tratamento especializado do lipedema
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+              {/* Foto da Equipe */}
+              <div className="relative">
+                <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+                   <img 
+                     src="/team-photo.jpg" 
+                     alt="Dra. Ana Carolina e Ft. Mariana - Equipe especializada da Integra Lipecare"
+                     className="w-full h-full object-cover"
+                     loading="lazy"
+                   />
+                </div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl -z-10 blur-xl"></div>
+              </div>
+              
+              {/* Badges e Credenciais */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">
+                    Credenciais e Especializações
+                  </h3>
+                  
+                  <div className="grid gap-6">
+                    <div className="animate-fade-in-up animation-delay-100">
+                      <AwardBadge 
+                        type="especialista-lipedema"
+                        title="Especialista em Lipedema"
+                        subtitle="Medicina Vascular - CRM 12345"
+                      />
+                    </div>
+                    
+                    <div className="animate-fade-in-up animation-delay-200">
+                      <AwardBadge 
+                        type="pos-graduacao"
+                        title="Pós-graduação USP"
+                        subtitle="Medicina Vascular e Endovascular"
+                      />
+                    </div>
+                    
+                    <div className="animate-fade-in-up animation-delay-300">
+                      <AwardBadge 
+                        type="certificacao-dlm"
+                        title="Certificação Internacional DLM"
+                        subtitle="Drenagem Linfática Manual - Fisioterapia"
+                      />
+                    </div>
+                    
+                    <div className="animate-fade-in-up animation-delay-400">
+                      <AwardBadge 
+                        type="membro-sociedade"
+                        title="Membro SBACV"
+                        subtitle="Sociedade Brasileira Angiologia e Cirurgia Vascular"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border">
+                  <div className="grid grid-cols-2 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">15+</div>
+                      <div className="text-sm text-muted-foreground">Anos de Experiência</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">500+</div>
+                      <div className="text-sm text-muted-foreground">Pacientes Tratadas</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-12">
+              <WhatsAppButton location="equipe">
+                Conhecer nossa abordagem
               </WhatsAppButton>
             </div>
           </div>
