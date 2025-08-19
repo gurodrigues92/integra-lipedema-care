@@ -201,19 +201,19 @@ export const InteractiveTimeline = () => {
         </div>
 
         {/* Progress Summary */}
-        <div className="mt-12 glass-card rounded-2xl p-6 text-center">
+        <div className="mt-12 bg-gradient-to-br from-primary via-primary/80 to-primary/60 rounded-2xl p-6 text-center border border-background/20 shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
-              <div className="text-2xl font-bold text-primary">6 meses</div>
-              <div className="text-sm text-muted-foreground">Duração média do tratamento</div>
+              <div className="text-2xl font-bold text-background">6 meses</div>
+              <div className="text-sm text-background/80">Duração média do tratamento</div>
             </div>
             <div className="space-y-2">
-              <div className="text-2xl font-bold text-success">95%</div>
-              <div className="text-sm text-muted-foreground">Taxa de sucesso</div>
+              <div className="text-2xl font-bold text-background">95%</div>
+              <div className="text-sm text-background/80">Taxa de sucesso</div>
             </div>
             <div className="space-y-2">
-              <div className="text-2xl font-bold text-accent">Dezenas de</div>
-              <div className="text-sm text-muted-foreground">Pacientes atendidas</div>
+              <div className="text-2xl font-bold text-background">Dezenas de</div>
+              <div className="text-sm text-background/80">Pacientes atendidas</div>
             </div>
           </div>
         </div>
