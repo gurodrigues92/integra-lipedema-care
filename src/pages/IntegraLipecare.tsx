@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, Instagram } from "lucide-react";
 import integraLipecareLogotipo from "@/assets/integra-lipecare-logo.png";
 import WhatsAppButton from "@/components/WhatsAppButton";
