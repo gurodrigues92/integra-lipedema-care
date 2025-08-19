@@ -136,7 +136,7 @@ export const LiveMetrics = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <div className={`w-2 h-2 rounded-full bg-success ${isUpdating ? 'animate-pulse' : 'animate-pulse'}`}></div>
+            <div className={`w-2 h-2 rounded-full bg-success ${isUpdating ? 'animate-pulse' : ''}`}></div>
             Dados em Tempo Real
           </div>
           <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gradient-primary">

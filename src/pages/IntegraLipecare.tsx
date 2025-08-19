@@ -398,8 +398,9 @@ const IntegraLipecare = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 stagger-children" style={{"--stagger-delay": "200ms"} as React.CSSProperties}>
                 {differentials.map((item, index) => (
                   <div 
-                    key={index}
-                    className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300 animate-fade-in-up animation-delay-${(index + 1) * 100}`}
+                    key={item.title}
+                    className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300 animate-fade-in-up`}
+                    style={{"--animation-delay": `${(index + 1) * 100}ms`, "animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}
                   >
                     {/* Icon with Modern Styling */}
                     <div className="relative mb-6">
@@ -639,7 +640,7 @@ const IntegraLipecare = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {benefits.map((benefit, index) => <div key={index} className={`group benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
+              {benefits.map((benefit, index) => <div key={`benefit-${index}`} className={`group benefit-card text-center animate-fade-in-up`} style={{"animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}>
                   <div className="icon-container">
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/20 rounded-full mb-4 icon-hover-effect">
                       <benefit.icon className="w-6 h-6 text-primary" />
