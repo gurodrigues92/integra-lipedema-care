@@ -200,43 +200,49 @@ const IntegraLipecare = () => {
         </BeamsBackground>
 
         {/* Information Bar */}
-        <section className="py-12 bg-gradient-to-r from-card via-card/95 to-card border-y border-border/30">
+        <section className="py-12 bg-gradient-to-br from-primary via-primary/95 to-primary/80 border-y border-primary/20">
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
               {/* Especialização */}
-              <div className="text-center space-y-2 animate-scale-bounce animation-delay-100">
+              <div className="group text-center space-y-2 animate-scale-bounce animation-delay-100">
                 <div className="space-y-2">
-                  <Users className="w-12 h-12 text-primary mx-auto" />
-                  <div className="text-lg font-bold text-foreground">
+                  <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-primary-foreground/20 transition-all duration-300">
+                    <Users className="w-6 h-6 text-primary-foreground group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <div className="text-lg font-bold text-primary-foreground">
                     Equipe Multidisciplinar
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-primary-foreground/80">
                     Médicos, fisioterapeutas, nutricionistas e psicólogas
                   </div>
                 </div>
               </div>
 
               {/* Especialização em Lipedema */}
-              <div className="text-center space-y-2 animate-scale-bounce animation-delay-200">
+              <div className="group text-center space-y-2 animate-scale-bounce animation-delay-200">
                 <div className="space-y-2">
-                  <Heart className="w-12 h-12 text-primary mx-auto" />
-                  <div className="text-lg font-bold text-foreground">
+                  <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-primary-foreground/20 transition-all duration-300">
+                    <Heart className="w-6 h-6 text-primary-foreground group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <div className="text-lg font-bold text-primary-foreground">
                     Especialista em Lipedema
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-primary-foreground/80">
                     Protocolo exclusivo e personalizado
                   </div>
                 </div>
               </div>
 
               {/* Atendimento Humanizado */}
-              <div className="text-center space-y-2 animate-scale-bounce animation-delay-300">
+              <div className="group text-center space-y-2 animate-scale-bounce animation-delay-300">
                 <div className="space-y-2">
-                  <Shield className="w-12 h-12 text-primary mx-auto" />
-                  <div className="text-lg font-bold text-foreground">
+                  <div className="w-12 h-12 bg-primary-foreground/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-primary-foreground/20 transition-all duration-300">
+                    <Shield className="w-6 h-6 text-primary-foreground group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <div className="text-lg font-bold text-primary-foreground">
                     Atendimento Humanizado
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-primary-foreground/80">
                     Cuidado integral e acolhimento
                   </div>
                 </div>
@@ -262,8 +268,8 @@ const IntegraLipecare = () => {
                       <div className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:border-primary/30 animate-fade-in-up`} style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}>
                         <div className="flex items-start gap-4">
                           <div className="icon-container">
-                            <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors icon-hover-effect">
-                              <Check className="w-5 h-5 text-success" />
+                            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors icon-hover-effect">
+                              <Check className="w-5 h-5 text-primary" />
                             </div>
                             <div className="icon-decorative-ring w-8 h-8 rounded-full"></div>
                           </div>
@@ -323,8 +329,8 @@ const IntegraLipecare = () => {
                           className={`flex items-start gap-4 animate-stagger-fade-in`}
                           style={{ animationDelay: `${index * 150}ms` }}
                         >
-                          <div className="w-8 h-8 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0 mt-1">
-                            <div className="w-3 h-3 bg-destructive rounded-full"></div>
+                          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+                            <div className="w-3 h-3 bg-primary rounded-full"></div>
                           </div>
                           <span className="text-foreground font-medium leading-relaxed">{item}</span>
                         </div>
@@ -634,8 +640,8 @@ const IntegraLipecare = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {benefits.map((benefit, index) => <div key={index} className={`group benefit-card text-center animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
                   <div className="icon-container">
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-success/10 rounded-full mb-4 icon-hover-effect">
-                      <benefit.icon className="w-6 h-6 text-success" />
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/20 rounded-full mb-4 icon-hover-effect">
+                      <benefit.icon className="w-6 h-6 text-primary" />
                     </div>
                     <div className="icon-decorative-ring w-12 h-12 rounded-full"></div>
                   </div>
