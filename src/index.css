@@ -948,14 +948,34 @@ All colors MUST be HSL.
   
   .glass-card-hover {
     @apply transition-all duration-300 ease-out;
+    will-change: transform, box-shadow, backdrop-filter;
   }
   
   .glass-card-hover:hover {
     @apply backdrop-blur-2xl bg-background/80 border-primary/20;
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.15),
+      0 12px 24px rgba(0, 0, 0, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Timeline specific cards - optimized shadows */
+  .timeline-card {
+    @apply backdrop-blur-lg bg-background/50 border border-border/20;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .timeline-card:hover {
+    @apply backdrop-blur-xl bg-background/70 border-primary/15;
+    transform: translateY(-1px);
+    box-shadow: 
+      0 8px 20px rgba(0, 0, 0, 0.1),
+      0 0 8px hsl(var(--primary) / 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   
   /* Modern warning styles */
@@ -1161,19 +1181,39 @@ All colors MUST be HSL.
     animation-delay: calc(var(--stagger-delay, 100ms) * var(--stagger-index, 0));
   }
 
-  /* Shadow effects for microinteractions */
+  /* Shadow effects for microinteractions - refined */
   .shadow-glow {
     box-shadow: 
-      0 0 20px hsl(var(--primary) / 0.3),
-      0 0 40px hsl(var(--primary) / 0.2),
-      0 0 60px hsl(var(--primary) / 0.1);
+      0 0 8px hsl(var(--primary) / 0.15),
+      0 0 16px hsl(var(--primary) / 0.1),
+      0 0 24px hsl(var(--primary) / 0.05);
   }
 
   .shadow-glow-accent {
     box-shadow: 
-      0 0 20px hsl(var(--accent) / 0.3),
-      0 0 40px hsl(var(--accent) / 0.2),
-      0 0 60px hsl(var(--accent) / 0.1);
+      0 0 8px hsl(var(--accent) / 0.15),
+      0 0 16px hsl(var(--accent) / 0.1),
+      0 0 24px hsl(var(--accent) / 0.05);
+  }
+  
+  /* Subtle glow for interactive elements */
+  .shadow-glow-subtle {
+    box-shadow: 
+      0 0 4px hsl(var(--primary) / 0.12),
+      0 0 8px hsl(var(--primary) / 0.08);
+  }
+  
+  /* Enhanced shadow system */
+  .shadow-elevated {
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.04);
+  }
+  
+  .shadow-floating {
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.12),
+      0 16px 48px rgba(0, 0, 0, 0.06);
   }
   
   .animation-delay-100 {

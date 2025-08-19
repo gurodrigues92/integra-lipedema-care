@@ -119,7 +119,7 @@ export const InteractiveTimeline = () => {
                         isEven ? "md:-left-4" : "md:-right-4",
                         "top-6 w-8 h-8 rounded-full border-4 transition-all duration-300 cursor-pointer z-10",
                         isActive || isHovered
-                          ? "bg-primary border-primary scale-125 shadow-glow"
+                          ? "bg-primary border-primary scale-125 shadow-glow-subtle"
                           : step.isCompleted
                           ? "bg-success border-success"
                           : "bg-background border-border hover:border-primary"
@@ -144,12 +144,12 @@ export const InteractiveTimeline = () => {
                       )}
                       onClick={() => handleStepClick(step.id)}
                     >
-                      <div className={cn(
-                        "glass-card rounded-2xl p-6 border-2 transition-all duration-300",
-                        isActive 
-                          ? "border-primary/50 shadow-glow bg-primary/5" 
-                          : "border-border/30 hover:border-primary/30"
-                      )}>
+                       <div className={cn(
+                         "timeline-card rounded-2xl p-6 border-2 transition-all duration-300",
+                         isActive 
+                           ? "border-primary/50 bg-primary/5" 
+                           : "border-border/30 hover:border-primary/30"
+                       )}>
                         {/* Header */}
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex-1">
