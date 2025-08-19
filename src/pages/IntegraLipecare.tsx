@@ -341,10 +341,10 @@ const IntegraLipecare = () => {
                   {/* Right: Visual Element */}
                   <div className="relative">
                     <div className="glass-card rounded-2xl p-8 text-center space-y-4">
-                      <div className="w-20 h-20 mx-auto bg-destructive/10 rounded-full flex items-center justify-center mb-4">
-                        <Clock className="w-10 h-10 text-destructive animate-pulse" />
+                      <div className="w-20 h-20 mx-auto bg-amber-100/80 rounded-full flex items-center justify-center mb-4">
+                        <Clock className="w-10 h-10 text-amber-700 animate-pulse" />
                       </div>
-                      <h3 className="font-display text-xl font-bold text-destructive">
+                      <h3 className="font-display text-xl font-bold text-amber-800">
                         Tempo é Essencial
                       </h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">
