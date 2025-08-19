@@ -667,9 +667,9 @@ const IntegraLipecare = () => {
           <section className="section-padding bg-gradient-to-br from-primary/5 via-background to-accent/5">
             <div className="container-custom">
               <div className="text-center mb-16">
-                <div className="inline-flex items-center gap-2 bg-success/10 text-success px-6 py-3 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6">
                   <Check className="w-4 h-4" />
-                  Avaliação Gratuita
+                  Avaliação Especializada
                 </div>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
                   Descubra se você tem lipedema
