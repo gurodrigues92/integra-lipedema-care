@@ -10,6 +10,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { MicroInteraction } from "@/components/MicroInteraction";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
+import { InteractiveTimeline } from "@/components/InteractiveTimeline";
+import { LiveMetrics } from "@/components/LiveMetrics";
+import { SmartForm } from "@/components/SmartForm";
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [socialProofCount, setSocialProofCount] = useState(0);
