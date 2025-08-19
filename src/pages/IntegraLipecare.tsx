@@ -293,7 +293,7 @@ const IntegraLipecare = () => {
         </AnimatedSection>
 
         {/* Seção Amplificação - Warning Modernizada */}
-        <section className="section-padding bg-gradient-to-br from-destructive/5 via-background to-destructive/5">
+        <section className="section-padding bg-gradient-to-br from-amber-50/80 via-background to-amber-50/80">
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
               {/* Header with Animation */}
@@ -308,7 +308,7 @@ const IntegraLipecare = () => {
               </div>
               
               {/* Modern Warning Card */}
-              <div className="warning-modern glass-card rounded-3xl p-8 md:p-12 animate-slide-in-right">
+              <div className="warning-earth glass-card rounded-3xl p-8 md:p-12 animate-slide-in-right">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   {/* Left: Content */}
                   <div className="space-y-6">
@@ -353,7 +353,7 @@ const IntegraLipecare = () => {
                     </div>
                     
                     {/* Decorative Elements */}
-                    <div className="absolute top-2 right-2 w-16 h-16 bg-destructive/5 rounded-full blur-xl animate-pulse"></div>
+                    <div className="absolute top-2 right-2 w-16 h-16 bg-amber-100/30 rounded-full blur-xl animate-pulse"></div>
                     <div className="absolute bottom-2 left-2 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
                   </div>
                 </div>
