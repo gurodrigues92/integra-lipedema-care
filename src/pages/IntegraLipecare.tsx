@@ -122,37 +122,80 @@ const IntegraLipecare = () => {
           </div>
         </header>
 
-        {/* Hero Section with Animated Background */}
-        <BeamsBackground className="min-h-screen flex items-center" intensity="subtle">
+        {/* Hero Section with Modern Asymmetric Layout */}
+        <BeamsBackground className="min-h-screen flex items-center relative overflow-hidden" intensity="subtle">
           <section className="section-padding relative z-10 w-full">
             <div className="container-custom">
-              <div className="text-center max-w-4xl mx-auto">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
-                  Você sofre com dores e inchaços nas pernas há anos e nenhum médico descobriu o que é?
-                </h1>
-                
-                <p className="text-xl md:text-2xl mb-8 text-muted-foreground animate-fade-in-up animation-delay-100">
-                  Pode ser <strong className="text-foreground">LIPEDEMA</strong> - uma condição que afeta 11% das mulheres e é frequentemente confundida com obesidade ou linfedema
-                </p>
-                
-                <div className="mb-8 animate-fade-in-up animation-delay-200">
-                  <WhatsAppButton location="hero" />
+              {/* Asymmetric Grid Layout */}
+              <div className="grid lg:grid-cols-12 gap-8 items-center">
+                {/* Main Content - Left Side */}
+                <div className="lg:col-span-7 space-y-8">
+                  <div className="space-y-6">
+                    <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight animate-fade-in-up">
+                      Você sofre com dores e 
+                      <span className="text-gradient-primary block"> inchaços nas pernas</span>
+                      há anos?
+                    </h1>
+                    
+                    <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground font-medium leading-relaxed animate-fade-in-up animation-delay-100">
+                      Pode ser <strong className="text-primary font-bold">LIPEDEMA</strong> - uma condição que afeta 11% das mulheres e é frequentemente confundida com obesidade
+                    </p>
+                  </div>
+                  
+                  {/* CTA with Modern Styling */}
+                  <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-200">
+                    <WhatsAppButton location="hero" />
+                    <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                      </div>
+                      <span>4.9 ⭐ (500+ pacientes)</span>
+                    </div>
+                  </div>
                 </div>
-                
-                {/* Trust Badges */}
-                <div className="flex flex-wrap justify-center gap-6 text-sm font-medium animate-fade-in-up animation-delay-300">
-                  <div className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-success" />
-                    <span>Equipe multidisciplinar especializada</span>
+
+                {/* Visual Elements - Right Side */}
+                <div className="lg:col-span-5 relative animate-fade-in-up animation-delay-300">
+                  {/* Trust Elements */}
+                  <div className="space-y-6">
+                    {/* Social Proof Card */}
+                    <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50 shadow-lg">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="live-indicator">
+                          <div className="pulse-dot"></div>
+                          <span className="text-sm font-medium">{onlineUsers} pessoas online</span>
+                        </div>
+                      </div>
+                      <div className="text-2xl font-bold text-primary mb-1">{socialProofCount}</div>
+                      <div className="text-sm text-muted-foreground">Pacientes já atendidas</div>
+                    </div>
+
+                    {/* Trust Badges - Vertical Stack */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30">
+                        <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
+                          <Check className="w-4 h-4 text-success" />
+                        </div>
+                        <span className="text-sm font-medium">Equipe multidisciplinar</span>
+                      </div>
+                      <div className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30">
+                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                          <Users className="w-4 h-4 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium">Criada por pacientes</span>
+                      </div>
+                      <div className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30">
+                        <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
+                          <Shield className="w-4 h-4 text-accent" />
+                        </div>
+                        <span className="text-sm font-medium">Resultados comprovados</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-success" />
-                    <span>Clínica criada por pacientes</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-success" />
-                    <span>+500 mulheres atendidas</span>
-                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+                  <div className="absolute -bottom-8 -left-4 w-32 h-32 bg-accent/5 rounded-full blur-3xl"></div>
                 </div>
               </div>
             </div>
@@ -184,17 +227,21 @@ const IntegraLipecare = () => {
         {/* Seção Problema */}
         <section className="section-padding bg-card">
           <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <div className="text-center mb-16">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
                 Você se identifica com estes sintomas?
               </h2>
             </div>
             
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-4 mb-8">
-                {symptoms.map((symptom, index) => <div key={index} className={`flex items-start gap-3 p-4 rounded-xl bg-background animate-fade-in-up animation-delay-${(index + 1) * 100}`}>
-                    <Check className="w-6 h-6 text-success mt-1 flex-shrink-0" />
-                    <span className="text-foreground">{symptom}</span>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6 mb-12">
+                {symptoms.map((symptom, index) => <div key={index} className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 animate-fade-in-up animation-delay-${(index + 1) * 100} hover:scale-[1.02] hover:border-primary/30`}>
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
+                        <Check className="w-5 h-5 text-success" />
+                      </div>
+                      <span className="text-foreground font-medium leading-relaxed">{symptom}</span>
+                    </div>
                   </div>)}
               </div>
               
