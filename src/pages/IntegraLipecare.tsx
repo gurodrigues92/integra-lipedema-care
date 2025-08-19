@@ -153,7 +153,7 @@ const IntegraLipecare = () => {
                   {/* CTA with Modern Styling */}
                   <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-200">
                     <MicroInteraction effect="elastic">
-                      <WhatsAppButton location="hero" />
+                      <WhatsAppButton location="hero" variant="primary" />
                     </MicroInteraction>
                     <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
                       <div className="flex items-center gap-2">
@@ -164,43 +164,31 @@ const IntegraLipecare = () => {
                   </div>
                 </div>
 
-                {/* Visual Elements - Right Side */}
+                {/* Featured Image - Right Side */}
                 <div className="lg:col-span-5 relative animate-fade-in-up animation-delay-300">
-                  {/* Trust Elements */}
-                  <div className="space-y-6">
-                    {/* Information Card */}
-                    <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50 shadow-lg gpu-accelerated">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="flex items-center gap-2">
-                          <Heart className="w-5 h-5 text-primary" />
-                          <span className="text-sm font-medium">Especialistas em Lipedema</span>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="relative cursor-pointer group">
+                        <img 
+                          src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg"
+                          alt="Integra Lipecare - Equipe Especializada em Lipedema"
+                          className="w-full rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-[1.02]"
+                          loading="eager"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-2xl flex items-center justify-center">
+                          <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
                       </div>
-                      <div className="text-lg font-bold text-primary mb-1">Clínica Especializada</div>
-                      <div className="text-sm text-muted-foreground">Atendimento multidisciplinar</div>
-                    </div>
-
-                    {/* Trust Badges - Vertical Stack */}
-                    <div className="space-y-3 stagger-children" style={{"--stagger-delay": "100ms"} as React.CSSProperties}>
-                      {[
-                        { icon: Check, text: "Equipe multidisciplinar", color: "success" },
-                        { icon: Users, text: "Criada por pacientes", color: "primary" },
-                        { icon: Shield, text: "Resultados comprovados", color: "accent" }
-                      ].map((item, index) => (
-                        <MicroInteraction key={index} effect="glow">
-                          <div 
-                            className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30 gpu-accelerated transition-all duration-300 hover:scale-105"
-                            style={{"--stagger-index": index} as React.CSSProperties}
-                          >
-                            <div className={`w-8 h-8 rounded-full bg-${item.color}/20 flex items-center justify-center`}>
-                              <item.icon className={`w-4 h-4 text-${item.color}`} />
-                            </div>
-                            <span className="text-sm font-medium">{item.text}</span>
-                          </div>
-                        </MicroInteraction>
-                      ))}
-                    </div>
-                  </div>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl">
+                      <img 
+                        src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg" 
+                        alt="Integra Lipecare - Equipe Especializada em Lipedema" 
+                        className="w-full rounded-lg"
+                      />
+                    </DialogContent>
+                  </Dialog>
 
                   {/* Decorative Elements */}
                   <div className="absolute top-2 right-2 w-24 h-24 bg-primary/5 rounded-full blur-2xl animate-parallax-float"></div>
@@ -259,7 +247,7 @@ const IntegraLipecare = () => {
 
         {/* Seção Problema */}
         <AnimatedSection animation="fade-up" delay={100}>
-          <section className="section-padding bg-card">
+          <section className="section-padding bg-gradient-to-br from-background via-card/95 to-muted/30">
             <div className="container-custom">
               <div className="text-center mb-16">
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
@@ -281,7 +269,7 @@ const IntegraLipecare = () => {
                 
                 <div className="text-center">
                   <MicroInteraction effect="ripple">
-                    <WhatsAppButton location="problema">
+                    <WhatsAppButton location="problema" variant="primary">
                       Quero falar com especialistas
                     </WhatsAppButton>
                   </MicroInteraction>
@@ -433,7 +421,7 @@ const IntegraLipecare = () => {
                     Nossa avaliação gratuita inclui diagnóstico completo e plano de tratamento personalizado
                   </p>
                   <MicroInteraction effect="elastic">
-                    <WhatsAppButton location="solucao" />
+                    <WhatsAppButton location="solucao" variant="primary" />
                   </MicroInteraction>
                 </div>
                 
@@ -495,7 +483,7 @@ const IntegraLipecare = () => {
             {/* Cards das Médicas */}
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
               {/* Card Dra. Daniela */}
-              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{"animationDelay": "200ms"} as React.CSSProperties}>
+              <div className="bg-gradient-to-br from-card/90 via-muted/20 to-card/80 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{"animationDelay": "200ms"} as React.CSSProperties}>
                 <div className="flex flex-col items-center text-center space-y-4">
                   {/* Foto */}
                   <div className="relative">
@@ -550,7 +538,7 @@ const IntegraLipecare = () => {
               </div>
 
               {/* Card Dra. Fernanda */}
-              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{"animationDelay": "300ms"} as React.CSSProperties}>
+              <div className="bg-gradient-to-br from-card/90 via-muted/20 to-card/80 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{"animationDelay": "300ms"} as React.CSSProperties}>
                 <div className="flex flex-col items-center text-center space-y-4">
                   {/* Foto */}
                   <div className="relative">
@@ -621,7 +609,7 @@ const IntegraLipecare = () => {
               <p className="text-lg font-semibold mb-6">
                 Receba atendimento especializado de uma equipe dedicada ao lipedema
               </p>
-              <WhatsAppButton location="equipe">
+              <WhatsAppButton location="equipe" variant="primary">
                 Quero ser atendida por estas especialistas
               </WhatsAppButton>
             </div>
@@ -630,7 +618,7 @@ const IntegraLipecare = () => {
 
 
         {/* Seção Benefícios */}
-        <section className="section-padding bg-card">
+        <section className="section-padding bg-gradient-to-br from-muted/20 via-card to-background/80">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -648,7 +636,7 @@ const IntegraLipecare = () => {
             </div>
             
             <div className="text-center">
-              <WhatsAppButton location="beneficios" />
+              <WhatsAppButton location="beneficios" variant="primary" />
             </div>
           </div>
         </section>
@@ -700,7 +688,7 @@ const IntegraLipecare = () => {
 
         {/* Seção FAQ */}
         <AnimatedSection animation="fade-up" delay={100}>
-          <section className="section-padding bg-card">
+          <section className="section-padding bg-gradient-to-br from-card via-muted/10 to-background/60">
             <div className="container-custom">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -716,7 +704,7 @@ const IntegraLipecare = () => {
               </div>
               
               <div className="text-center mt-12">
-                <WhatsAppButton location="faq">
+                <WhatsAppButton location="faq" variant="primary">
                   Tenho outras dúvidas
                 </WhatsAppButton>
               </div>
@@ -778,7 +766,7 @@ const IntegraLipecare = () => {
                   </div>
                   
                   <div className="mt-8">
-                    <WhatsAppButton location="localizacao">
+                    <WhatsAppButton location="localizacao" variant="primary">
                       Como chegar até a clínica
                     </WhatsAppButton>
                   </div>
@@ -806,7 +794,7 @@ const IntegraLipecare = () => {
               
               <div className="mb-6">
                 <MicroInteraction effect="glow">
-                  <WhatsAppButton location="cta-final" className="bg-card text-card-foreground hover:bg-card/90">
+                  <WhatsAppButton location="cta-final" variant="primary" className="bg-card text-card-foreground hover:bg-card/90">
                     Agendar minha consulta agora
                   </WhatsAppButton>
                 </MicroInteraction>
