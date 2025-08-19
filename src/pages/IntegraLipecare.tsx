@@ -290,127 +290,122 @@ const IntegraLipecare = () => {
               </p>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-              {/* Foto das Médicas */}
-              <div className="relative">
-                <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
-                   <img 
-                     src="/team-doctors.jpg"
-                     alt="Dra. Daniela Persinotti e Dra. Fernanda T. Sales Antila - Especialistas da Integra Lipecare"
-                     className="w-full h-full object-cover"
-                     loading="lazy"
-                   />
-                </div>
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl -z-10 blur-xl"></div>
-              </div>
-              
-              {/* Informações das Médicas */}
-              <div className="space-y-8">
-                {/* Dra. Daniela Persinotti */}
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary mb-2">Dra. Daniela Persinotti</h3>
-                    <p className="text-lg font-semibold text-muted-foreground mb-1">CRM 99148</p>
-                    <p className="text-base text-muted-foreground mb-4">Especialista em Saúde Feminina e Metabolismo</p>
+            {/* Cards das Médicas */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+              {/* Card Dra. Daniela */}
+              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300">
+                <div className="flex flex-col items-center text-center space-y-4">
+                  {/* Foto */}
+                  <div className="relative">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+                      <img 
+                        src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/dani_h1khcg.webp"
+                        alt="Dra. Daniela Persinotti - Especialista em Ginecologia e Metabolismo"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
                   </div>
                   
-                  <div className="grid gap-3">
-                    <div className="animate-fade-in-up animation-delay-100">
-                      <AwardBadge 
-                        type="especialista-lipedema"
-                        title="Ginecologista e Obstetra"
-                        subtitle="Residência em Ginecologia e Obstetrícia"
-                      />
-                    </div>
-                    
-                    <div className="animate-fade-in-up animation-delay-200">
-                      <AwardBadge 
-                        type="pos-graduacao"
-                        title="Oncologia Ginecológica"
-                        subtitle="Residência Médica Especializada"
-                      />
-                    </div>
-                    
-                    <div className="animate-fade-in-up animation-delay-300">
-                      <AwardBadge 
-                        type="certificacao-dlm"
-                        title="Cirurgia Minimamente Invasiva"
-                        subtitle="Pós-graduação em Laparoscopia e Histeroscopia"
-                      />
-                    </div>
+                  {/* Informações */}
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-primary">Dra. Daniela Persinotti</h3>
+                    <p className="text-lg font-semibold text-muted-foreground">CRM 99148</p>
+                    <p className="text-base text-muted-foreground">Especialista em Saúde Feminina e Metabolismo</p>
                   </div>
                   
-                  <div className="bg-card/50 backdrop-blur-sm p-4 rounded-xl border">
+                  {/* Badges Principais */}
+                  <div className="space-y-3 w-full">
+                    <AwardBadge 
+                      type="especialista-lipedema"
+                      title="Ginecologista e Obstetra"
+                      subtitle="Residência em Ginecologia e Obstetrícia"
+                    />
+                    <AwardBadge 
+                      type="pos-graduacao"
+                      title="Especialista em Metabolismo"
+                      subtitle="Longevidade e Saúde Hormonal"
+                    />
+                  </div>
+                  
+                  {/* Quote */}
+                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10">
                     <p className="text-sm italic text-muted-foreground">
                       "Cada mulher é única. Trato o lipedema considerando hormônios, metabolismo e história 
                       de vida para criar um protocolo verdadeiramente personalizado."
                     </p>
                   </div>
                 </div>
+              </div>
 
-                {/* Dra. Fernanda T. Sales Antila */}
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary mb-2">Dra. Fernanda T. Sales Antila</h3>
-                    <p className="text-lg font-semibold text-muted-foreground mb-1">CRM 169587 / RQE 83864</p>
-                    <p className="text-base text-muted-foreground mb-4">Cirurgiã Vascular pela UNICAMP</p>
+              {/* Card Dra. Fernanda */}
+              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300">
+                <div className="flex flex-col items-center text-center space-y-4">
+                  {/* Foto */}
+                  <div className="relative">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+                      <img 
+                        src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1753898475/fernanda_f4tjey.webp"
+                        alt="Dra. Fernanda T. Sales Antila - Cirurgiã Vascular UNICAMP"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full -z-10 blur-lg"></div>
                   </div>
                   
-                  <div className="grid gap-3">
-                    <div className="animate-fade-in-up animation-delay-400">
-                      <AwardBadge 
-                        type="especialista-lipedema"
-                        title="Médica UNICAMP"
-                        subtitle="Cirurgia Geral e Cirurgia Vascular"
-                      />
-                    </div>
-                    
-                    <div className="animate-fade-in-up animation-delay-500">
-                      <AwardBadge 
-                        type="membro-sociedade"
-                        title="Membro SBACV"
-                        subtitle="Sociedade Brasileira de Cirurgia Vascular"
-                      />
-                    </div>
-                    
-                    <div className="animate-fade-in-up animation-delay-600">
-                      <AwardBadge 
-                        type="certificacao-dlm"
-                        title="Angiorradiologia"
-                        subtitle="Cirurgia Endovascular - SBACV"
-                      />
-                    </div>
+                  {/* Informações */}
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-primary">Dra. Fernanda T. Sales Antila</h3>
+                    <p className="text-lg font-semibold text-muted-foreground">CRM 169587 / RQE 83864</p>
+                    <p className="text-base text-muted-foreground">Cirurgiã Vascular pela UNICAMP</p>
                   </div>
                   
-                  <div className="bg-card/50 backdrop-blur-sm p-4 rounded-xl border">
+                  {/* Badges Principais */}
+                  <div className="space-y-3 w-full">
+                    <AwardBadge 
+                      type="especialista-lipedema"
+                      title="Cirurgiã Vascular UNICAMP"
+                      subtitle="Cirurgia Geral e Cirurgia Vascular"
+                    />
+                    <AwardBadge 
+                      type="membro-sociedade"
+                      title="Membro SBACV"
+                      subtitle="Sociedade Brasileira de Cirurgia Vascular"
+                    />
+                  </div>
+                  
+                  {/* Quote */}
+                  <div className="bg-primary/5 p-4 rounded-xl border border-primary/10">
                     <p className="text-sm italic text-muted-foreground">
                       "Com minha formação vascular especializada, identifico e trato alterações circulatórias 
                       do lipedema que outros profissionais podem não perceber."
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                {/* Métricas de Confiança */}
-                <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border">
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                      <div className="text-2xl font-bold text-primary mb-1">500+</div>
-                      <div className="text-xs text-muted-foreground">Pacientes Atendidas</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-primary mb-1">25+</div>
-                      <div className="text-xs text-muted-foreground">Anos de Experiência</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-primary mb-1">92%</div>
-                      <div className="text-xs text-muted-foreground">Taxa de Satisfação</div>
-                    </div>
-                  </div>
+            {/* Métricas de Confiança */}
+            <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border max-w-2xl mx-auto mb-8">
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-primary mb-1">500+</div>
+                  <div className="text-xs text-muted-foreground">Pacientes Atendidas</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary mb-1">25+</div>
+                  <div className="text-xs text-muted-foreground">Anos de Experiência</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary mb-1">92%</div>
+                  <div className="text-xs text-muted-foreground">Taxa de Satisfação</div>
                 </div>
               </div>
             </div>
             
-            <div className="text-center mt-12">
+            <div className="text-center">
               <p className="text-lg font-semibold mb-6">
                 Junte-se às centenas de mulheres que recuperaram sua qualidade de vida
               </p>
