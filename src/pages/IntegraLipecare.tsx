@@ -13,6 +13,7 @@ const IntegraLipecare = () => {
   const [socialProofCount, setSocialProofCount] = useState(0);
   const [onlineUsers, setOnlineUsers] = useState(12);
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
+  const [headerVisible, setHeaderVisible] = useState(true);
 
   useEffect(() => {
     // Animate social proof counter
@@ -37,6 +38,20 @@ const IntegraLipecare = () => {
       });
     }, 5000);
 
+    // Header scroll effect
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const threshold = 150;
+      
+      if (scrolled > threshold) {
+        setHeaderVisible(false);
+      } else {
+        setHeaderVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     // Track page view
     console.log('[LandingIntegra] Page loaded');
     
@@ -58,6 +73,7 @@ const IntegraLipecare = () => {
     return () => {
       clearInterval(timer);
       clearInterval(onlineTimer);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -105,7 +121,9 @@ const IntegraLipecare = () => {
       {/* Meta tags e Schema.org serão adicionados via Helmet */}
       <div className="min-h-screen">
         {/* Header com Logo */}
-        <header className="bg-background/95 backdrop-blur-sm border-b border-border/40 sticky top-0 z-50 shadow-sm">
+        <header className={`bg-background/95 backdrop-blur-sm sticky top-0 z-50 transition-all duration-500 ${
+          headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
+        }`}>
           <div className="container-custom py-4">
             <div className="flex justify-center">
               <img 
