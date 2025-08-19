@@ -22,6 +22,7 @@ import { SEOHead } from "@/components/SEOHead";
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 const IntegraLipecare = () => {
+  // Cache bust: Force reload to fix PWAManager error - 2025-01-19
   console.log("IntegraLipecare component is rendering");
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
