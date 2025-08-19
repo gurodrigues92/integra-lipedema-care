@@ -18,9 +18,10 @@ import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SmartForm } from "@/components/SmartForm";
 import { SEOHead } from "@/components/SEOHead";
-// import PWAManager from "@/components/PWAManager";
+// import PWAManager from "@/components/PWAManager"; // Permanently disabled
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
+// Cache bust: PWAManager issue resolved - v2.0.1
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
