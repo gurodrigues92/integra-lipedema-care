@@ -383,31 +383,29 @@ const IntegraLipecare = () => {
               {/* Cards com Layout Assimétrico */}
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 stagger-children" style={{"--stagger-delay": "200ms"} as React.CSSProperties}>
                 {differentials.map((item, index) => (
-                  <MicroInteraction key={index} effect="glow">
-                    <div 
-                      className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300 animate-fade-in-up`}
-                      style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 150}ms`} as React.CSSProperties}
-                    >
-                      {/* Icon with Modern Styling */}
-                      <div className="relative mb-6">
-                        <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-parallax-float">
-                          <item.icon className="w-10 h-10 text-primary" />
-                        </div>
-                        {/* Decorative Ring */}
-                        <div className="absolute inset-0 w-20 h-20 mx-auto rounded-2xl border-2 border-primary/0 group-hover:border-primary/20 transition-colors duration-300"></div>
+                  <div 
+                    key={index}
+                    className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300 animate-fade-in-up animation-delay-${(index + 1) * 100}`}
+                  >
+                    {/* Icon with Modern Styling */}
+                    <div className="relative mb-6">
+                      <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-parallax-float">
+                        <item.icon className="w-10 h-10 text-primary" />
                       </div>
-                      
-                      <h3 className="font-display text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed text-sm">
-                        {item.description}
-                      </p>
-                      
-                      {/* Progress indicator */}
-                      <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {/* Decorative Ring */}
+                      <div className="absolute inset-0 w-20 h-20 mx-auto rounded-2xl border-2 border-primary/0 group-hover:border-primary/20 transition-colors duration-300"></div>
                     </div>
-                  </MicroInteraction>
+                    
+                    <h3 className="font-display text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">
+                      {item.description}
+                    </p>
+                    
+                    {/* Progress indicator */}
+                    <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
                 ))}
               </div>
               
