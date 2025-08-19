@@ -36,7 +36,7 @@ export const VideoTestimonial = ({
   };
 
   return (
-    <div className="glass-card rounded-3xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
+    <div className="glass-card rounded-3xl overflow-hidden shadow-2xl max-w-4xl mx-auto animate-fade-in-up">
       {/* Video Container */}
       <div 
         className="relative aspect-video bg-black/90 overflow-hidden cursor-pointer group"

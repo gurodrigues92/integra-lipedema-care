@@ -48,7 +48,7 @@ export const EthicalTestimonials = () => {
   return (
     <AnimatedSection animation="fade-up" delay={100}>
       <div className="max-w-4xl mx-auto">
-        <div className="relative bg-gradient-to-br from-card to-card/80 rounded-3xl p-8 md:p-12 shadow-xl border border-border/50">
+        <div className="relative bg-gradient-to-br from-card to-card/80 rounded-3xl p-8 md:p-12 shadow-xl border border-border/50 animate-fade-in-up">
           {/* Content */}
           <div className="text-center space-y-6">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">

@@ -269,7 +269,7 @@ const IntegraLipecare = () => {
               
               <div className="max-w-6xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-6 mb-12 stagger-children" style={{"--stagger-delay": "150ms"} as React.CSSProperties}>
-                  {symptoms.map((symptom, index) => <div key={index} className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:scale-[1.02] hover:border-primary/30`} style={{"--stagger-index": index} as React.CSSProperties}>
+                  {symptoms.map((symptom, index) => <div key={index} className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:scale-[1.02] hover:border-primary/30 animate-fade-in-up`} style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 100}ms`} as React.CSSProperties}>
                       <div className="flex items-start gap-4">
                         <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
                           <Check className="w-5 h-5 text-success" />
@@ -397,8 +397,8 @@ const IntegraLipecare = () => {
                 {differentials.map((item, index) => (
                   <MicroInteraction key={index} effect="glow">
                     <div 
-                      className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300`}
-                      style={{"--stagger-index": index} as React.CSSProperties}
+                      className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300 animate-fade-in-up`}
+                      style={{"--stagger-index": index, "animationDelay": `${(index + 1) * 150}ms`} as React.CSSProperties}
                     >
                       {/* Icon with Modern Styling */}
                       <div className="relative mb-6">
@@ -495,7 +495,7 @@ const IntegraLipecare = () => {
             {/* Cards das Médicas */}
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
               {/* Card Dra. Daniela */}
-              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300">
+              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{"animationDelay": "200ms"} as React.CSSProperties}>
                 <div className="flex flex-col items-center text-center space-y-4">
                   {/* Foto */}
                   <div className="relative">
@@ -550,7 +550,7 @@ const IntegraLipecare = () => {
               </div>
 
               {/* Card Dra. Fernanda */}
-              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300">
+              <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border hover:shadow-xl transition-all duration-300 animate-fade-in-up" style={{"animationDelay": "300ms"} as React.CSSProperties}>
                 <div className="flex flex-col items-center text-center space-y-4">
                   {/* Foto */}
                   <div className="relative">
@@ -606,7 +606,7 @@ const IntegraLipecare = () => {
             </div>
 
             {/* Informações Éticas */}
-            <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border max-w-2xl mx-auto mb-8">
+            <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border max-w-2xl mx-auto mb-8 animate-fade-in-up">
               <div className="text-center space-y-4">
                 <h3 className="text-xl font-bold text-primary">Compromisso com a Transparência</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">

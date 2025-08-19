@@ -97,7 +97,7 @@ export const TestimonialsCarousel = () => {
       <div className="relative max-w-6xl mx-auto">
         {/* Main Testimonial Card */}
         <div 
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-card via-card/95 to-card/90 border border-border/50 shadow-2xl"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-card via-card/95 to-card/90 border border-border/50 shadow-2xl animate-fade-in-up"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
