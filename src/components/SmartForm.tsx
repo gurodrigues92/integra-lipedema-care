@@ -174,41 +174,60 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
 
     setIsSubmitting(true);
     
-    // Format WhatsApp message
-    const whatsappMessage = formatFormDataToWhatsApp(formData);
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappUrl = `https://wa.me/5515991159866?text=${encodedMessage}`;
-    
-    // Track conversion
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'conversion', {
-        send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL',
-        value: 1,
-        currency: 'BRL'
-      });
+    try {
+      // Format WhatsApp message
+      const whatsappMessage = formatFormDataToWhatsApp(formData);
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/5515991159866?text=${encodedMessage}`;
       
-      gtag('event', 'form_submit', {
-        event_category: 'Formulário',
-        event_label: 'Smart_Form_Complete',
-        value: 1
-      });
-    }
+      // Debug logs
+      console.log('[SmartForm] Dados do formulário:', formData);
+      console.log('[SmartForm] Mensagem formatada:', whatsappMessage);
+      console.log('[SmartForm] URL WhatsApp gerada:', whatsappUrl);
+      
+      // Track conversion
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'conversion', {
+          send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL',
+          value: 1,
+          currency: 'BRL'
+        });
+        
+        gtag('event', 'form_submit', {
+          event_category: 'Formulário',
+          event_label: 'Smart_Form_Complete',
+          value: 1
+        });
+      }
 
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'CompleteRegistration', {
-        content_name: 'Formulário_Consulta',
-        content_category: 'Lead'
-      });
-    }
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'CompleteRegistration', {
+          content_name: 'Formulário_Consulta',
+          content_category: 'Lead'
+        });
+      }
 
-    // Small delay for visual feedback
-    setTimeout(() => {
+      // Immediate redirection to WhatsApp
+      console.log('[SmartForm] Tentando abrir WhatsApp...');
+      const newWindow = window.open(whatsappUrl, '_blank');
+      
+      // Check if popup was blocked
+      if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+        console.warn('[SmartForm] Popup bloqueado, oferecendo fallback');
+        // Store URL for fallback display
+        (window as any).whatsappFallbackUrl = whatsappUrl;
+      } else {
+        console.log('[SmartForm] WhatsApp aberto com sucesso');
+      }
+      
       setIsSubmitting(false);
-      // Redirect to WhatsApp
-      window.open(whatsappUrl, '_blank');
       setIsSubmitted(true);
       onSubmit?.(formData);
-    }, 1000);
+      
+    } catch (error) {
+      console.error('[SmartForm] Erro no envio:', error);
+      setIsSubmitting(false);
+    }
   };
 
   const formatPhone = (value: string) => {
@@ -234,6 +253,8 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
   };
 
   if (isSubmitted) {
+    const fallbackUrl = (window as any).whatsappFallbackUrl;
+    
     return (
       <div className="glass-card rounded-3xl p-8 text-center max-w-md mx-auto">
         <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -241,8 +262,26 @@ ${data.symptoms.map(symptom => `• ${symptom}`).join('\n')}
         </div>
         <h3 className="text-2xl font-bold mb-4 text-success">Formulário Enviado!</h3>
         <p className="text-muted-foreground mb-6">
-          Recebemos suas informações. Nossa equipe entrará em contato em breve.
+          Suas informações foram encaminhadas para o WhatsApp. Nossa equipe entrará em contato em breve.
         </p>
+        
+        {fallbackUrl && (
+          <div className="mb-6 p-4 bg-accent/10 border border-accent/20 rounded-xl">
+            <p className="text-sm text-muted-foreground mb-3">
+              Se o WhatsApp não abriu automaticamente, clique no link abaixo:
+            </p>
+            <a 
+              href={fallbackUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              Abrir WhatsApp
+            </a>
+          </div>
+        )}
+        
         <div className="text-sm text-muted-foreground">
           Tempo estimado de resposta: <strong>até 2 horas</strong>
         </div>
