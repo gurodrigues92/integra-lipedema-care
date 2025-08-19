@@ -5,6 +5,7 @@ import WhatsAppFixed from "@/components/WhatsAppFixed";
 import FAQAccordion from "@/components/FAQAccordion";
 import { AwardBadge } from "@/components/ui/award-badge";
 import { BeamsBackground } from "@/components/ui/beams-background";
+import teamPhoto from "@/assets/team-doctors.jpg";
 
 const IntegraLipecare = () => {
   const [socialProofCount, setSocialProofCount] = useState(0);
@@ -281,21 +282,21 @@ const IntegraLipecare = () => {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Nossa Equipe Especializada
+                Conheça as Especialistas que Vão Transformar sua Vida
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Profissionais qualificadas e experientes, dedicadas ao cuidado humanizado 
-                e ao tratamento especializado do lipedema
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+                Duas médicas renomadas, formadas nas melhores universidades do país, 
+                unidas para devolver qualidade de vida às mulheres com lipedema
               </p>
             </div>
             
             <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-              {/* Foto da Equipe */}
+              {/* Foto das Médicas */}
               <div className="relative">
                 <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                    <img 
-                     src="/team-photo.jpg" 
-                     alt="Dra. Ana Carolina e Ft. Mariana - Equipe especializada da Integra Lipecare"
+                     src={teamPhoto}
+                     alt="Dra. Daniela Persinotti e Dra. Fernanda T. Sales Antila - Especialistas da Integra Lipecare"
                      className="w-full h-full object-cover"
                      loading="lazy"
                    />
@@ -303,57 +304,106 @@ const IntegraLipecare = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl -z-10 blur-xl"></div>
               </div>
               
-              {/* Badges e Credenciais */}
+              {/* Informações das Médicas */}
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">
-                    Credenciais e Especializações
-                  </h3>
+                {/* Dra. Daniela Persinotti */}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-primary mb-2">Dra. Daniela Persinotti</h3>
+                    <p className="text-lg font-semibold text-muted-foreground mb-1">CRM 99148</p>
+                    <p className="text-base text-muted-foreground mb-4">Especialista em Saúde Feminina e Metabolismo</p>
+                  </div>
                   
-                  <div className="grid gap-6">
+                  <div className="grid gap-3">
                     <div className="animate-fade-in-up animation-delay-100">
                       <AwardBadge 
                         type="especialista-lipedema"
-                        title="Especialista em Lipedema"
-                        subtitle="Medicina Vascular - CRM 12345"
+                        title="Ginecologista e Obstetra"
+                        subtitle="Residência em Ginecologia e Obstetrícia"
                       />
                     </div>
                     
                     <div className="animate-fade-in-up animation-delay-200">
                       <AwardBadge 
                         type="pos-graduacao"
-                        title="Pós-graduação USP"
-                        subtitle="Medicina Vascular e Endovascular"
+                        title="Oncologia Ginecológica"
+                        subtitle="Residência Médica Especializada"
                       />
                     </div>
                     
                     <div className="animate-fade-in-up animation-delay-300">
                       <AwardBadge 
                         type="certificacao-dlm"
-                        title="Certificação Internacional DLM"
-                        subtitle="Drenagem Linfática Manual - Fisioterapia"
-                      />
-                    </div>
-                    
-                    <div className="animate-fade-in-up animation-delay-400">
-                      <AwardBadge 
-                        type="membro-sociedade"
-                        title="Membro SBACV"
-                        subtitle="Sociedade Brasileira Angiologia e Cirurgia Vascular"
+                        title="Cirurgia Minimamente Invasiva"
+                        subtitle="Pós-graduação em Laparoscopia e Histeroscopia"
                       />
                     </div>
                   </div>
+                  
+                  <div className="bg-card/50 backdrop-blur-sm p-4 rounded-xl border">
+                    <p className="text-sm italic text-muted-foreground">
+                      "Cada mulher é única. Trato o lipedema considerando hormônios, metabolismo e história 
+                      de vida para criar um protocolo verdadeiramente personalizado."
+                    </p>
+                  </div>
                 </div>
-                
-                <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border">
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div>
-                      <div className="text-2xl font-bold text-primary mb-1">15+</div>
-                      <div className="text-sm text-muted-foreground">Anos de Experiência</div>
+
+                {/* Dra. Fernanda T. Sales Antila */}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-primary mb-2">Dra. Fernanda T. Sales Antila</h3>
+                    <p className="text-lg font-semibold text-muted-foreground mb-1">CRM 169587 / RQE 83864</p>
+                    <p className="text-base text-muted-foreground mb-4">Cirurgiã Vascular pela UNICAMP</p>
+                  </div>
+                  
+                  <div className="grid gap-3">
+                    <div className="animate-fade-in-up animation-delay-400">
+                      <AwardBadge 
+                        type="especialista-lipedema"
+                        title="Médica UNICAMP"
+                        subtitle="Cirurgia Geral e Cirurgia Vascular"
+                      />
                     </div>
+                    
+                    <div className="animate-fade-in-up animation-delay-500">
+                      <AwardBadge 
+                        type="membro-sociedade"
+                        title="Membro SBACV"
+                        subtitle="Sociedade Brasileira de Cirurgia Vascular"
+                      />
+                    </div>
+                    
+                    <div className="animate-fade-in-up animation-delay-600">
+                      <AwardBadge 
+                        type="certificacao-dlm"
+                        title="Angiorradiologia"
+                        subtitle="Cirurgia Endovascular - SBACV"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="bg-card/50 backdrop-blur-sm p-4 rounded-xl border">
+                    <p className="text-sm italic text-muted-foreground">
+                      "Com minha formação vascular especializada, identifico e trato alterações circulatórias 
+                      do lipedema que outros profissionais podem não perceber."
+                    </p>
+                  </div>
+                </div>
+
+                {/* Métricas de Confiança */}
+                <div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border">
+                  <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="text-2xl font-bold text-primary mb-1">500+</div>
-                      <div className="text-sm text-muted-foreground">Pacientes Tratadas</div>
+                      <div className="text-xs text-muted-foreground">Pacientes Atendidas</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">25+</div>
+                      <div className="text-xs text-muted-foreground">Anos de Experiência</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">92%</div>
+                      <div className="text-xs text-muted-foreground">Taxa de Satisfação</div>
                     </div>
                   </div>
                 </div>
@@ -361,8 +411,11 @@ const IntegraLipecare = () => {
             </div>
             
             <div className="text-center mt-12">
+              <p className="text-lg font-semibold mb-6">
+                Junte-se às centenas de mulheres que recuperaram sua qualidade de vida
+              </p>
               <WhatsAppButton location="equipe">
-                Conhecer nossa abordagem
+                Quero ser atendida por estas especialistas
               </WhatsAppButton>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
+import { GraduationCap, Award, Shield, Users } from "lucide-react";
 
 type MedicalBadgeType = "especialista-lipedema" | "pos-graduacao" | "certificacao-dlm" | "membro-sociedade";
 
@@ -21,10 +22,17 @@ const maxScale = 1;
 const minScale = 0.97;
 
 const backgroundColor: Record<MedicalBadgeType, string> = {
-  "especialista-lipedema": "hsl(var(--brand-1))",
-  "pos-graduacao": "hsl(var(--brand-2))", 
-  "certificacao-dlm": "hsl(var(--brand-3))",
-  "membro-sociedade": "hsl(var(--primary))",
+  "especialista-lipedema": "hsl(39, 37%, 90%)", // Light sand
+  "pos-graduacao": "hsl(39, 32%, 85%)", // Medium sand
+  "certificacao-dlm": "hsl(38, 23%, 80%)", // Warm beige
+  "membro-sociedade": "hsl(39, 45%, 75%)", // Primary variant
+};
+
+const iconMap: Record<MedicalBadgeType, React.ElementType> = {
+  "especialista-lipedema": Shield,
+  "pos-graduacao": GraduationCap,
+  "certificacao-dlm": Award,
+  "membro-sociedade": Users,
 };
 
 export const AwardBadge = ({ type, title, subtitle, link }: AwardBadgeProps) => {
@@ -220,20 +228,25 @@ export const AwardBadge = ({ type, title, subtitle, link }: AwardBadgeProps) => 
             </mask>
           </defs>
           <rect width="260" height="54" rx="10" fill={backgroundColor[type]} />
-          <rect x="4" y="4" width="252" height="46" rx="8" fill="transparent" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="hsl(var(--muted-foreground))" x="20" y="20">
+          <rect x="4" y="4" width="252" height="46" rx="8" fill="transparent" stroke="hsl(38, 23%, 60%)" strokeWidth="1" />
+          <text fontFamily="Inter, sans-serif" fontSize="9" fontWeight="600" fill="hsl(38, 23%, 45%)" x="20" y="20">
             INTEGRA LIPECARE
           </text>
-          <text fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="hsl(var(--foreground))" x="20" y="36">
+          <text fontFamily="Inter, sans-serif" fontSize="14" fontWeight="700" fill="hsl(38, 23%, 28%)" x="20" y="36">
             {title}
           </text>
-          <text fontFamily="Inter, sans-serif" fontSize="10" fontWeight="500" fill="hsl(var(--muted-foreground))" x="20" y="48">
+          <text fontFamily="Inter, sans-serif" fontSize="10" fontWeight="500" fill="hsl(38, 23%, 40%)" x="20" y="48">
             {subtitle}
           </text>
           <g transform="translate(220, 16)">
-            <circle r="11" fill="hsl(var(--primary))" opacity="0.2" />
-            <path fill="hsl(var(--primary))" 
-                  d="M-6,-6 L6,-6 L6,6 L-6,6 Z M-4,-4 L4,-4 L4,4 L-4,4 Z M-2,-2 L2,-2 L2,2 L-2,2 Z" />
+            <circle r="11" fill="hsl(39, 45%, 55%)" opacity="0.3" />
+            <foreignObject x="-8" y="-8" width="16" height="16">
+              {React.createElement(iconMap[type], {
+                size: 16,
+                color: "hsl(38, 23%, 28%)",
+                strokeWidth: 2
+              })}
+            </foreignObject>
           </g>
           <g style={{ mixBlendMode: "overlay" }} mask={`url(#badgeMask-${type})`}>
             {[...Array(6)].map((_, i) => (
