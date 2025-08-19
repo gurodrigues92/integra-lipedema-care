@@ -19,6 +19,9 @@ import { AccessibilityManager } from "@/components/AccessibilityManager";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SmartForm } from "@/components/SmartForm";
 import { SEOHead } from "@/components/SEOHead";
+import PWAManager from "@/components/PWAManager";
+import TouchGestures from "@/components/TouchGestures";
+import NetworkStatus from "@/components/NetworkStatus";
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [socialProofCount, setSocialProofCount] = useState(0);
@@ -133,9 +136,16 @@ const IntegraLipecare = () => {
       {/* Accessibility Features */}
       <AccessibilityManager />
       
-      {/* Error Boundary Wrap */}
+      {/* PWA & Network Features */}
+      <PWAManager />
+      <NetworkStatus />
+      
       <ErrorBoundary>
-        <div className="min-h-screen" id="main-content">
+        <TouchGestures
+          onSwipeUp={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onSwipeDown={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
+        >
+          <div className="min-h-screen" id="main-content">
           {/* Scroll Progress Bar */}
           <ScrollProgress />
         
@@ -930,10 +940,11 @@ const IntegraLipecare = () => {
         </footer>
 
         </div>
+        
+        {/* WhatsApp Fixed Button */}
+        <WhatsAppFixed />
+        </TouchGestures>
       </ErrorBoundary>
-      
-      {/* WhatsApp Fixed Button */}
-      <WhatsAppFixed />
     </>;
 };
 

@@ -1313,6 +1313,8 @@ All colors MUST be HSL.
   }
 }
 
+}
+
 /* Performance Optimization Classes */
 @layer utilities {
   .will-change-transform {
