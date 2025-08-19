@@ -32,7 +32,7 @@ function createBeam(width: number, height: number): Beam {
         length: height * 2.5,
         angle: angle,
         speed: 0.6 + Math.random() * 1.2,
-        opacity: 0.08 + Math.random() * 0.10, // Reduced opacity for subtlety
+        opacity: 0.15 + Math.random() * 0.12, // Increased for better visibility
         hue: 38 + Math.random() * 8, // Brand's sand/brown hue range (38-46)
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: 0.02 + Math.random() * 0.03,
@@ -47,7 +47,7 @@ export function BeamsBackground({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const beamsRef = useRef<Beam[]>([]);
     const animationFrameRef = useRef<number>(0);
-    const MINIMUM_BEAMS = 15; // Reduced for subtlety
+    const MINIMUM_BEAMS = 20; // Increased for better coverage
 
     const opacityMap = {
         subtle: 0.6,
@@ -93,7 +93,7 @@ export function BeamsBackground({
             beam.width = 80 + Math.random() * 80;
             beam.speed = 0.4 + Math.random() * 0.3; // Slower speed
             beam.hue = 38 + (index * 8) / totalBeams; // Brand colors
-            beam.opacity = 0.06 + Math.random() * 0.08;
+            beam.opacity = 0.15 + Math.random() * 0.12;
             return beam;
         }
 
@@ -139,7 +139,7 @@ export function BeamsBackground({
             if (!canvas || !ctx) return;
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.filter = "blur(25px)"; // Reduced blur for subtlety
+            ctx.filter = "blur(20px)"; // Optimized blur
 
             const totalBeams = beamsRef.current.length;
             beamsRef.current.forEach((beam, index) => {
@@ -186,7 +186,7 @@ export function BeamsBackground({
             <motion.div
                 className="absolute inset-0"
                 animate={{
-                    opacity: [0.02, 0.08, 0.02],
+                    opacity: [0.05, 0.15, 0.05],
                 }}
                 transition={{
                     duration: 12,
@@ -195,14 +195,14 @@ export function BeamsBackground({
                 }}
                 style={{
                     background: `linear-gradient(135deg, 
-                        hsla(var(--brand-2), 0.05) 0%, 
-                        hsla(var(--brand-1), 0.03) 50%,
-                        hsla(var(--brand-3), 0.02) 100%)`,
+                        hsla(39, 37%, 82%, 0.08) 0%, 
+                        hsla(38, 32%, 71%, 0.05) 50%,
+                        hsla(38, 23%, 28%, 0.03) 100%)`,
                     backdropFilter: "blur(20px)",
                 }}
             />
 
-            <div className="relative z-10">
+            <div className="relative z-10 w-full">
                 {children}
             </div>
         </div>
