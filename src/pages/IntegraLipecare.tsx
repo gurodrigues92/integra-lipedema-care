@@ -4,6 +4,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppFixed from "@/components/WhatsAppFixed";
 import FAQAccordion from "@/components/FAQAccordion";
 import { AwardBadge } from "@/components/ui/award-badge";
+import { BeamsBackground } from "@/components/ui/beams-background";
 
 const IntegraLipecare = () => {
   const [socialProofCount, setSocialProofCount] = useState(0);
@@ -104,40 +105,42 @@ const IntegraLipecare = () => {
           🔥 <strong>Oferta Especial:</strong> Primeira consulta com 30% de desconto - Válido até sexta-feira
         </div>
 
-        {/* Hero Section */}
-        <section className="hero-section section-padding relative z-10">
-          <div className="container-custom">
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
-                Você sofre com dores e inchaços nas pernas há anos e nenhum médico descobriu o que é?
-              </h1>
-              
-              <p className="text-xl md:text-2xl mb-8 text-muted-foreground animate-fade-in-up animation-delay-100">
-                Pode ser <strong className="text-foreground">LIPEDEMA</strong> - uma condição que afeta 11% das mulheres e é frequentemente confundida com obesidade ou linfedema
-              </p>
-              
-              <div className="mb-8 animate-fade-in-up animation-delay-200">
-                <WhatsAppButton location="hero" />
-              </div>
-              
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center gap-6 text-sm font-medium animate-fade-in-up animation-delay-300">
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-success" />
-                  <span>Equipe multidisciplinar especializada</span>
+        {/* Hero Section with Animated Background */}
+        <BeamsBackground className="min-h-screen flex items-center" intensity="subtle">
+          <section className="section-padding relative z-10 w-full">
+            <div className="container-custom">
+              <div className="text-center max-w-4xl mx-auto">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
+                  Você sofre com dores e inchaços nas pernas há anos e nenhum médico descobriu o que é?
+                </h1>
+                
+                <p className="text-xl md:text-2xl mb-8 text-muted-foreground animate-fade-in-up animation-delay-100">
+                  Pode ser <strong className="text-foreground">LIPEDEMA</strong> - uma condição que afeta 11% das mulheres e é frequentemente confundida com obesidade ou linfedema
+                </p>
+                
+                <div className="mb-8 animate-fade-in-up animation-delay-200">
+                  <WhatsAppButton location="hero" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-success" />
-                  <span>Clínica criada por pacientes</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-5 h-5 text-success" />
-                  <span>+500 mulheres atendidas</span>
+                
+                {/* Trust Badges */}
+                <div className="flex flex-wrap justify-center gap-6 text-sm font-medium animate-fade-in-up animation-delay-300">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-success" />
+                    <span>Equipe multidisciplinar especializada</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-success" />
+                    <span>Clínica criada por pacientes</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-5 h-5 text-success" />
+                    <span>+500 mulheres atendidas</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </BeamsBackground>
 
         {/* Social Proof Bar */}
         <div className="bg-card py-6 border-y">
