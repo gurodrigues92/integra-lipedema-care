@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Integra Lipecare Design System - Cores da Marca e Tokens Funcionais
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cores Principais da Marca Integra Lipecare */
+    --brand-1: 38 32% 71%; /* #DDCCAD - Areia médio */
+    --brand-2: 39 37% 82%; /* #E9D7B8 - Areia claro */
+    --brand-3: 38 23% 28%; /* #463E30 - Marrom escuro */
+    
+    /* Sistema de Cores Funcionais */
+    --background: 39 37% 82%; /* brand-2 como fundo principal */
+    --foreground: 38 23% 28%; /* brand-3 como texto principal */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* Branco para cards */
+    --card-foreground: 38 23% 28%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 38 23% 28%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 38 23% 28%; /* brand-3 */
+    --primary-foreground: 39 37% 82%; /* brand-2 */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 39 37% 82%; /* brand-2 */
+    --secondary-foreground: 38 23% 28%; /* brand-3 */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 38 32% 71%; /* brand-1 */
+    --muted-foreground: 38 23% 40%; /* Tom mais escuro do brand-3 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 38 32% 71%; /* brand-1 */
+    --accent-foreground: 38 23% 28%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 38 32% 71% / 0.4; /* brand-1 com transparência */
+    --input: 38 32% 71% / 0.6;
+    --ring: 38 32% 71%;
 
-    --radius: 0.5rem;
+    /* Cores de Estado */
+    --success: 120 50% 50%;
+    --warning: 35 100% 55%;
+    --error: 0 84% 60%;
+    --info: 220 90% 56%;
+    
+    /* Gradientes da Marca */
+    --gradient-hero: linear-gradient(135deg, hsl(39 37% 82%) 0%, hsl(38 32% 71%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(38 23% 28%) 0%, hsl(38 23% 35%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(39 37% 95%) 100%);
+    
+    /* Sombras Premium */
+    --shadow-sm: 0 2px 8px hsl(38 23% 28% / 0.08);
+    --shadow-md: 0 4px 14px hsl(38 23% 28% / 0.12);
+    --shadow-lg: 0 8px 24px hsl(38 23% 28% / 0.15);
+    --shadow-cta: 0 4px 14px hsl(38 23% 28% / 0.25);
+    
+    /* Transições Suaves */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +128,198 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Componentes Customizados da Integra Lipecare */
+@layer components {
+  /* Botão WhatsApp Principal */
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg;
+    background: var(--gradient-cta);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-cta);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px hsl(38 23% 28% / 0.35);
+  }
+  
+  .btn-whatsapp:active {
+    transform: translateY(0);
+  }
+  
+  /* Pulso de animação no botão */
+  .btn-whatsapp::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid hsl(var(--accent));
+    border-radius: 50px;
+    animation: pulse-ring 2s infinite;
+    opacity: 0;
+  }
+  
+  /* WhatsApp fixo flutuante */
+  .whatsapp-fixed {
+    @apply fixed bottom-6 right-6 z-50;
+  }
+  
+  .whatsapp-bubble {
+    @apply w-16 h-16 rounded-full flex items-center justify-center text-white;
+    background: #25D366;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-bounce);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .whatsapp-bubble:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Cards de benefícios */
+  .benefit-card {
+    @apply p-6 rounded-2xl border;
+    background: var(--gradient-card);
+    border-color: hsl(var(--border));
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+  }
+  
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Seção hero com gradiente */
+  .hero-section {
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, hsl(var(--accent) / 0.1) 0%, transparent 50%);
+  }
+  
+  /* Barra de urgência */
+  .urgency-bar {
+    @apply bg-warning text-black py-3 px-4 text-center font-semibold;
+    animation: pulse-bg 2s ease-in-out infinite alternate;
+  }
+  
+  /* FAQ Accordion customizado */
+  .faq-item {
+    @apply border-b border-border last:border-b-0;
+  }
+  
+  .faq-trigger {
+    @apply w-full text-left py-6 px-0 font-semibold text-lg;
+    transition: var(--transition-smooth);
+  }
+  
+  .faq-trigger:hover {
+    color: hsl(var(--accent-foreground));
+  }
+  
+  /* Social proof elements */
+  .social-proof-counter {
+    @apply inline-flex items-center gap-2 text-sm font-medium;
+  }
+  
+  .live-indicator {
+    @apply inline-flex items-center gap-2 text-sm;
+  }
+  
+  .pulse-dot {
+    @apply w-2 h-2 bg-success rounded-full;
+    animation: pulse-dot 1.5s infinite;
+  }
+  
+  /* Seções com espaçamento consistente */
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+  
+  /* Container responsivo */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Animações customizadas */
+@layer utilities {
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1.1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulse-bg {
+    0% {
+      background-color: hsl(var(--warning));
+    }
+    100% {
+      background-color: hsl(var(--warning) / 0.8);
+    }
+  }
+  
+  @keyframes pulse-dot {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+  
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 0.3s;
   }
 }
