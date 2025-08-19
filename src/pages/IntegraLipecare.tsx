@@ -7,6 +7,9 @@ import FAQAccordion from "@/components/FAQAccordion";
 import { AwardBadge } from "@/components/ui/award-badge";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { MicroInteraction } from "@/components/MicroInteraction";
 const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [socialProofCount, setSocialProofCount] = useState(0);
@@ -113,6 +116,9 @@ const IntegraLipecare = () => {
   return <>
       {/* Meta tags e Schema.org serão adicionados via Helmet */}
       <div className="min-h-screen">
+        {/* Scroll Progress Bar */}
+        <ScrollProgress />
+        
         {/* Header com Logo */}
         <header className={`bg-background/95 backdrop-blur-sm sticky top-0 z-50 transition-all duration-500 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'}`}>
           <div className="container-custom py-4">
@@ -131,7 +137,7 @@ const IntegraLipecare = () => {
                 {/* Main Content - Left Side */}
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-6">
-                    <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight animate-fade-in-up">
+                    <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight animate-fade-in-up gpu-accelerated">
                       Você sofre com dores e 
                       <span className="text-gradient-primary block"> inchaços nas pernas</span>
                       há anos?
@@ -144,7 +150,9 @@ const IntegraLipecare = () => {
                   
                   {/* CTA with Modern Styling */}
                   <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-200">
-                    <WhatsAppButton location="hero" />
+                    <MicroInteraction effect="elastic">
+                      <WhatsAppButton location="hero" />
+                    </MicroInteraction>
                     <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
                       <div className="flex">
                         {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
@@ -159,7 +167,7 @@ const IntegraLipecare = () => {
                   {/* Trust Elements */}
                   <div className="space-y-6">
                     {/* Social Proof Card */}
-                    <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50 shadow-lg">
+                    <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50 shadow-lg gpu-accelerated">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="live-indicator">
                           <div className="pulse-dot"></div>
@@ -171,31 +179,30 @@ const IntegraLipecare = () => {
                     </div>
 
                     {/* Trust Badges - Vertical Stack */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30">
-                        <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
-                          <Check className="w-4 h-4 text-success" />
-                        </div>
-                        <span className="text-sm font-medium">Equipe multidisciplinar</span>
-                      </div>
-                      <div className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30">
-                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                          <Users className="w-4 h-4 text-primary" />
-                        </div>
-                        <span className="text-sm font-medium">Criada por pacientes</span>
-                      </div>
-                      <div className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30">
-                        <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
-                          <Shield className="w-4 h-4 text-accent" />
-                        </div>
-                        <span className="text-sm font-medium">Resultados comprovados</span>
-                      </div>
+                    <div className="space-y-3 stagger-children" style={{"--stagger-delay": "100ms"} as React.CSSProperties}>
+                      {[
+                        { icon: Check, text: "Equipe multidisciplinar", color: "success" },
+                        { icon: Users, text: "Criada por pacientes", color: "primary" },
+                        { icon: Shield, text: "Resultados comprovados", color: "accent" }
+                      ].map((item, index) => (
+                        <MicroInteraction key={index} effect="glow">
+                          <div 
+                            className="flex items-center gap-3 bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/30 gpu-accelerated transition-all duration-300 hover:scale-105"
+                            style={{"--stagger-index": index} as React.CSSProperties}
+                          >
+                            <div className={`w-8 h-8 rounded-full bg-${item.color}/20 flex items-center justify-center`}>
+                              <item.icon className={`w-4 h-4 text-${item.color}`} />
+                            </div>
+                            <span className="text-sm font-medium">{item.text}</span>
+                          </div>
+                        </MicroInteraction>
+                      ))}
                     </div>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
-                  <div className="absolute -bottom-8 -left-4 w-32 h-32 bg-accent/5 rounded-full blur-3xl"></div>
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl animate-parallax-float"></div>
+                  <div className="absolute -bottom-8 -left-4 w-32 h-32 bg-accent/5 rounded-full blur-3xl animate-parallax-float" style={{animationDelay: '2s'}}></div>
                 </div>
               </div>
             </div>
@@ -259,34 +266,38 @@ const IntegraLipecare = () => {
         </section>
 
         {/* Seção Problema */}
-        <section className="section-padding bg-card">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
-                Você se identifica com estes sintomas?
-              </h2>
-            </div>
-            
-            <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-6 mb-12">
-                {symptoms.map((symptom, index) => <div key={index} className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 animate-fade-in-up animation-delay-${(index + 1) * 100} hover:scale-[1.02] hover:border-primary/30`}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
-                        <Check className="w-5 h-5 text-success" />
-                      </div>
-                      <span className="text-foreground font-medium leading-relaxed">{symptom}</span>
-                    </div>
-                  </div>)}
+        <AnimatedSection animation="fade-up" delay={100}>
+          <section className="section-padding bg-card">
+            <div className="container-custom">
+              <div className="text-center mb-16">
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                  Você se identifica com estes sintomas?
+                </h2>
               </div>
               
-              <div className="text-center">
-                <WhatsAppButton location="problema">
-                  Quero falar com especialistas
-                </WhatsAppButton>
+              <div className="max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-6 mb-12 stagger-children" style={{"--stagger-delay": "150ms"} as React.CSSProperties}>
+                  {symptoms.map((symptom, index) => <div key={index} className={`group benefit-card bg-gradient-to-br from-background to-background/50 border border-border/50 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 gpu-accelerated hover:scale-[1.02] hover:border-primary/30`} style={{"--stagger-index": index} as React.CSSProperties}>
+                      <div className="flex items-start gap-4">
+                        <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0 group-hover:bg-success/30 transition-colors">
+                          <Check className="w-5 h-5 text-success" />
+                        </div>
+                        <span className="text-foreground font-medium leading-relaxed">{symptom}</span>
+                      </div>
+                    </div>)}
+                </div>
+                
+                <div className="text-center">
+                  <MicroInteraction effect="ripple">
+                    <WhatsAppButton location="problema">
+                      Quero falar com especialistas
+                    </WhatsAppButton>
+                  </MicroInteraction>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
 
         {/* Seção Amplificação - Warning Modernizada */}
         <section className="section-padding bg-gradient-to-br from-destructive/5 via-background to-destructive/5">
@@ -371,82 +382,87 @@ const IntegraLipecare = () => {
         </section>
 
         {/* Seção Solução - Tratamento Modernizado */}
-        <section className="section-padding bg-gradient-to-br from-background via-card/30 to-background">
-          <div className="container-custom">
-            {/* Header */}
-            <div className="text-center mb-16 animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6">
-                <Shield className="w-4 h-4" />
-                Nossa Solução
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
-                Tratamento integrado e humanizado
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                A primeira clínica de Sorocaba criada <strong className="text-primary">POR pacientes PARA pacientes</strong>
-              </p>
-            </div>
-            
-            {/* Cards com Layout Assimétrico */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              {differentials.map((item, index) => (
-                <div 
-                  key={index} 
-                  className={`group glass-card glass-card-hover rounded-3xl p-8 text-center animate-stagger-fade-in hover:scale-105 transition-transform duration-300`}
-                  style={{ animationDelay: `${index * 200}ms` }}
-                >
-                  {/* Icon with Modern Styling */}
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <item.icon className="w-10 h-10 text-primary" />
-                    </div>
-                    {/* Decorative Ring */}
-                    <div className="absolute inset-0 w-20 h-20 mx-auto rounded-2xl border-2 border-primary/0 group-hover:border-primary/20 transition-colors duration-300"></div>
-                  </div>
-                  
-                  <h3 className="font-display text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">
-                    {item.description}
-                  </p>
-                  
-                  {/* Progress indicator */}
-                  <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <AnimatedSection animation="slide-right" delay={200}>
+          <section className="section-padding bg-gradient-to-br from-background via-card/30 to-background">
+            <div className="container-custom">
+              {/* Header */}
+              <div className="text-center mb-16 animate-fade-in-up">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-medium mb-6">
+                  <Shield className="w-4 h-4" />
+                  Nossa Solução
                 </div>
-              ))}
-            </div>
-            
-            {/* Enhanced CTA Section */}
-            <div className="text-center">
-              <div className="glass-card rounded-3xl p-8 max-w-2xl mx-auto mb-8 animate-scale-bounce">
-                <h3 className="font-display text-2xl font-bold mb-4 text-gradient-primary">
-                  Pronta para transformar sua vida?
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Nossa avaliação gratuita inclui diagnóstico completo e plano de tratamento personalizado
+                <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-primary">
+                  Tratamento integrado e humanizado
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  A primeira clínica de Sorocaba criada <strong className="text-primary">POR pacientes PARA pacientes</strong>
                 </p>
-                <WhatsAppButton location="solucao" />
               </div>
               
-              {/* Trust Elements */}
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-success" />
-                  <span>Sem compromisso</span>
+              {/* Cards com Layout Assimétrico */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 stagger-children" style={{"--stagger-delay": "200ms"} as React.CSSProperties}>
+                {differentials.map((item, index) => (
+                  <MicroInteraction key={index} effect="glow">
+                    <div 
+                      className={`group glass-card glass-card-hover rounded-3xl p-8 text-center gpu-accelerated hover:scale-105 transition-transform duration-300`}
+                      style={{"--stagger-index": index} as React.CSSProperties}
+                    >
+                      {/* Icon with Modern Styling */}
+                      <div className="relative mb-6">
+                        <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-parallax-float">
+                          <item.icon className="w-10 h-10 text-primary" />
+                        </div>
+                        {/* Decorative Ring */}
+                        <div className="absolute inset-0 w-20 h-20 mx-auto rounded-2xl border-2 border-primary/0 group-hover:border-primary/20 transition-colors duration-300"></div>
+                      </div>
+                      
+                      <h3 className="font-display text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                      
+                      {/* Progress indicator */}
+                      <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </MicroInteraction>
+                ))}
+              </div>
+              
+              {/* Enhanced CTA Section */}
+              <div className="text-center">
+                <div className="glass-card rounded-3xl p-8 max-w-2xl mx-auto mb-8 animate-scale-bounce">
+                  <h3 className="font-display text-2xl font-bold mb-4 text-gradient-primary">
+                    Pronta para transformar sua vida?
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Nossa avaliação gratuita inclui diagnóstico completo e plano de tratamento personalizado
+                  </p>
+                  <MicroInteraction effect="elastic">
+                    <WhatsAppButton location="solucao" />
+                  </MicroInteraction>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-success" />
-                  <span>Atendimento humanizado</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-success" />
-                  <span>Especialistas dedicadas</span>
+                
+                {/* Trust Elements */}
+                <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-success" />
+                    <span>Sem compromisso</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-success" />
+                    <span>Atendimento humanizado</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-success" />
+                    <span>Especialistas dedicadas</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
 
         {/* Seção Nossa Equipe */}
         <section className="section-padding section-gradient-warm">
@@ -765,26 +781,30 @@ const IntegraLipecare = () => {
         </section>
 
         {/* CTA Final */}
-        <section className="section-padding bg-primary text-primary-foreground">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Não espere mais para cuidar da sua saúde
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Agende sua primeira consulta com 30% de desconto e comece sua jornada de transformação hoje mesmo
-            </p>
-            
-            <div className="mb-6">
-              <WhatsAppButton location="cta-final" className="bg-card text-card-foreground hover:bg-card/90">
-                Agendar minha consulta agora
-              </WhatsAppButton>
+        <AnimatedSection animation="scale-in" delay={300}>
+          <section className="section-padding bg-primary text-primary-foreground">
+            <div className="container-custom text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Não espere mais para cuidar da sua saúde
+              </h2>
+              <p className="text-xl mb-8 opacity-90">
+                Agende sua primeira consulta com 30% de desconto e comece sua jornada de transformação hoje mesmo
+              </p>
+              
+              <div className="mb-6">
+                <MicroInteraction effect="glow">
+                  <WhatsAppButton location="cta-final" className="bg-card text-card-foreground hover:bg-card/90">
+                    Agendar minha consulta agora
+                  </WhatsAppButton>
+                </MicroInteraction>
+              </div>
+              
+              <p className="text-sm opacity-75">
+                Oferta válida até sexta-feira • Vagas limitadas
+              </p>
             </div>
-            
-            <p className="text-sm opacity-75">
-              Oferta válida até sexta-feira • Vagas limitadas
-            </p>
-          </div>
-        </section>
+          </section>
+        </AnimatedSection>
 
         {/* Footer */}
         <footer className="bg-background border-t border-border/40">

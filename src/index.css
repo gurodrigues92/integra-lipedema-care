@@ -995,6 +995,186 @@ All colors MUST be HSL.
   .animate-fade-in-up {
     animation: fade-in-up 0.6s ease-out;
   }
+
+  /* Advanced Microinteraction Animations */
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes morph-hover {
+    0% {
+      border-radius: 0.75rem;
+      transform: scale(1);
+    }
+    50% {
+      border-radius: 2rem;
+      transform: scale(1.02);
+    }
+    100% {
+      border-radius: 0.75rem;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes elastic {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes elastic-click {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(0.95);
+    }
+    75% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes magnetic {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  @keyframes parallax-float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-8px) translateX(2px);
+    }
+    50% {
+      transform: translateY(-12px) translateX(0px);
+    }
+    75% {
+      transform: translateY(-8px) translateX(-2px);
+    }
+  }
+
+  /* Enhanced Animation Classes */
+  .animate-ripple {
+    animation: ripple 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-morph-hover {
+    animation: morph-hover 0.4s ease-in-out forwards;
+  }
+
+  .animate-elastic {
+    animation: elastic 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  .animate-elastic-click {
+    animation: elastic-click 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  .animate-magnetic {
+    animation: magnetic 0.3s ease-out forwards;
+  }
+
+  .animate-parallax-float {
+    animation: parallax-float 6s ease-in-out infinite;
+  }
+
+  /* GPU Acceleration for Performance */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+
+  /* Enhanced Animation Delays */
+  .animation-delay-50 {
+    animation-delay: 0.05s;
+  }
+
+  .animation-delay-150 {
+    animation-delay: 0.15s;
+  }
+
+  .animation-delay-250 {
+    animation-delay: 0.25s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 0.7s;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+  }
+
+  /* Stagger animation utilities */
+  .stagger-children > * {
+    animation-delay: calc(var(--stagger-delay, 100ms) * var(--stagger-index, 0));
+  }
+
+  /* Shadow effects for microinteractions */
+  .shadow-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--primary) / 0.3),
+      0 0 40px hsl(var(--primary) / 0.2),
+      0 0 60px hsl(var(--primary) / 0.1);
+  }
+
+  .shadow-glow-accent {
+    box-shadow: 
+      0 0 20px hsl(var(--accent) / 0.3),
+      0 0 40px hsl(var(--accent) / 0.2),
+      0 0 60px hsl(var(--accent) / 0.1);
+  }
   
   .animation-delay-100 {
     animation-delay: 0.1s;
@@ -1006,5 +1186,25 @@ All colors MUST be HSL.
   
   .animation-delay-300 {
     animation-delay: 0.3s;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-parallax-float,
+  .animate-float,
+  .animate-pulse,
+  .animate-scale-bounce,
+  .animate-pulse-glow {
+    animation: none !important;
   }
 }
