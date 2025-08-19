@@ -165,14 +165,14 @@ const IntegraLipecare = () => {
                 </div>
 
                 {/* Featured Image - Right Side */}
-                <div className="lg:col-span-5 relative animate-fade-in-up animation-delay-300">
+                <div className="lg:col-span-5 relative animate-fade-in-up animation-delay-300 flex justify-center">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="relative cursor-pointer group">
+                      <div className="relative cursor-pointer group max-w-md lg:max-w-lg">
                         <img 
                           src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg"
                           alt="Integra Lipecare - Equipe Especializada em Lipedema"
-                          className="w-full rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-[1.02]"
+                          className="w-full aspect-square object-cover rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-[1.02]"
                           loading="eager"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-2xl flex items-center justify-center">
@@ -185,7 +185,7 @@ const IntegraLipecare = () => {
                       <img 
                         src="https://res.cloudinary.com/dkobjk4qi/image/upload/v1755459488/DSC03885_qsgeyv.jpg" 
                         alt="Integra Lipecare - Equipe Especializada em Lipedema" 
-                        className="w-full rounded-lg"
+                        className="w-full aspect-square object-cover rounded-lg"
                       />
                     </DialogContent>
                   </Dialog>

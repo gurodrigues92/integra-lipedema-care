@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+// Import removed - no icon needed
 import { GradientButton } from "./ui/gradient-button";
 
 interface WhatsAppButtonProps {
@@ -62,7 +62,6 @@ const WhatsAppButton = ({
         rel="noopener noreferrer"
         aria-label={`Conversar no WhatsApp - ${location}`}
       >
-        <MessageCircle className="w-6 h-6" />
         <span>{children}</span>
       </a>
     </GradientButton>
