@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import { GradientButton } from "./ui/gradient-button";
 
 interface WhatsAppButtonProps {
   location: string;
@@ -7,6 +8,8 @@ interface WhatsAppButtonProps {
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
+  variant?: "primary" | "secondary" | "accent" | "whatsapp";
+  size?: "default" | "sm" | "lg";
 }
 
 const WhatsAppButton = ({ 
@@ -15,7 +18,9 @@ const WhatsAppButton = ({
   children = "Quero entender meu caso agora",
   utm_source = "landing",
   utm_medium = "cta",
-  utm_campaign = "lipedema"
+  utm_campaign = "lipedema",
+  variant = "whatsapp",
+  size = "default"
 }: WhatsAppButtonProps) => {
   const message = encodeURIComponent("Olá! Vi a página da Integra Lipecare e quero entender meu caso");
   const utmParams = `utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&utm_content=${location}`;
@@ -44,17 +49,23 @@ const WhatsAppButton = ({
   };
 
   return (
-    <a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`btn-whatsapp ${className}`}
+    <GradientButton
+      asChild
+      variant={variant}
+      size={size}
+      className={className}
       onClick={handleClick}
-      aria-label={`Conversar no WhatsApp - ${location}`}
     >
-      <MessageCircle className="w-6 h-6" />
-      <span>{children}</span>
-    </a>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Conversar no WhatsApp - ${location}`}
+      >
+        <MessageCircle className="w-6 h-6" />
+        <span>{children}</span>
+      </a>
+    </GradientButton>
   );
 };
 

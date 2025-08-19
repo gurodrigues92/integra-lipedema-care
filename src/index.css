@@ -2,6 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Propriedades CSS customizadas para botões gradientes animados */
+@layer base {
+  @property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 20%;
+    inherits: false;
+  }
+
+  @property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+  }
+
+  @property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+  }
+
+  @property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180%;
+    inherits: false;
+  }
+
+  @property --color-1 {
+    syntax: '<color>';
+    initial-value: hsl(38, 23%, 28%);
+    inherits: false;
+  }
+
+  @property --color-2 {
+    syntax: '<color>';
+    initial-value: hsl(38, 23%, 35%);
+    inherits: false;
+  }
+
+  @property --color-3 {
+    syntax: '<color>';
+    initial-value: hsl(38, 32%, 50%);
+    inherits: false;
+  }
+
+  @property --color-4 {
+    syntax: '<color>';
+    initial-value: hsl(38, 32%, 65%);
+    inherits: false;
+  }
+
+  @property --color-5 {
+    syntax: '<color>';
+    initial-value: hsl(38, 32%, 71%);
+    inherits: false;
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 45deg;
+    inherits: true;
+  }
+
+  @property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(38, 32%, 71%, 0.3);
+    inherits: true;
+  }
+
+  @property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(38, 32%, 71%, 0.8);
+    inherits: true;
+  }
+
+  @property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 0%;
+    inherits: false;
+  }
+
+  @property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 25%;
+    inherits: false;
+  }
+
+  @property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 50%;
+    inherits: false;
+  }
+
+  @property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 75%;
+    inherits: false;
+  }
+
+  @property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+  }
+}
+
 /* Integra Lipecare Design System - Cores da Marca e Tokens Funcionais
 All colors MUST be HSL.
 */
@@ -162,8 +267,162 @@ All colors MUST be HSL.
   }
 }
 
-/* Componentes Modernos e Minimalistas - Integra Lipecare */
+/* Componentes com Gradientes Animados - Integra Lipecare */
 @layer components {
+  /* Botões gradientes animados com paleta da marca */
+  .gradient-button {
+    @apply relative appearance-none cursor-pointer;
+    background: radial-gradient(
+      var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+      var(--color-1) var(--stop-1),
+      var(--color-2) var(--stop-2),
+      var(--color-3) var(--stop-3),
+      var(--color-4) var(--stop-4),
+      var(--color-5) var(--stop-5)
+    );
+    transition:
+      --pos-x 0.4s ease-out,
+      --pos-y 0.4s ease-out,
+      --spread-x 0.4s ease-out,
+      --spread-y 0.4s ease-out,
+      --color-1 0.4s ease-out,
+      --color-2 0.4s ease-out,
+      --color-3 0.4s ease-out,
+      --color-4 0.4s ease-out,
+      --color-5 0.4s ease-out,
+      --border-angle 0.4s ease-out,
+      --border-color-1 0.4s ease-out,
+      --border-color-2 0.4s ease-out,
+      --stop-1 0.4s ease-out,
+      --stop-2 0.4s ease-out,
+      --stop-3 0.4s ease-out,
+      --stop-4 0.4s ease-out,
+      --stop-5 0.4s ease-out,
+      transform 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+  }
+
+  .gradient-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle),
+      var(--border-color-1),
+      var(--border-color-2)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Variante principal (marrom da marca) */
+  .gradient-button-primary {
+    --color-1: hsl(38, 23%, 28%);
+    --color-2: hsl(38, 23%, 35%);
+    --color-3: hsl(38, 32%, 50%);
+    --color-4: hsl(38, 32%, 65%);
+    --color-5: hsl(38, 32%, 71%);
+    --border-color-1: hsla(38, 32%, 71%, 0.3);
+    --border-color-2: hsla(38, 32%, 71%, 0.8);
+  }
+
+  .gradient-button-primary:hover {
+    --pos-x: 0%;
+    --pos-y: 80%;
+    --spread-x: 120%;
+    --spread-y: 140%;
+    --color-1: hsl(38, 32%, 71%);
+    --color-2: hsl(38, 32%, 65%);
+    --color-3: hsl(38, 32%, 50%);
+    --color-4: hsl(38, 23%, 35%);
+    --color-5: hsl(38, 23%, 28%);
+    --border-angle: 200deg;
+    --border-color-1: hsla(38, 32%, 71%, 0.5);
+    --border-color-2: hsla(38, 32%, 71%, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px hsla(38, 23%, 28%, 0.25);
+  }
+
+  /* Variante secundária (areia clara) */
+  .gradient-button-secondary {
+    --color-1: hsl(39, 37%, 82%);
+    --color-2: hsl(38, 32%, 75%);
+    --color-3: hsl(38, 32%, 68%);
+    --color-4: hsl(38, 32%, 71%);
+    --color-5: hsl(38, 23%, 28%);
+    --border-color-1: hsla(38, 23%, 28%, 0.2);
+    --border-color-2: hsla(38, 23%, 28%, 0.6);
+    color: hsl(38, 23%, 28%);
+  }
+
+  .gradient-button-secondary:hover {
+    --pos-x: 100%;
+    --pos-y: 0%;
+    --spread-x: 140%;
+    --spread-y: 120%;
+    --color-1: hsl(38, 23%, 28%);
+    --color-2: hsl(38, 32%, 71%);
+    --color-3: hsl(38, 32%, 68%);
+    --color-4: hsl(38, 32%, 75%);
+    --color-5: hsl(39, 37%, 82%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px hsla(38, 32%, 71%, 0.3);
+  }
+
+  /* Variante WhatsApp */
+  .gradient-button-whatsapp {
+    --color-1: #25D366;
+    --color-2: #22c55e;
+    --color-3: #16a34a;
+    --color-4: #15803d;
+    --color-5: #14532d;
+    --border-color-1: rgba(37, 211, 102, 0.3);
+    --border-color-2: rgba(37, 211, 102, 0.8);
+  }
+
+  .gradient-button-whatsapp:hover {
+    --pos-x: 50%;
+    --pos-y: 0%;
+    --spread-x: 130%;
+    --spread-y: 160%;
+    --color-1: #22c55e;
+    --color-2: #25D366;
+    --color-3: #16a34a;
+    --color-4: #15803d;
+    --color-5: #14532d;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+  }
+
+  /* Variante accent (dourado) */
+  .gradient-button-accent {
+    --color-1: hsl(45, 90%, 70%);
+    --color-2: hsl(43, 85%, 65%);
+    --color-3: hsl(38, 80%, 60%);
+    --color-4: hsl(35, 75%, 55%);
+    --color-5: hsl(32, 70%, 50%);
+    --border-color-1: hsla(45, 90%, 70%, 0.4);
+    --border-color-2: hsla(32, 70%, 50%, 0.8);
+    color: hsl(38, 23%, 28%);
+  }
+
+  .gradient-button-accent:hover {
+    --pos-x: 80%;
+    --pos-y: 20%;
+    --spread-x: 160%;
+    --spread-y: 140%;
+    --color-1: hsl(32, 70%, 50%);
+    --color-2: hsl(35, 75%, 55%);
+    --color-3: hsl(38, 80%, 60%);
+    --color-4: hsl(43, 85%, 65%);
+    --color-5: hsl(45, 90%, 70%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px hsla(38, 80%, 60%, 0.4);
+  }
   /* Botão WhatsApp Principal - Design Premium */
   .btn-whatsapp {
     @apply inline-flex items-center gap-4 px-8 py-5 rounded-2xl font-medium text-lg;
@@ -204,24 +463,56 @@ All colors MUST be HSL.
     box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
   }
   
-  /* Cards modernos com glassmorphism sutil */
+  /* Cards com gradientes multicamadas */
   .benefit-card {
-    @apply p-8 rounded-3xl border border-border/50;
-    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card) / 0.95) 100%);
-    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.05), 0 4px 12px hsl(var(--foreground) / 0.03);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(8px);
+    @apply p-8 rounded-3xl border border-border/30;
+    background: 
+      linear-gradient(135deg, hsla(0, 0%, 100%, 0.9) 0%, hsla(39, 37%, 95%, 0.8) 100%),
+      radial-gradient(circle at 80% 20%, hsla(38, 32%, 71%, 0.1) 0%, transparent 50%),
+      linear-gradient(225deg, hsla(38, 23%, 28%, 0.02) 0%, transparent 50%);
+    box-shadow: 
+      0 1px 3px hsla(38, 23%, 28%, 0.08), 
+      0 4px 12px hsla(38, 23%, 28%, 0.04),
+      inset 0 1px 0 hsla(255, 255%, 255%, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsla(38, 32%, 71%, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
   
   .benefit-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsl(var(--foreground) / 0.08), 0 12px 24px hsl(var(--foreground) / 0.06);
-    border-color: hsl(var(--accent) / 0.3);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 8px 24px hsla(38, 23%, 28%, 0.12), 
+      0 16px 32px hsla(38, 23%, 28%, 0.08),
+      inset 0 1px 0 hsla(255, 255%, 255%, 0.7);
+    border-color: hsla(38, 32%, 71%, 0.4);
   }
   
-  /* Seção hero minimalista */
+  .benefit-card:hover::before {
+    opacity: 1;
+  }
+  
+  /* Seção hero com gradientes complexos */
   .hero-section {
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.3) 100%);
+    background: 
+      radial-gradient(ellipse at 20% 50%, hsla(38, 32%, 71%, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsla(39, 37%, 82%, 0.2) 0%, transparent 50%),
+      linear-gradient(135deg, 
+        hsl(var(--background)) 0%, 
+        hsla(38, 32%, 85%, 0.8) 25%,
+        hsla(39, 37%, 88%, 0.6) 50%,
+        hsl(var(--background)) 100%
+      );
     position: relative;
     overflow: hidden;
   }
@@ -230,8 +521,23 @@ All colors MUST be HSL.
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 70% 30%, hsl(var(--accent) / 0.08) 0%, transparent 60%);
+    background: 
+      conic-gradient(from 0deg at 30% 40%, 
+        hsla(38, 32%, 71%, 0.1) 0deg,
+        transparent 60deg,
+        hsla(39, 37%, 82%, 0.05) 120deg,
+        transparent 180deg,
+        hsla(38, 23%, 28%, 0.03) 240deg,
+        transparent 300deg,
+        hsla(38, 32%, 71%, 0.1) 360deg
+      );
     pointer-events: none;
+    animation: rotate-gradient 20s linear infinite;
+  }
+  
+  @keyframes rotate-gradient {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
   
   /* Barra de urgência moderna */
@@ -300,21 +606,202 @@ All colors MUST be HSL.
     text-wrap: balance;
   }
   
-  /* Testimonial card premium */
+  /* Testimonial card com gradientes premium */
   .testimonial-card {
-    @apply p-8 rounded-3xl border border-border/30;
-    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.1) 100%);
-    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04), 0 8px 24px hsl(var(--foreground) / 0.04);
-    backdrop-filter: blur(12px);
+    @apply p-8 rounded-3xl border border-border/20;
+    background: 
+      linear-gradient(145deg, hsla(0, 0%, 100%, 0.95) 0%, hsla(39, 37%, 97%, 0.9) 100%),
+      radial-gradient(ellipse at 30% 70%, hsla(38, 32%, 71%, 0.08) 0%, transparent 60%),
+      conic-gradient(from 180deg at 70% 30%, 
+        hsla(38, 23%, 28%, 0.02) 0deg,
+        transparent 120deg,
+        hsla(39, 37%, 82%, 0.04) 240deg,
+        transparent 360deg
+      );
+    box-shadow: 
+      0 2px 8px hsla(38, 23%, 28%, 0.06), 
+      0 8px 24px hsla(38, 23%, 28%, 0.04),
+      inset 0 1px 0 hsla(255, 255%, 255%, 0.6);
+    backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
   }
   
-  /* Botões secundários minimalistas */
-  .btn-secondary {
-    @apply inline-flex items-center gap-3 px-6 py-3 rounded-xl font-medium text-base;
-    @apply border border-border/50 bg-card/50 text-foreground;
-    @apply hover:bg-card hover:border-border;
-    transition: all 0.2s ease;
+  .testimonial-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsla(38, 32%, 71%, 0.5) 50%, 
+      transparent 100%
+    );
+  }
+  
+  /* Fundos de seção com gradientes complexos */
+  .section-gradient-light {
+    background: 
+      radial-gradient(ellipse at 10% 80%, hsla(38, 32%, 71%, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 20%, hsla(39, 37%, 82%, 0.15) 0%, transparent 50%),
+      linear-gradient(180deg, 
+        hsl(var(--background)) 0%, 
+        hsla(39, 37%, 95%, 0.8) 50%,
+        hsl(var(--background)) 100%
+      );
+  }
+  
+  .section-gradient-warm {
+    background: 
+      conic-gradient(from 45deg at 25% 75%, 
+        hsla(38, 32%, 71%, 0.08) 0deg,
+        transparent 90deg,
+        hsla(39, 37%, 82%, 0.1) 180deg,
+        transparent 270deg,
+        hsla(38, 32%, 71%, 0.08) 360deg
+      ),
+      linear-gradient(135deg, 
+        hsla(39, 37%, 97%, 0.9) 0%,
+        hsla(38, 32%, 95%, 0.7) 50%,
+        hsla(39, 37%, 97%, 0.9) 100%
+      );
+    position: relative;
+  }
+  
+  .section-gradient-warm::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        hsla(38, 32%, 71%, 0.02) 1px,
+        transparent 2px,
+        transparent 20px
+      );
+    pointer-events: none;
+  }
+
+  /* Elementos de texto com gradientes */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, 
+      hsl(38, 23%, 28%) 0%, 
+      hsl(38, 32%, 50%) 50%,
+      hsl(38, 32%, 71%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-accent {
+    background: linear-gradient(135deg, 
+      hsl(45, 90%, 70%) 0%, 
+      hsl(38, 80%, 60%) 50%,
+      hsl(32, 70%, 50%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Separadores com gradiente */  
+  .gradient-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsla(38, 32%, 71%, 0.3) 20%,
+      hsla(38, 32%, 71%, 0.8) 50%,
+      hsla(38, 32%, 71%, 0.3) 80%,
+      transparent 100%
+    );
+  }
+  
+  .gradient-divider-vertical {
+    width: 1px;
+    background: linear-gradient(180deg, 
+      transparent 0%, 
+      hsla(38, 32%, 71%, 0.3) 20%,
+      hsla(38, 32%, 71%, 0.8) 50%,
+      hsla(38, 32%, 71%, 0.3) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Badges com gradiente */
+  .gradient-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    background: linear-gradient(135deg, 
+      hsla(38, 32%, 71%, 0.15) 0%, 
+      hsla(39, 37%, 82%, 0.25) 100%
+    );
+    border: 1px solid hsla(38, 32%, 71%, 0.3);
+    color: hsl(38, 23%, 28%);
     backdrop-filter: blur(8px);
+  }
+  
+  /* Botões fantasma com gradiente */
+  .btn-ghost-gradient {
+    @apply inline-flex items-center gap-3 px-6 py-3 rounded-xl font-medium text-base;
+    background: linear-gradient(135deg, 
+      hsla(0, 0%, 100%, 0.1) 0%, 
+      hsla(38, 32%, 71%, 0.05) 100%
+    );
+    border: 1px solid;
+    border-image: linear-gradient(135deg, 
+      hsla(38, 32%, 71%, 0.3) 0%, 
+      hsla(38, 32%, 71%, 0.1) 100%
+    ) 1;
+    color: hsl(38, 23%, 28%);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  
+  .btn-ghost-gradient:hover {
+    background: linear-gradient(135deg, 
+      hsla(38, 32%, 71%, 0.1) 0%, 
+      hsla(39, 37%, 82%, 0.15) 100%
+    );
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsla(38, 32%, 71%, 0.15);
+  }
+
+  /* Loading gradients animados */
+  .gradient-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsla(39, 37%, 95%, 0.4) 0%,
+      hsla(38, 32%, 85%, 0.8) 50%,
+      hsla(39, 37%, 95%, 0.4) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* Overlay gradientes para imagens */
+  .image-overlay-gradient {
+    position: relative;
+  }
+  
+  .image-overlay-gradient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      hsla(38, 23%, 28%, 0.6) 0%,
+      hsla(38, 23%, 28%, 0.3) 50%,
+      transparent 100%
+    );
+    border-radius: inherit;
   }
 }
 
