@@ -9,9 +9,9 @@ const gradientButtonVariants = cva(
   [
     "gradient-button",
     "inline-flex items-center justify-center gap-3",
-    "rounded-2xl min-w-[160px] px-8 py-5",
-    "text-lg leading-tight font-medium text-white",
-    "font-sans tracking-tight",
+    "rounded-2xl min-w-[280px] px-10 py-5",
+    "text-lg leading-tight font-bold text-white",
+    "font-sans tracking-tight whitespace-nowrap",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
     "disabled:pointer-events-none disabled:opacity-50",
     "transition-all duration-300 ease-out",
@@ -25,9 +25,9 @@ const gradientButtonVariants = cva(
         whatsapp: "gradient-button-whatsapp",
       },
       size: {
-        default: "px-8 py-5 text-lg",
-        sm: "px-6 py-3 text-base min-w-[120px]",
-        lg: "px-10 py-6 text-xl min-w-[180px]",
+        default: "px-10 py-5 text-lg min-w-[280px]",
+        sm: "px-8 py-3 text-base min-w-[220px]",
+        lg: "px-12 py-6 text-xl min-w-[320px]",
       },
     },
     defaultVariants: {
