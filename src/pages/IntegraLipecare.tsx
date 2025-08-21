@@ -21,46 +21,43 @@ import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 
 
-// Force cache refresh - PWAManager issue fixed completely v3.0.0
-const IntegraLipecare = () => {
-  console.log("IntegraLipecare component is rendering");
+// Optimized IntegraLipecare - v4.0.0
+const IntegraLipecare = React.memo(() => {
+  const isDev = process.env.NODE_ENV === 'development';
+  if (isDev) console.log("IntegraLipecare component is rendering");
+  
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
   
+  // Optimized scroll handler with useCallback
+  const handleScroll = React.useCallback(() => {
+    const scrolled = window.scrollY;
+    const threshold = 150;
+    setHeaderVisible(scrolled <= threshold);
+  }, []);
+
   useEffect(() => {
-    // Header scroll effect
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const threshold = 150;
-      if (scrolled > threshold) {
-        setHeaderVisible(false);
-      } else {
-        setHeaderVisible(true);
+    // Throttled scroll handler for better performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll, {
-      passive: true
-    });
 
-    // Track page view
-    console.log('[LandingIntegra] Page loaded');
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'page_view', {
-        page_title: 'Integra Lipecare Landing',
-        page_location: window.location.href
-      });
-    }
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'PageView');
-      fbq('track', 'ViewContent', {
-        content_name: 'Landing Page Lipedema',
-        content_category: 'Saúde'
-      });
-    }
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+
+    // Simplified tracking - let AnalyticsTracker handle this
+    if (isDev) console.log('[LandingIntegra] Page loaded');
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', throttledScroll);
     };
-  }, []);
+  }, [handleScroll, isDev]);
 
   const symptoms = ["Suas pernas doem e incham, especialmente no final do dia", "Você tem facilidade para fazer hematomas nas pernas", "A gordura das suas pernas tem textura diferente (nodular/irregular)", "Dietas e exercícios não reduzem o volume das pernas", "Há desproporção entre a parte superior e inferior do corpo", "Você sente suas pernas pesadas e cansadas constantemente", "Médicos dizem que é 'só gordura' ou 'falta de exercício'"];
   const benefits = [{
@@ -109,7 +106,7 @@ const IntegraLipecare = () => {
       
       {/* Analytics & Performance Monitoring */}
       <AnalyticsTracker />
-      <PerformanceMonitor />
+      <PerformanceMonitor enableRealTimeTracking={!isDev} enableConsoleLogging={isDev} />
       
       {/* Network Features */}
       <NetworkStatus />
@@ -882,6 +879,6 @@ const IntegraLipecare = () => {
       </ErrorBoundary>
     </>
   );
-};
+});
 
 export default IntegraLipecare;

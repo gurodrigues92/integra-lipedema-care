@@ -28,9 +28,12 @@ export const AnalyticsTracker = () => {
   const scrollDepthRef = useRef<Set<number>>(new Set());
   const timeOnPageRef = useRef<number>(Date.now());
   const sectionTimesRef = useRef<Map<string, number>>(new Map());
+  const isDev = process.env.NODE_ENV === 'development';
   
   // Track page views
   useEffect(() => {
+    if (isDev) return; // Skip in development
+    
     const pageTitle = document.title;
     const pageLocation = location.pathname;
     
@@ -63,11 +66,13 @@ export const AnalyticsTracker = () => {
       });
     }
     
-    console.log('[Analytics] Page view tracked:', pageLocation);
-  }, [location]);
+    if (isDev) console.log('[Analytics] Page view tracked:', pageLocation);
+  }, [location, isDev]);
 
-  // Scroll depth tracking
+  // Optimized scroll depth tracking
   useEffect(() => {
+    if (isDev) return; // Skip in development
+    
     const handleScroll = () => {
       const scrollPercent = Math.round(
         (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
@@ -89,14 +94,16 @@ export const AnalyticsTracker = () => {
       });
     };
 
-    const throttledScroll = throttle(handleScroll, 500);
+    const throttledScroll = throttle(handleScroll, 1000); // Increased throttle time
     window.addEventListener('scroll', throttledScroll, { passive: true });
     
     return () => window.removeEventListener('scroll', throttledScroll);
-  }, []);
+  }, [isDev]);
 
-  // Section timing tracking with Intersection Observer
+  // Optimized section timing tracking
   useEffect(() => {
+    if (isDev) return; // Skip in development
+    
     const observeSection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
         const sectionId = entry.target.id || entry.target.className;
@@ -110,13 +117,16 @@ export const AnalyticsTracker = () => {
           if (enterTime) {
             const timeSpent = Date.now() - enterTime;
             
-            trackEvent({
-              action: 'section_time',
-              category: 'engagement',
-              label: sectionId,
-              value: Math.round(timeSpent / 1000), // seconds
-              section: sectionId
-            });
+            // Only track if spent more than 2 seconds
+            if (timeSpent > 2000) {
+              trackEvent({
+                action: 'section_time',
+                category: 'engagement',
+                label: sectionId,
+                value: Math.round(timeSpent / 1000),
+                section: sectionId
+              });
+            }
           }
           
           sectionTimesRef.current.delete(sectionId);
@@ -124,17 +134,21 @@ export const AnalyticsTracker = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observeSection, {
-      threshold: 0.5,
-      rootMargin: '0px 0px -20% 0px'
-    });
+    // Delayed observer initialization to avoid affecting initial render
+    const timeoutId = setTimeout(() => {
+      const observer = new IntersectionObserver(observeSection, {
+        threshold: 0.5,
+        rootMargin: '0px 0px -20% 0px'
+      });
 
-    // Observe all major sections
-    const sections = document.querySelectorAll('section, [data-section]');
-    sections.forEach(section => observer.observe(section));
+      const sections = document.querySelectorAll('section, [data-section]');
+      sections.forEach(section => observer.observe(section));
 
-    return () => observer.disconnect();
-  }, [location]);
+      return () => observer.disconnect();
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [location, isDev]);
 
   // Track time on page when user leaves
   useEffect(() => {
