@@ -20,9 +20,10 @@ import { SEOHead } from "@/components/SEOHead";
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 
-
-// Optimized IntegraLipecare - v4.0.0
+// Cache buster: v5.0.0 - PWA completely removed
+// Optimized IntegraLipecare - v5.0.0 (No PWA)
 const IntegraLipecare = () => {
+  console.log("✅ IntegraLipecare v5.0.0 - PWA completamente removido");
   const isDev = process.env.NODE_ENV === 'development';
   if (isDev) console.log("IntegraLipecare component is rendering");
   
