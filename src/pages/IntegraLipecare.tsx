@@ -22,7 +22,7 @@ import NetworkStatus from "@/components/NetworkStatus";
 
 
 // Optimized IntegraLipecare - v4.0.0
-const IntegraLipecare = React.memo(() => {
+const IntegraLipecare = () => {
   const isDev = process.env.NODE_ENV === 'development';
   if (isDev) console.log("IntegraLipecare component is rendering");
   
@@ -879,6 +879,6 @@ const IntegraLipecare = React.memo(() => {
       </ErrorBoundary>
     </>
   );
-});
+};
 
 export default IntegraLipecare;
