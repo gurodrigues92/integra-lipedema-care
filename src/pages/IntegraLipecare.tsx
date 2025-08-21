@@ -26,8 +26,8 @@ const IntegraLipecare = () => {
   console.log("IntegraLipecare component is rendering");
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
+  
   useEffect(() => {
-
     // Header scroll effect
     const handleScroll = () => {
       const scrolled = window.scrollY;
@@ -61,6 +61,7 @@ const IntegraLipecare = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   const symptoms = ["Suas pernas doem e incham, especialmente no final do dia", "Você tem facilidade para fazer hematomas nas pernas", "A gordura das suas pernas tem textura diferente (nodular/irregular)", "Dietas e exercícios não reduzem o volume das pernas", "Há desproporção entre a parte superior e inferior do corpo", "Você sente suas pernas pesadas e cansadas constantemente", "Médicos dizem que é 'só gordura' ou 'falta de exercício'"];
   const benefits = [{
     icon: Heart,
@@ -100,7 +101,9 @@ const IntegraLipecare = () => {
     description: "Drenagem linfática manual especializada, terapia de compressão adequada, tratamentos complementares e monitoramento de evolução.",
     icon: Award
   }];
-  return <>
+
+  return (
+    <>
       {/* SEO Head Component */}
       <SEOHead section="hero" />
       
@@ -108,9 +111,8 @@ const IntegraLipecare = () => {
       <AnalyticsTracker />
       <PerformanceMonitor />
       
-      
       {/* PWA & Network Features */}
-      {/* PWA functionality completely disabled */}
+      <PWAManager />
       <NetworkStatus />
       
       <ErrorBoundary>
@@ -611,7 +613,6 @@ const IntegraLipecare = () => {
           </div>
         </section>
 
-
         {/* Seção Benefícios */}
         <section className="section-padding bg-gradient-to-br from-muted/20 via-card to-background/80">
           <div className="container-custom">
@@ -880,7 +881,8 @@ const IntegraLipecare = () => {
         <WhatsAppFixed />
         </TouchGestures>
       </ErrorBoundary>
-    </>;
+    </>
+  );
 };
 
 export default IntegraLipecare;
