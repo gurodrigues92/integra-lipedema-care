@@ -19,7 +19,7 @@ import { SmartForm } from "@/components/SmartForm";
 import { SEOHead } from "@/components/SEOHead";
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
-import PWAManager from "@/components/PWAManager";
+
 
 // Force cache refresh - PWAManager issue fixed completely v3.0.0
 const IntegraLipecare = () => {
@@ -111,8 +111,7 @@ const IntegraLipecare = () => {
       <AnalyticsTracker />
       <PerformanceMonitor />
       
-      {/* PWA & Network Features */}
-      <PWAManager />
+      {/* Network Features */}
       <NetworkStatus />
       
       <ErrorBoundary>
