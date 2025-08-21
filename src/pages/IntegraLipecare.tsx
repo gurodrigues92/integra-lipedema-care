@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, Instagram } from "lucide-react";
 import integraLipecareLogotipo from "@/assets/integra-lipecare-logo.png";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -20,49 +20,46 @@ import { SEOHead } from "@/components/SEOHead";
 import TouchGestures from "@/components/TouchGestures";
 import NetworkStatus from "@/components/NetworkStatus";
 
-// Cache buster: v5.0.0 - PWA completely removed
-// Optimized IntegraLipecare - v5.0.0 (No PWA)
+// Force cache refresh - PWAManager issue fixed completely v3.0.0
 const IntegraLipecare = () => {
-  console.log("✅ IntegraLipecare v5.0.0 - PWA completamente removido");
-  const isDev = process.env.NODE_ENV === 'development';
-  if (isDev) console.log("IntegraLipecare component is rendering");
-  
+  console.log("IntegraLipecare component is rendering");
   const [imageModalOpen, setImageModalOpen] = useState<'daniela' | 'fernanda' | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
-  
-  // Optimized scroll handler with useCallback
-  const handleScroll = useCallback(() => {
-    const scrolled = window.scrollY;
-    const threshold = 150;
-    setHeaderVisible(scrolled <= threshold);
-  }, []);
-
   useEffect(() => {
-    // Throttled scroll handler for better performance
-    let ticking = false;
-    const throttledScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
+
+    // Header scroll effect
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const threshold = 150;
+      if (scrolled > threshold) {
+        setHeaderVisible(false);
+      } else {
+        setHeaderVisible(true);
       }
     };
+    window.addEventListener('scroll', handleScroll, {
+      passive: true
+    });
 
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-
-    // Simplified tracking - let AnalyticsTracker handle this
-    if (isDev) console.log('[LandingIntegra] Page loaded');
-
-    // Cache clear confirmation
-    console.log('✅ PWA completamente removido - sem referências');
-    
+    // Track page view
+    console.log('[LandingIntegra] Page loaded');
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_view', {
+        page_title: 'Integra Lipecare Landing',
+        page_location: window.location.href
+      });
+    }
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'PageView');
+      fbq('track', 'ViewContent', {
+        content_name: 'Landing Page Lipedema',
+        content_category: 'Saúde'
+      });
+    }
     return () => {
-      window.removeEventListener('scroll', throttledScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll, isDev]);
-
+  }, []);
   const symptoms = ["Suas pernas doem e incham, especialmente no final do dia", "Você tem facilidade para fazer hematomas nas pernas", "A gordura das suas pernas tem textura diferente (nodular/irregular)", "Dietas e exercícios não reduzem o volume das pernas", "Há desproporção entre a parte superior e inferior do corpo", "Você sente suas pernas pesadas e cansadas constantemente", "Médicos dizem que é 'só gordura' ou 'falta de exercício'"];
   const benefits = [{
     icon: Heart,
@@ -102,17 +99,17 @@ const IntegraLipecare = () => {
     description: "Drenagem linfática manual especializada, terapia de compressão adequada, tratamentos complementares e monitoramento de evolução.",
     icon: Award
   }];
-
-  return (
-    <>
+  return <>
       {/* SEO Head Component */}
       <SEOHead section="hero" />
       
       {/* Analytics & Performance Monitoring */}
       <AnalyticsTracker />
-      <PerformanceMonitor enableRealTimeTracking={!isDev} enableConsoleLogging={isDev} />
+      <PerformanceMonitor />
       
-      {/* Network Features */}
+      
+      {/* PWA & Network Features */}
+      {/* PWA functionality completely disabled */}
       <NetworkStatus />
       
       <ErrorBoundary>
@@ -613,6 +610,7 @@ const IntegraLipecare = () => {
           </div>
         </section>
 
+
         {/* Seção Benefícios */}
         <section className="section-padding bg-gradient-to-br from-muted/20 via-card to-background/80">
           <div className="container-custom">
@@ -881,8 +879,7 @@ const IntegraLipecare = () => {
         <WhatsAppFixed />
         </TouchGestures>
       </ErrorBoundary>
-    </>
-  );
+    </>;
 };
 
 export default IntegraLipecare;
