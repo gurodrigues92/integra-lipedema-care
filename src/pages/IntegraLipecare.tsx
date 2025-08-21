@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Check, Heart, Star, Users, Shield, Clock, Award, MapPin, Phone, Mail, Instagram } from "lucide-react";
 import integraLipecareLogotipo from "@/assets/integra-lipecare-logo.png";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -30,7 +30,7 @@ const IntegraLipecare = () => {
   const [headerVisible, setHeaderVisible] = useState(true);
   
   // Optimized scroll handler with useCallback
-  const handleScroll = React.useCallback(() => {
+  const handleScroll = useCallback(() => {
     const scrolled = window.scrollY;
     const threshold = 150;
     setHeaderVisible(scrolled <= threshold);
