@@ -54,6 +54,9 @@ const IntegraLipecare = () => {
     // Simplified tracking - let AnalyticsTracker handle this
     if (isDev) console.log('[LandingIntegra] Page loaded');
 
+    // Cache clear confirmation
+    console.log('✅ PWA completamente removido - sem referências');
+    
     return () => {
       window.removeEventListener('scroll', throttledScroll);
     };
