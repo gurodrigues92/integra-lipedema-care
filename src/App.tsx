@@ -67,7 +67,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<IntegraLipecare />} />
-          <Route path="/index" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
